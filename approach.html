@@ -29,16 +29,22 @@
 <header class="masthead">
   <div class="wrap masthead-in">
     <a class="mark" href="index.html">Climate Sprints</a>
-    <nav class="nav" aria-label="Primary">
+    <div class="nav-zone">
+      <nav class="nav" id="site-nav" aria-label="Primary">
       <a href="diligence.html">Diligence</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="mastermind.html">Mastermind</a>
       <a href="approach.html">Approach</a>
       <a href="practice.html">Practice</a>
+      </nav>
       <a class="btn btn-ghost btn-sm" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book a call</a>
-    </nav>
+      <button class="burger" type="button" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
+<div class="nav-scrim" hidden></div>
 
 <main>
   <section class="tone-a">
@@ -259,6 +265,7 @@
   </div>
 </footer>
 
+<script src="assets/nav.js" defer></script>
 <script src="assets/consent.js" defer></script>
 </body>
 </html>
