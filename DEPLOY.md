@@ -21,6 +21,7 @@ mastermind.html
 approach.html
 practice.html
 conversations.html
+questions.html
 contact.html
 colophon.html
 terms.html

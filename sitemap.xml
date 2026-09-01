@@ -10,6 +10,7 @@
   <url><loc>https://climatesprints.com/approach</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://climatesprints.com/practice</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://climatesprints.com/conversations</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://climatesprints.com/questions</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://climatesprints.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://climatesprints.com/colophon</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://climatesprints.com/terms</loc><changefreq>monthly</changefreq><priority>0.2</priority></url>
