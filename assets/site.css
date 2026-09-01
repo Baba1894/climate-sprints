@@ -97,7 +97,8 @@ p:last-child{margin-bottom:0;}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ir);outline-offset:3px;}
 
 /* masthead */
-.masthead{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--rule-2);}
+.sticky-head{position:sticky;top:0;z-index:50;}
+.masthead{background:var(--paper);border-bottom:1px solid var(--rule-2);}
 .masthead-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--navh);flex-wrap:wrap;}
 .mark{font-family:Newsreader,Georgia,serif;font-size:20px;font-weight:400;letter-spacing:-.012em;text-decoration:none;color:var(--ink);white-space:nowrap;}
 .nav{display:flex;gap:clamp(12px,1.8vw,26px);align-items:center;flex-wrap:wrap;}
@@ -396,7 +397,7 @@ legend{padding:0;font-size:13.5px;color:var(--label);margin-bottom:14px;}
 
 /* the sticky masthead makes its own stacking context — lift it above the scrim
    while the tray is open, and keep the burger clickable above the tray */
-body.nav-open .masthead{z-index:130;}
+body.nav-open .sticky-head{z-index:130;}
 .burger{position:relative;z-index:140;}
 
 /* paired calls to action, each addressed to a named audience */
@@ -409,20 +410,22 @@ body.nav-open .masthead{z-index:130;}
 .tone-b .cta-what{color:var(--on-dark-mute);}
 
 /* ---------- section sub-navigation ---------- */
-.subnav{position:sticky;top:61px;z-index:45;background:var(--paper);
-  border-bottom:1px solid var(--rule-2);}
-.subnav-in{display:flex;align-items:center;gap:clamp(16px,2.4vw,34px);
-  min-height:46px;overflow-x:auto;scrollbar-width:none;}
-.subnav-in::-webkit-scrollbar{display:none;}
-.subnav-label{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex:0 0 auto;}
+.subnav{background:var(--paper);border-bottom:1px solid var(--rule-2);}
+.subnav-in{display:flex;align-items:center;justify-content:flex-end;
+  gap:clamp(12px,1.8vw,26px);min-height:46px;}
 .subnav nav{display:flex;gap:clamp(14px,2vw,28px);align-items:center;}
+/* invisible stand-in for the Book a call button, so the row ends where the nav does */
+.subnav-spacer{visibility:hidden;font-size:13.5px;font-weight:600;padding:8px 18px;
+  border:1px solid transparent;flex:0 0 auto;white-space:nowrap;}
+.lbl-short{display:none;}
 .subnav a{font-size:14px;text-decoration:none;color:var(--label);white-space:nowrap;
   padding-block:14px;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
 .subnav a:hover{color:var(--ir);}
 .subnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ir);}
 @media (max-width:860px){
-  .subnav{position:static;}
-  .subnav-label{display:none;}
-  .subnav-in{min-height:44px;}
+  .subnav-in{justify-content:flex-start;min-height:44px;overflow-x:auto;scrollbar-width:none;}
+  .subnav-in::-webkit-scrollbar{display:none;}
+  .subnav-spacer{display:none;}
+  .lbl-full{display:none;}
+  .lbl-short{display:inline;}
 }
