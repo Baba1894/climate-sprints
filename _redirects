@@ -1,0 +1,10 @@
+# Legacy paths from the retiring domains.
+# The domain-level 301s (climatecatalystmastermind.com, climatecatalystspodcast.com)
+# are configured in Cloudflare Bulk Redirects, not here.
+/portfolio/momentum    /momentum    301
+/portfolio/alignment   /alignment   301
+/portfolio/fractional  /fractional  301
+/podcast               /conversations 301
+/team                  /practice    301
+/about                 /approach    301
+/programs              /portfolio   301

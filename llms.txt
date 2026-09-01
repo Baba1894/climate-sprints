@@ -1,0 +1,26 @@
+# Climate Sprints
+
+> A principal-led advisory practice for capital allocating into climate. We assess
+> whether the technology works and whether anyone is compelled to buy it, then stay
+> to fix what the assessment found.
+
+Buyers are fund managers, family offices, LPs and industrial-scale developers.
+The companies they fund are the beneficiaries, not the buyers.
+
+## Pages
+- [Diligence](https://climatesprints.com/diligence): Technical readiness, commercial compulsion and execution capacity, assessed together. Three weeks, fixed fee, opening with a paid definition phase.
+- [Portfolio](https://climatesprints.com/portfolio): Momentum Sprints, Alignment Sprints, the Mastermind and fractional executives, bought by the fund and delivered to the company.
+- [Momentum Sprints](https://climatesprints.com/momentum): Three months, from a technology that works to a buyer who is compelled.
+- [Alignment Sprints](https://climatesprints.com/alignment): The execution risk more capital cannot fix. Led by Iana Lahi.
+- [Fractional and interim executives](https://climatesprints.com/fractional): A senior seat filled in weeks, without a search.
+- [Climate Catalyst Mastermind](https://climatesprints.com/mastermind): Twelve-week peer cohort for portfolio CEOs. First cohort 1Q2027. Runs on AGGEIO.
+- [Approach](https://climatesprints.com/approach): The position, the sectors, the screen and the values.
+- [Practice](https://climatesprints.com/practice): Founding principal Marc Strauch, and the standing bench.
+- [Conversations](https://climatesprints.com/conversations): Recorded conversations. No cadence, no episode count.
+- [Contact](https://climatesprints.com/contact)
+- [Colophon](https://climatesprints.com/colophon): On the USGS imagery and the typefaces.
+
+## Notes
+Climate Sprints is not a registered investment adviser or broker-dealer, and nothing
+on the site is investment advice or an offer of securities. See /disclaimer.
+Sister studio: Quantum Ravioli (quantumravioli.com), builder of AGGEIO.

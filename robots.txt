@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://climatesprints.com/sitemap.xml
+
+Disallow: /og.html
