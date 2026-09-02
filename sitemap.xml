@@ -16,4 +16,5 @@
   <url><loc>https://climatesprints.com/terms</loc><changefreq>monthly</changefreq><priority>0.2</priority></url>
   <url><loc>https://climatesprints.com/privacy</loc><changefreq>monthly</changefreq><priority>0.2</priority></url>
   <url><loc>https://climatesprints.com/disclaimer</loc><changefreq>monthly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://climatesprints.com/thanks</loc><changefreq>yearly</changefreq><priority>0.1</priority></url>
 </urlset>

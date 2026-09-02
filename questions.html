@@ -125,6 +125,10 @@
       <div>
         <h2 class="h2" style="max-width:19ch;margin-bottom:1.4em;">Tell us what you want to hear about.</h2>
         <form action="/api/signup" method="post" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-grid">
             <div class="field"><label for="fn">First name</label><input id="fn" name="firstName" type="text" autocomplete="given-name"></div>
             <div class="field"><label for="ln">Last name</label><input id="ln" name="lastName" type="text" autocomplete="family-name"></div>

@@ -429,3 +429,6 @@ body.nav-open .sticky-head{z-index:130;}
   .lbl-full{display:none;}
   .lbl-short{display:inline;}
 }
+
+/* honeypot — off-screen, never focusable, invisible to real visitors */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}

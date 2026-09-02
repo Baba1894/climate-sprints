@@ -22,6 +22,7 @@ approach.html
 practice.html
 conversations.html
 questions.html
+thanks.html
 contact.html
 colophon.html
 terms.html
@@ -33,6 +34,8 @@ sitemap.xml
 llms.txt
 _headers
 _redirects
+functions/
+  api/signup.ts
 assets/
   site.css
   sdg-wheel.png
@@ -112,11 +115,9 @@ registered.
 
 Deploy this, but do not send it to anyone on the list until these are closed.
 
-**The form posts to nothing.** Both forms `POST` to `/api/signup`, which does not
-exist. Submitting currently 404s. This needs a Cloudflare Pages Function at
-`functions/api/signup.ts` that calls the Loops API, plus `LOOPS_API_KEY` in
-Settings → Environment variables. I have not built it yet because it needs your
-key and your Loops list and property structure.
+**The form is built but not configured.** `functions/api/signup.ts` is in the
+repo and handles the POST. It will not work until the four environment variables
+are set in Cloudflare. Follow `LOOPS-SETUP.md` — about thirty minutes, no code.
 
 **GA4 has no measurement ID.** The consent gate is built and working, but
 `assets/consent.js` line 6 holds a placeholder: `var GA_ID = 'G-XXXXXXXXXX'`.
