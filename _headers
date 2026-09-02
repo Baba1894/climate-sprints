@@ -5,5 +5,26 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-/assets/*
+# Images never change content at a given filename — safe to cache hard.
+/assets/plates/*
   Cache-Control: public, max-age=31536000, immutable
+
+/assets/brand/*
+  Cache-Control: public, max-age=604800
+
+# The stylesheet and scripts DO change content at the same filename.
+# Caching these as immutable is how a deployed change fails to appear.
+/assets/site.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/nav.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/consent.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+/favicon.svg
+  Cache-Control: public, max-age=86400
