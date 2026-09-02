@@ -179,23 +179,25 @@ Loops → Settings → **Contact properties**. Type matters; the wrong type fail
 | Property | Holds |
 |---|---|
 | `company` | Company name, optional on the form |
-| `source` | Always `climatesprints.com` |
+| `source` | Always `climatesprints.com` — already exists as a system property, do not recreate |
 | `roleType` | Readable list, e.g. "Angel, family office, fund or LP" |
 | `interestSummary` | Readable list of everything ticked |
 | `lookingAt` | The free-text field |
 
 **Role booleans — four.** These replace the role lists.
 
-| Property | True when they tick |
-|---|---|
-| `is_capital` | Angel, fund, family office or LP |
-| `is_corpvc` | Corporate venture fund |
-| `is_developer` | Commercial-scale developer |
-| `is_founder` | Founder or CxO |
+| Display name | API name Loops generates | True when they tick |
+|---|---|---|
+| Is Capital | `isCapital` | Angel, fund, family office or LP |
+| Is Corpvc | `isCorpvc` | Corporate venture fund |
+| Is Developer | `isDeveloper` | Commercial-scale developer |
+| Is Founder | `isFounder` | Founder or CxO |
+
+> Loops derives the API name from the display name and camelCases it. Check the API Name column after creating each property — that string is what the code writes to, and a mismatch fails silently.
 
 **Interest booleans — seven.** Deliberately redundant with the lists: the lists control what a person receives, the flags let you filter and count without touching subscriptions.
 
-`want_diligence` · `want_portfolio` · `want_mastermind` · `want_momentum` · `want_alignment` · `want_fractional` · `want_conversations`
+`wantDiligence` · `wantPortfolio` · `wantMastermind` · `wantMomentum` · `wantAlignment` · `wantFractional` · `wantConversations`
 
 `firstName`, `lastName` and `email` already exist as standard fields. Do not recreate them.
 

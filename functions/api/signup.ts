@@ -50,12 +50,26 @@ const INTERESTS: Record<string, string> = {
   conversations: "Conversations, guest inquiry",
 };
 
-/** Form value to the boolean property name written to Loops. */
+/** Form value to the boolean property name written to Loops.
+ *  Loops derives API names from the display name and camelCases them, so these
+ *  are isCapital / wantMastermind rather than is_capital / want_mastermind.
+ *  If a property is renamed in Loops, change it here too — a mismatch writes
+ *  nowhere and reports nothing. */
 const ROLE_FLAG: Record<string, string> = {
-  fund: "is_capital",
-  cvc: "is_corpvc",
-  developer: "is_developer",
-  founder: "is_founder",
+  fund: "isCapital",
+  cvc: "isCorpvc",
+  developer: "isDeveloper",
+  founder: "isFounder",
+};
+
+const INTEREST_FLAG: Record<string, string> = {
+  diligence: "wantDiligence",
+  portfolio: "wantPortfolio",
+  mastermind: "wantMastermind",
+  momentum: "wantMomentum",
+  alignment: "wantAlignment",
+  fractional: "wantFractional",
+  conversations: "wantConversations",
 };
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -115,8 +129,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     for (const key of Object.keys(ROLE_FLAG)) {
       properties[ROLE_FLAG[key]] = roles.includes(key);
     }
-    for (const key of Object.keys(INTERESTS)) {
-      properties[`want_${key}`] = interests.includes(key);
+    for (const key of Object.keys(INTEREST_FLAG)) {
+      properties[INTEREST_FLAG[key]] = interests.includes(key);
     }
     if (Object.keys(mailingLists).length) properties.mailingLists = mailingLists;
 
