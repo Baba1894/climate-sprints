@@ -432,3 +432,9 @@ body.nav-open .sticky-head{z-index:130;}
 
 /* honeypot — off-screen, never focusable, invisible to real visitors */
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+/* ---------- the mark ---------- */
+.mark{display:inline-flex;align-items:center;gap:11px;}
+.mark-sun{display:block;flex:0 0 auto;}
+.foot-mark{display:flex;align-items:center;gap:10px;}
+@media (max-width:520px){.mark-sun{width:22px;height:22px;}}

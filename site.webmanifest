@@ -1,0 +1,12 @@
+{
+  "name": "Climate Sprints",
+  "short_name": "Climate Sprints",
+  "icons": [
+    { "src": "/assets/brand/favicon-48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "/assets/brand/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#14143A",
+  "background_color": "#F3F3F1",
+  "display": "browser"
+}

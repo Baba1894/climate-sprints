@@ -58,27 +58,14 @@ Loops → Settings → **Contact properties**.
 Create each of these. Type matters — get it wrong and the value silently fails to
 write.
 
-| Property name | Type |
-|---|---|
-| `company` | string |
-| `source` | string |
-| `roleType` | string |
-| `interestSummary` | string |
-| `lookingAt` | string |
-| `want_diligence` | boolean |
-| `want_portfolio` | boolean |
-| `want_mastermind` | boolean |
-| `want_momentum` | boolean |
-| `want_alignment` | boolean |
-| `want_fractional` | boolean |
-| `want_conversations` | boolean |
+See Table 3 of the IDs worksheet. Sixteen properties: five strings, four role
+booleans, seven interest booleans.
 
 `firstName`, `lastName` and `email` already exist as standard fields.
 
-The seven booleans are the reason for doing this properly rather than dumping
+The booleans are the reason for doing this properly rather than dumping
 everything into one text field. They let you send the Mastermind note only to
-people who ticked Mastermind, which is the difference between a list you can use
-and a list you can only blast.
+people who ticked Mastermind, and they let a role survive an unsubscribe.
 
 ---
 
@@ -125,7 +112,7 @@ you want the form to work on preview deployments.
 | Name | Type | Value |
 |---|---|---|
 | `LOOPS_API_KEY` | **Secret** | the key from step 5 |
-| `LOOPS_LIST_ID` | Plain text | the list ID from step 2 |
+| `LOOPS_LISTS` | Plain text | the one-line JSON from Table 2 of the worksheet |
 | `LOOPS_TRANSACTIONAL_ID` | Plain text | the ID from step 4 |
 | `NOTIFY_EMAIL` | Plain text | where enquiries should land |
 
@@ -147,8 +134,9 @@ not see them. Push any commit, or use **Retry deployment** on the latest build.
    check, tick two or three interests, write something in the free-text field.
 2. Submit. You should land on `climatesprints.com/thanks`.
 3. Check the notification arrived at `NOTIFY_EMAIL`.
-4. Check Loops → Audience. The contact should exist with `company`, `roleType`,
-   `interestSummary`, `lookingAt` populated and the right booleans set true.
+4. Check Loops → Audience. The contact should exist with the properties
+   populated, the right booleans true, and membership of General plus one list
+   per interest ticked.
 5. Submit again with the same address and a different set of tick-boxes. It
    should update the existing contact rather than create a duplicate.
 

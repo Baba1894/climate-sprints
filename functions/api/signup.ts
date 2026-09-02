@@ -3,40 +3,57 @@
  * Cloudflare Pages Function. Lives at functions/api/signup.ts, serves POST /api/signup.
  *
  * Environment variables (Pages → Settings → Variables and Secrets):
- *   LOOPS_API_KEY          secret   from Loops → Settings → API
- *   LOOPS_LIST_ID          plain    the mailing list contacts are subscribed to
- *   LOOPS_TRANSACTIONAL_ID plain    the transactional template that notifies you
- *   NOTIFY_EMAIL           plain    where the notification goes
+ *   LOOPS_API_KEY           Secret  from Loops → Settings → API
+ *   LOOPS_LISTS             Text    JSON map of interest key → Loops list ID
+ *   LOOPS_TRANSACTIONAL_ID  Text    the transactional template that notifies you
+ *   NOTIFY_EMAIL            Text    where the notification goes
  *
- * Behaviour: the visitor always gets a confirmation, even if Loops is down.
- * A failed submission is logged, never shown. Losing a lead to a 500 page is
- * worse than losing it to a silent retry.
+ * LOOPS_LISTS looks like this, on one line:
+ *   {"general":"aaa","diligence":"bbb","portfolio":"ccc","mastermind":"ddd",
+ *    "momentum":"eee","alignment":"fff","fractional":"ggg","conversations":"hhh"}
+ *
+ * Everyone is subscribed to "general". Everyone is additionally subscribed to
+ * the list matching each interest they ticked. Adding or removing a list later
+ * means editing that one variable — no code change.
+ *
+ * Roles are NOT lists. They are stored as properties, because a person does not
+ * subscribe to being a family office, and unsubscribing should never delete the
+ * fact that they are one.
  */
 
 interface Env {
   LOOPS_API_KEY: string;
-  LOOPS_LIST_ID: string;
-  LOOPS_TRANSACTIONAL_ID: string;
-  NOTIFY_EMAIL: string;
+  LOOPS_LISTS?: string;
+  LOOPS_TRANSACTIONAL_ID?: string;
+  NOTIFY_EMAIL?: string;
 }
 
 const LOOPS = "https://app.loops.so/api/v1";
 
+/** Form checkbox value to readable label, for the notification and the summary property. */
 const ROLES: Record<string, string> = {
-  fund: "Angel, fund, family office or LP",
+  fund: "Angel, family office, fund or LP",
   cvc: "Corporate venture fund",
   developer: "Commercial-scale developer",
   founder: "Founder or CxO",
 };
 
 const INTERESTS: Record<string, string> = {
-  diligence: "Diligence",
+  diligence: "Technical and commercial diligence",
   portfolio: "Portfolio support",
-  mastermind: "Mastermind 1Q2027",
+  mastermind: "Climate Catalyst Mastermind",
   momentum: "Momentum Sprints",
   alignment: "Alignment Sprints",
-  fractional: "Fractional or interim",
-  conversations: "Conversations guest",
+  fractional: "Fractional or interim executive",
+  conversations: "Conversations, guest inquiry",
+};
+
+/** Form value to the boolean property name written to Loops. */
+const ROLE_FLAG: Record<string, string> = {
+  fund: "is_capital",
+  cvc: "is_corpvc",
+  developer: "is_developer",
+  founder: "is_founder",
 };
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -59,7 +76,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const firstName = ((form.get("firstName") as string) || "").trim();
     const lastName = ((form.get("lastName") as string) || "").trim();
     const company = ((form.get("company") as string) || "").trim();
-    const context_ = ((form.get("context") as string) || "").trim().slice(0, 2000);
+    const lookingAt = ((form.get("context") as string) || "").trim().slice(0, 2000);
 
     const roles = form.getAll("role").map(String);
     const interests = form.getAll("interest").map(String);
@@ -67,13 +84,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const roleLabels = roles.map((r) => ROLES[r] || r).join(", ");
     const interestLabels = interests.map((i) => INTERESTS[i] || i).join(", ");
 
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${env.LOOPS_API_KEY}`,
-    };
+    // ---- mailing lists: general, plus one per ticked interest
+    let lists: Record<string, string> = {};
+    try {
+      lists = env.LOOPS_LISTS ? JSON.parse(env.LOOPS_LISTS) : {};
+    } catch {
+      console.error("LOOPS_LISTS is not valid JSON — no lists will be set");
+    }
+    const mailingLists: Record<string, boolean> = {};
+    if (lists.general) mailingLists[lists.general] = true;
+    for (const key of interests) {
+      const id = lists[key];
+      if (id) mailingLists[id] = true;
+    }
 
-    // 1 — create or update the contact, with each interest as its own boolean
-    //     so Loops can segment on them later.
+    // ---- properties
     const properties: Record<string, unknown> = {
       email,
       firstName,
@@ -82,15 +107,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       source: "climatesprints.com",
       roleType: roleLabels,
       interestSummary: interestLabels,
-      lookingAt: context_,
+      lookingAt,
       subscribed: true,
     };
+    for (const key of Object.keys(ROLE_FLAG)) {
+      properties[ROLE_FLAG[key]] = roles.includes(key);
+    }
     for (const key of Object.keys(INTERESTS)) {
       properties[`want_${key}`] = interests.includes(key);
     }
-    if (env.LOOPS_LIST_ID) {
-      properties.mailingLists = { [env.LOOPS_LIST_ID]: true };
-    }
+    if (Object.keys(mailingLists).length) properties.mailingLists = mailingLists;
+
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${env.LOOPS_API_KEY}`,
+    };
 
     const contactRes = await fetch(`${LOOPS}/contacts/update`, {
       method: "PUT",
@@ -101,7 +132,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       console.error("Loops contact failed", contactRes.status, await contactRes.text());
     }
 
-    // 2 — notify. Separate call so a template problem cannot lose the contact.
+    // ---- notify. Separate call so a template problem cannot lose the contact.
     if (env.LOOPS_TRANSACTIONAL_ID && env.NOTIFY_EMAIL) {
       const notifyRes = await fetch(`${LOOPS}/transactional`, {
         method: "POST",
@@ -115,7 +146,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             company: company || "(none)",
             roleType: roleLabels || "(none selected)",
             interests: interestLabels || "(none selected)",
-            lookingAt: context_ || "(nothing written)",
+            lookingAt: lookingAt || "(nothing written)",
             submittedAt: new Date().toISOString(),
           },
         }),
@@ -133,7 +164,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 };
 
-// Anything other than POST goes back to the contact page.
 export const onRequest: PagesFunction<Env> = async ({ request }) => {
   if (request.method === "POST") return new Response("Use onRequestPost", { status: 500 });
   return Response.redirect(`${new URL(request.url).origin}/contact`, 303);
