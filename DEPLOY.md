@@ -117,7 +117,7 @@ Deploy this, but do not send it to anyone on the list until these are closed.
 
 **The form is built but not configured.** `functions/api/signup.ts` is in the
 repo and handles the POST. It will not work until the four environment variables
-are set in Cloudflare. Follow `LOOPS-SETUP.md` — about thirty minutes, no code.
+are set in Cloudflare. Follow `CONTACT-FORM-SETUP.md` — about forty-five minutes, no code. It covers Cloudflare DNS, Loops, the Pages variables and the test.
 
 **GA4 has no measurement ID.** The consent gate is built and working, but
 `assets/consent.js` line 6 holds a placeholder: `var GA_ID = 'G-XXXXXXXXXX'`.

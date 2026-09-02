@@ -5,8 +5,9 @@
  * Environment variables (Pages → Settings → Variables and Secrets):
  *   LOOPS_API_KEY           Secret  from Loops → Settings → API
  *   LOOPS_LISTS             Text    JSON map of interest key → Loops list ID
- *   LOOPS_TRANSACTIONAL_ID  Text    the transactional template that notifies you
- *   NOTIFY_EMAIL            Text    where the notification goes
+ *   LOOPS_TRANSACTIONAL_ID  Text    template that notifies you of a new enquiry
+ *   LOOPS_ACK_ID            Text    template that acknowledges receipt to the enquirer
+ *   NOTIFY_EMAIL            Text    where your notification goes
  *
  * LOOPS_LISTS looks like this, on one line:
  *   {"general":"aaa","diligence":"bbb","portfolio":"ccc","mastermind":"ddd",
@@ -25,6 +26,7 @@ interface Env {
   LOOPS_API_KEY: string;
   LOOPS_LISTS?: string;
   LOOPS_TRANSACTIONAL_ID?: string;
+  LOOPS_ACK_ID?: string;
   NOTIFY_EMAIL?: string;
 }
 
@@ -153,6 +155,26 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
       if (!notifyRes.ok) {
         console.error("Loops transactional failed", notifyRes.status, await notifyRes.text());
+      }
+    }
+
+    // ---- acknowledge to the person who submitted. Transactional, not marketing:
+    //      triggered by their own action and carrying no promotional content.
+    if (env.LOOPS_ACK_ID) {
+      const ackRes = await fetch(`${LOOPS}/transactional`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          transactionalId: env.LOOPS_ACK_ID,
+          email,
+          dataVariables: {
+            firstName: firstName || "there",
+            interests: interestLabels || "what we do",
+          },
+        }),
+      });
+      if (!ackRes.ok) {
+        console.error("Loops acknowledgement failed", ackRes.status, await ackRes.text());
       }
     }
 
