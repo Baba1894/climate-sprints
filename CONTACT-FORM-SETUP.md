@@ -2,7 +2,7 @@
 ## Contact form — complete setup guide
 ### Cloudflare DNS · Loops · Cloudflare Pages · Testing
 
-2 September 2026. **This document supersedes both earlier ones** — the Loops setup guide and the Loops IDs worksheet. Work from this one only.
+2 September 2026, revised. **This document supersedes both earlier ones** — the Loops setup guide and the Loops IDs worksheet. Work from this one only.
 
 Roughly 45 minutes. No code. The Pages Function is already written and in the repo at `functions/api/signup.ts`.
 
@@ -39,21 +39,41 @@ If Loops is unreachable, steps 2 to 5 fail quietly and the visitor still reaches
 
 Loops sends on your behalf. Without these records your mail lands in spam, and your entire audience is institutional inboxes, which run the strictest filters that exist.
 
-## 1.1 Add the domain in Loops
+## 1.0 First decision: send from a subdomain, not the root
 
-Loops → Settings → **Sending domain** (or Domains). Add `climatesprints.com`.
+**Use `mail.climatesprints.com` as the sending domain, not `climatesprints.com`.**
 
-Loops returns a set of DNS records. Typically:
+This is Loops' own guidance and it matters more for you than for most.
 
-- a **DKIM** record, CNAME or TXT, on a subdomain such as `loops._domainkey`
-- a **return-path** or bounce CNAME, often on `bounce` or similar
-- sometimes an **SPF** include
+Your Google Workspace already sends your one-to-one mail from `climatesprints.com` — every reply to a fund manager, every note to a bench member. Sending bulk and automated mail from the same domain puts both on one reputation. A bad list, a complaint spike or a single mistake in a campaign then degrades your personal correspondence, and repairing a burned domain takes months.
+
+A subdomain separates them. `mail.climatesprints.com` builds and carries its own reputation. If something goes wrong there, your Workspace mail is untouched.
+
+**The tradeoff, stated honestly.** The From address becomes `practice@mail.climatesprints.com`, which a technical reader will recognise as bulk-send infrastructure. A recipient who only reads the display name sees "Climate Sprints" either way. Set the reply-to to `practice@climatesprints.com` so replies land in your normal inbox, and the tradeoff is worth taking. Isolation is worth more than the appearance of a slightly cleaner From line.
+
+If you prefer `hey.` or `send.`, either is fine. `mail.` reads most neutral for an institutional audience; `hey.` is too casual for this one.
+
+## 1.1 Add the subdomain in Loops
+
+Loops → Settings → **Sending domain** (or Domains). Add:
+
+```
+mail.climatesprints.com
+```
+
+Loops returns a set of DNS records. Typically a **DKIM** record, a **return-path** or bounce CNAME, and sometimes an **SPF** include — all scoped to the subdomain.
 
 ## 1.2 Add them in Cloudflare
 
 Cloudflare dashboard → `climatesprints.com` → **DNS** → Records → Add record.
 
-Enter exactly what Loops gives you. Then, for every one of them:
+> ### Do not paste the full hostname into the Name field.
+>
+> Cloudflare appends the zone automatically. If Loops tells you the record name is `loops._domainkey.mail.climatesprints.com`, you enter **`loops._domainkey.mail`**. Pasting the whole thing produces `loops._domainkey.mail.climatesprints.com.climatesprints.com`, which resolves to nothing and gives no error.
+>
+> Check every record after saving. Cloudflare shows the full resolved name in the list — it should end in `.climatesprints.com` exactly once.
+
+Then, for every record Loops gives you:
 
 > ### Set the proxy status to **DNS only** — the grey cloud, not the orange one.
 >
@@ -61,39 +81,51 @@ Enter exactly what Loops gives you. Then, for every one of them:
 
 Return to Loops and wait for the domain to show **verified**. Usually minutes, occasionally an hour.
 
-## 1.3 Add SPF if you do not already have one
+## 1.3 SPF — on the subdomain only
 
-Check for an existing TXT record on the root (`@`) starting `v=spf1`. If one exists, **edit it** — do not add a second. Two SPF records on one domain is an error condition and worse than none.
+Because you are sending from a subdomain, SPF goes on the subdomain. **Do not touch your existing root SPF record.** Google Workspace owns that one and changing it can break your normal mail.
 
-If Loops asks you to include them, the merged record looks like:
+If Loops asks for an SPF record, add it as:
 
 ```
 Type: TXT
-Name: @
-Content: v=spf1 include:_spf.google.com include:<what Loops gives you> ~all
+Name: mail
+Content: v=spf1 include:<what Loops gives you> ~all
 Proxy: DNS only
 ```
 
-Keep any existing includes, such as your mail provider's, and add the Loops one before `~all`.
+Name is `mail`, not `@`, and not `mail.climatesprints.com`.
 
-## 1.4 Add DMARC
+One SPF record per hostname. If Cloudflare already shows a TXT on `mail` starting `v=spf1`, edit it rather than adding a second — two SPF records on one name is an error condition and worse than none.
 
-You almost certainly do not have one. Add it.
+## 1.4 DMARC — on the root, covering everything
+
+A DMARC record on the root applies to subdomains too, so one record covers both your Workspace mail and the Loops subdomain.
 
 ```
 Type: TXT
 Name: _dmarc
-Content: v=DMARC1; p=none; rua=mailto:dmarc@climatesprints.com; adkim=r; aspf=r
+Content: v=DMARC1; p=none; sp=none; rua=mailto:dmarc@climatesprints.com; adkim=r; aspf=r
 Proxy: DNS only
 ```
 
-`p=none` means observe, do not block. You will start receiving aggregate reports at `dmarc@` — machine-readable XML, not meant for human reading. After three or four weeks of clean reports, tighten to `p=quarantine`.
+`p=none` means observe, do not block. `sp=none` states the subdomain policy explicitly rather than leaving it inherited, which makes the record easier to reason about later. You will start receiving aggregate reports at `dmarc@` — machine-readable XML, not meant for human reading.
 
-Do not start at `quarantine` or `reject`. If something is misconfigured you will silently block your own mail.
+After three or four weeks of clean reports, tighten to `p=quarantine; sp=quarantine`.
+
+Do not start at `quarantine` or `reject`. If something is misconfigured you will silently block your own mail, including mail Google Workspace is sending.
 
 ## 1.5 Verify
 
-Wait ten minutes, then check at `mxtoolbox.com/dmarc.aspx` and `mxtoolbox.com/spf.aspx`. Both should resolve. If DKIM shows as missing, the usual cause is an orange cloud on the record.
+Wait ten minutes, then check:
+
+- `mxtoolbox.com/spf.aspx` — enter `mail.climatesprints.com`
+- `mxtoolbox.com/dmarc.aspx` — enter `climatesprints.com`
+- `mxtoolbox.com/dkim.aspx` — enter `climatesprints.com` and the selector Loops gave you
+
+All three should resolve. If DKIM shows as missing, the cause is almost always an orange cloud on the record or a doubled hostname from 1.2.
+
+**Also confirm your normal mail still works.** Send yourself something from your Workspace account. Nothing in Part 1 should have touched it, but a five-second check is cheaper than finding out on Monday.
 
 ---
 
@@ -207,7 +239,9 @@ It is **transactional, not marketing** — triggered by their own action, carryi
 Loops → **Transactional** → create a second email.
 
 **Subject:** `Received — Climate Sprints`
-**Reply-to:** `practice@climatesprints.com` — set this, or replies go nowhere.
+**Reply-to:** `practice@climatesprints.com` — set this on both templates.
+
+This is the piece that makes the subdomain decision invisible to the recipient. The mail leaves from `mail.climatesprints.com`, but a reply goes to `practice@climatesprints.com` and lands in your Google Workspace inbox. Without it, replies go to an address on the sending subdomain that nobody is watching.
 
 **Body:**
 
@@ -283,7 +317,11 @@ Skipping this step is the most common reason a correct setup appears not to work
 
 **Neither arrives.** Cloudflare → your Pages project → **Functions → Real-time logs**, then submit the form while watching. The handler logs the Loops response body on any failure, which names the problem.
 
-**Acknowledgement goes to spam.** DKIM or SPF incomplete, or an orange cloud on a DNS record. Recheck Part 1.2.
+**Acknowledgement goes to spam.** DKIM or SPF incomplete, an orange cloud on a DNS record, or a doubled hostname. Recheck Part 1.2 and run the three checks in Part 1.5.
+
+**Loops will not verify the domain.** Nine times out of ten it is one of two things: the proxy is orange rather than grey, or the Name field contains the full hostname and Cloudflare has appended the zone a second time. Look at the resolved name in the Cloudflare records list — it should end in `.climatesprints.com` exactly once.
+
+**A reply from a prospect never arrives.** Reply-to is not set on the template. The reply went to the sending subdomain, where no mailbox exists.
 
 **Everything looks right and nothing happens.** You did not redeploy. Part 6.
 
@@ -303,17 +341,21 @@ Skipping this step is the most common reason a correct setup appears not to work
 
 # CHECKLIST
 
-- [ ] Loops sending domain added, DNS records entered in Cloudflare
+- [ ] Sending domain set to **`mail.climatesprints.com`**, not the root
+- [ ] DNS records entered in Cloudflare with Name fields **not** containing the full hostname
 - [ ] Every Loops DNS record set to **DNS only / grey cloud**
-- [ ] SPF present and merged, not duplicated
-- [ ] DMARC added at `_dmarc`, `p=none`
+- [ ] SPF added on `mail` only — root SPF untouched
+- [ ] DMARC added at `_dmarc` with `p=none; sp=none`
+- [ ] All three checks in Part 1.5 pass
+- [ ] Normal Workspace mail still sending
 - [ ] Domain shows verified in Loops
 - [ ] API key created and stored
 - [ ] Eight lists created, IDs recorded
 - [ ] JSON assembled and validated
 - [ ] Sixteen properties created with correct types
 - [ ] Notification template published, ID recorded
-- [ ] Acknowledgement template published, reply-to set, ID recorded
+- [ ] Reply-to set to `practice@climatesprints.com` on **both** templates
+- [ ] Acknowledgement template published, ID recorded
 - [ ] Five variables added in Cloudflare, API key as **Secret**
 - [ ] Redeployed
 - [ ] Test submission passes all six checks in Part 7
