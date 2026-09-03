@@ -438,3 +438,18 @@ body.nav-open .sticky-head{z-index:130;}
 .mark-sun{display:block;flex:0 0 auto;}
 .foot-mark{display:flex;align-items:center;gap:10px;}
 @media (max-width:520px){.mark-sun{width:22px;height:22px;}}
+
+/* ---------- nav current page ---------- */
+.nav a[aria-current="page"]{color:var(--ir);}
+.nav a[aria-current="page"]::after{content:"";display:block;height:1.5px;background:var(--ir);
+  margin-top:5px;border-radius:1px;}
+@media (max-width:900px){
+  .nav a[aria-current="page"]::after{display:inline-block;width:14px;height:1.5px;
+    margin:0 0 3px 8px;vertical-align:middle;}
+}
+
+/* ---------- checkbox group labels ---------- */
+.check-group{grid-column:1 / -1;font-family:"JetBrains Mono",monospace;font-size:11px;
+  font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ir);
+  margin:1.6em 0 .25em;padding-top:.9em;border-top:1px solid var(--rule);}
+.check-group:first-of-type{margin-top:.4em;padding-top:0;border-top:0;}

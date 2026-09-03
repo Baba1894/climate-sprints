@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#14143A">
-<link rel="stylesheet" href="assets/site.css?v=15">
+<link rel="stylesheet" href="assets/site.css?v=16">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
       <nav class="nav" id="site-nav" aria-label="Primary">
       <a href="diligence.html">Diligence</a>
       <a href="portfolio.html">Portfolio</a>
-      <a href="method.html">Method</a>
+      <a href="method.html" aria-current="page">Method</a>
       <a href="mastermind.html">Mastermind</a>
       <a href="approach.html">Approach</a>
       <a href="practice.html">Practice</a>
@@ -56,6 +56,15 @@
     </div>
   </div>
 </header>
+<div class="subnav">
+  <div class="wrap subnav-in">
+    <nav aria-label="The method">
+      <a href="method.html"><span class="lbl-full">The method</span><span class="lbl-short">Method</span></a>
+      <a href="origin.html" aria-current="page"><span class="lbl-full">Where it came from</span><span class="lbl-short">Origin</span></a>
+    </nav>
+    <span class="subnav-spacer" aria-hidden="true">Book a call</span>
+  </div>
+</div>
 </div>
 <div class="nav-scrim" hidden></div>
 
@@ -85,6 +94,12 @@
       </div>
     </div>
   </section>
+  <img class="plate" src="assets/plates/diligence2.jpg" alt="False-color aerial image of a mountain range in deep red.">
+  <div class="plate-credit">
+    <div class="wrap">
+      <span>False-color infrared &middot; U.S. Geological Survey &middot; public domain</span>
+    </div>
+  </div>
   <section class="tone-a">
     <div class="wrap band sheet">
       <div class="marker">
@@ -125,12 +140,6 @@
       </div>
     </div>
   </section>
-  <img class="plate" src="assets/plates/conversations.jpg" alt="False-color aerial image of a river cutting through sediment.">
-  <div class="plate-credit">
-    <div class="wrap">
-      <span>False-color infrared &middot; U.S. Geological Survey &middot; public domain</span>
-    </div>
-  </div>
   <section class="tone-a">
     <div class="wrap band sheet">
       <div class="marker">
@@ -148,6 +157,12 @@
       </div>
     </div>
   </section>
+  <img class="plate" src="assets/plates/conversations.jpg" alt="False-color aerial image of a river cutting through sediment.">
+  <div class="plate-credit">
+    <div class="wrap">
+      <span>False-color infrared &middot; U.S. Geological Survey &middot; public domain</span>
+    </div>
+  </div>
   <section class="tone-a">
     <div class="wrap band sheet">
       <div class="marker">
@@ -180,12 +195,16 @@
           <fieldset>
             <legend>I am interested in &mdash; check as many as apply</legend>
             <div class="checks">
+              <p class="check-group">Before you commit</p>
               <label class="check"><input type="checkbox" name="interest" value="diligence"><span>Technical and commercial diligence on a deal</span></label>
+              <p class="check-group">After you commit</p>
               <label class="check"><input type="checkbox" name="interest" value="portfolio"><span>Portfolio support for a company we have funded</span></label>
-              <label class="check"><input type="checkbox" name="interest" value="mastermind"><span>Climate Catalyst Mastermind, 1Q2027</span></label>
               <label class="check"><input type="checkbox" name="interest" value="momentum"><span>Momentum Sprints</span></label>
               <label class="check"><input type="checkbox" name="interest" value="alignment"><span>Alignment Sprints</span></label>
               <label class="check"><input type="checkbox" name="interest" value="fractional"><span>Fractional or interim executive</span></label>
+              <p class="check-group">The cohort</p>
+              <label class="check"><input type="checkbox" name="interest" value="mastermind"><span>Climate Catalyst Mastermind, 1Q2027</span></label>
+              <p class="check-group">Published</p>
               <label class="check"><input type="checkbox" name="interest" value="method"><span>The published method and founder guide</span></label>
               <label class="check"><input type="checkbox" name="interest" value="conversations"><span>Conversations, guest inquiry</span></label>
             </div>
@@ -241,7 +260,7 @@
   </div>
 </footer>
 
-<script src="assets/nav.js?v=15" defer></script>
-<script src="assets/consent.js?v=15" defer></script>
+<script src="assets/nav.js?v=16" defer></script>
+<script src="assets/consent.js?v=16" defer></script>
 </body>
 </html>
