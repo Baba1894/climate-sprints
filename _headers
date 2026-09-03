@@ -6,6 +6,10 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 # Images never change content at a given filename — safe to cache hard.
+/docs/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: index, follow
+
 /assets/plates/*
   Cache-Control: public, max-age=31536000, immutable
 

@@ -25,3 +25,7 @@ The companies they fund are the beneficiaries, not the buyers.
 Climate Sprints is not a registered investment adviser or broker-dealer, and nothing
 on the site is investment advice or an offer of securities. See /disclaimer.
 Sister studio: Quantum Ravioli (quantumravioli.com), builder of AGGEIO.
+
+## Published method
+- /method — the assessment methodology (35pp PDF) and founder guide (24pp PDF), ungated
+- /origin — the 1999 battery storage position that the method was built from
