@@ -1,7 +1,49 @@
+# Search engines: full access, including /docs/, so that the noindex header on
+# those files is seen and the already-indexed PDFs are dropped. Add a Disallow
+# for /docs/ only after Search Console confirms removal.
 User-agent: *
 Allow: /
 
 Sitemap: https://climatesprints.com/sitemap.xml
 
-Disallow: /og.html
-Disallow: /thanks
+# Model training and answer-engine crawlers: the published method and the origin
+# account stay open — being cited by an answer engine is the point. The gated
+# documents are not. A noindex header does not stop these agents; only this does.
+User-agent: GPTBot
+Disallow: /docs/
+
+User-agent: OAI-SearchBot
+Disallow: /docs/
+
+User-agent: ChatGPT-User
+Disallow: /docs/
+
+User-agent: ClaudeBot
+Disallow: /docs/
+
+User-agent: Claude-Web
+Disallow: /docs/
+
+User-agent: anthropic-ai
+Disallow: /docs/
+
+User-agent: PerplexityBot
+Disallow: /docs/
+
+User-agent: Google-Extended
+Disallow: /docs/
+
+User-agent: Applebot-Extended
+Disallow: /docs/
+
+User-agent: Meta-ExternalAgent
+Disallow: /docs/
+
+User-agent: Amazonbot
+Disallow: /docs/
+
+User-agent: CCBot
+Disallow: /docs/
+
+User-agent: Bytespider
+Disallow: /docs/

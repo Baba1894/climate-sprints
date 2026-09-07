@@ -5,11 +5,22 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-# Images never change content at a given filename — safe to cache hard.
+# Gated documents. Crawlers may still fetch these — that is deliberate, because a
+# crawler that cannot fetch the file never sees the noindex and never drops the
+# URL it already has. Do not add a robots.txt Disallow for /docs/ until Search
+# Console confirms both PDFs are out of the index.
 /docs/*
   Cache-Control: public, max-age=31536000, immutable
-  X-Robots-Tag: index, follow
+  X-Robots-Tag: noindex, nofollow
 
+# Utility pages. Not for the index, but crawlable so the directive is seen.
+/og.html
+  X-Robots-Tag: noindex, nofollow
+
+/thanks
+  X-Robots-Tag: noindex, nofollow
+
+# Images never change content at a given filename — safe to cache hard.
 /assets/plates/*
   Cache-Control: public, max-age=31536000, immutable
 
