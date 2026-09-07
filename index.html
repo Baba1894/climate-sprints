@@ -30,6 +30,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#14143A">
 <link rel="stylesheet" href="assets/site.css?v=16">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -251,6 +252,8 @@
       <div>
         <h2 class="h2" style="max-width:19ch;margin-bottom:1.4em;">Tell us what you want to hear about.</h2>
         <form action="/api/signup" method="post" novalidate>
+          <input type="hidden" name="rendered" id="cs-rendered" value="">
+
           <div class="hp" aria-hidden="true">
             <label for="website">Website</label>
             <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -273,12 +276,16 @@
           <fieldset>
             <legend>I am interested in — check as many as apply</legend>
             <div class="checks">
+              <p class="check-group">Before you commit</p>
               <label class="check"><input type="checkbox" name="interest" value="diligence"><span>Technical and commercial diligence on a deal</span></label>
+              <p class="check-group">After you commit</p>
               <label class="check"><input type="checkbox" name="interest" value="portfolio"><span>Portfolio support for a company we have funded</span></label>
-              <label class="check"><input type="checkbox" name="interest" value="mastermind"><span>Climate Catalyst Mastermind, 1Q2027</span></label>
               <label class="check"><input type="checkbox" name="interest" value="momentum"><span>Momentum Sprints</span></label>
               <label class="check"><input type="checkbox" name="interest" value="alignment"><span>Alignment Sprints</span></label>
               <label class="check"><input type="checkbox" name="interest" value="fractional"><span>Fractional or interim executive</span></label>
+              <p class="check-group">The cohort</p>
+              <label class="check"><input type="checkbox" name="interest" value="mastermind"><span>Climate Catalyst Mastermind, 1Q2027</span></label>
+              <p class="check-group">Published</p>
               <label class="check"><input type="checkbox" name="interest" value="method"><span>The published method and founder guide</span></label>
               <label class="check"><input type="checkbox" name="interest" value="conversations"><span>Conversations, guest inquiry</span></label>
             </div>
@@ -287,11 +294,17 @@
             <label for="ctx">What are you looking at? <span style="opacity:.55">(optional)</span></label>
             <textarea id="ctx" name="context" rows="3"></textarea>
           </div>
+          <div class="cs-verify" style="margin:clamp(26px,3.4vw,38px) 0 0;">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAErtpDtp1RqGHf9v" data-theme="light" data-appearance="interaction-only" data-action="contact-signup"></div>
+          </div>
           <div class="form-actions">
             <button class="btn" type="submit">Sign up</button>
-            <p class="form-note" style="margin:0">Or book thirty minutes directly — <a class="link" href="https://calendly.com/marcstrauch" rel="noopener noreferrer" target="_blank">calendly.com/marcstrauch</a></p>
+            <p class="form-note" style="margin:0">Or book thirty minutes directly</p>
+            <a class="btn btn-ghost btn-sm" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book a call</a>
           </div>
         </form>
+        <script>var e=document.getElementById("cs-rendered");if(e){e.value=Date.now();}</script>
+
       </div>
     </div>
   </section>
@@ -303,8 +316,10 @@
     <div class="foot-top">
       <div class="foot-brand">
         <p class="foot-mark">
-          <img class="mark-sun" src="assets/brand/mark-compact-lift.svg" alt="" width="24" height="24">
-          <span>Climate Sprints</span>
+          <a href="index.html" aria-label="Climate Sprints — home" style="display:inline-flex;align-items:center;gap:inherit;text-decoration:none;color:inherit;">
+            <img class="mark-sun" src="assets/brand/mark-compact-lift.svg" alt="" width="24" height="24">
+            <span>Climate Sprints</span>
+          </a>
         </p>
         <p class="tagline">Powered by Purpose. Driven by Action.</p>
       </div>
