@@ -1,0 +1,5 @@
+# ADD THIS to robots.txt, in the wildcard block, under Allow: /
+# Unlike /docs/, nothing here is already in the index, so disallowing costs
+# nothing and there is no recrawl to wait for.
+
+Disallow: /docs/private/

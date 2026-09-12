@@ -1,0 +1,7 @@
+# ADD THIS BLOCK to _headers, directly after the existing /docs/* rule.
+# The private folder holds the gated PDFs. Nothing links to it, nothing indexes
+# it, and every crawler is told to stay out. Access is through /api/doc only.
+
+/docs/private/*
+  Cache-Control: private, no-store
+  X-Robots-Tag: noindex, nofollow, noarchive
