@@ -181,6 +181,32 @@ function matches(text: string, patterns: RegExp[]) {
   return patterns.some((p) => p.test(text));
 }
 
+/** People type their own name in lower case more often than not, and it then
+ *  appears that way in every email we send them. Capitalise only when the whole
+ *  token is lower case, so deCastro, van der Berg, O'Brien and MacLeod survive
+ *  untouched — a name someone has deliberately cased is left exactly as given. */
+const PARTICLES = new Set([
+  "van", "von", "der", "den", "de", "del", "della", "di", "da", "dos", "du",
+  "la", "le", "bin", "ibn", "al", "ter", "op", "ten",
+]);
+
+function properCase(name: string) {
+  let seenWord = false;
+  return name
+    .split(/(\s+|-)/)
+    .map((part) => {
+      if (!/[a-z]/i.test(part)) return part;         // separators
+      const isWord = /[a-z]/i.test(part);
+      const lower = part.toLowerCase();
+      const first = !seenWord;
+      if (isWord) seenWord = true;
+      if (part !== lower) return part;               // any capital means they meant it
+      if (!first && PARTICLES.has(lower)) return lower;  // van der Berg, de la Cruz
+      return part.replace(/(^|['\u2019])([a-z])/g, (_m, pre, ch) => pre + ch.toUpperCase());
+    })
+    .join("");
+}
+
 /** Returns true if this key has already hit its limit. No-ops without the binding. */
 async function overLimit(env: Env, key: string, limit: number, ttl: number) {
   if (!env.RATE_LIMIT) return false;
@@ -236,8 +262,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const email = str("email").toLowerCase();
     if (!email || !email.includes("@")) return bounce(origin, "email", "bad email");
 
-    const firstName = str("firstName");
-    const lastName = str("lastName");
+    const firstName = properCase(str("firstName"));
+    const lastName = properCase(str("lastName"));
     const company = str("company");
     const lookingAt = str("context").slice(0, 2000);
 
