@@ -12,6 +12,9 @@
  *   LOOPS_LISTS             Text    JSON map of interest key → Loops list ID
  *   LOOPS_TRANSACTIONAL_ID  Text    template that notifies you of a new enquiry
  *   LOOPS_ACK_ID            Text    template that acknowledges receipt to the enquirer
+ *   LOOPS_DOC_ALLOCATOR_ID  Text    NEW  template delivering the allocator edition link
+ *   LOOPS_DOC_FOUNDER_ID    Text    NEW  template delivering the founder edition link
+ *   DOC_SIGNING_KEY         Secret  NEW  any long random string; signs the document links
  *   NOTIFY_EMAIL            Text    where your notification goes
  *   TURNSTILE_SECRET_KEY    Secret  NEW — from Turnstile → your widget → Secret Key
  *
@@ -37,6 +40,9 @@ interface Env {
   LOOPS_LISTS?: string;
   LOOPS_TRANSACTIONAL_ID?: string;
   LOOPS_ACK_ID?: string;
+  LOOPS_DOC_ALLOCATOR_ID?: string;
+  LOOPS_DOC_FOUNDER_ID?: string;
+  DOC_SIGNING_KEY?: string;
   NOTIFY_EMAIL?: string;
   TURNSTILE_SECRET_KEY: string;
   RATE_LIMIT?: KVNamespace;
@@ -49,6 +55,28 @@ const SITEVERIFY = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const MIN_DWELL = 4;
 /** Seconds. A page left open longer than this has a stale Turnstile token anyway. */
 const MAX_DWELL = 3600;
+
+/** Days a document link stays good. Long enough to survive a weekend and an
+ *  inbox backlog; short enough that a forwarded link is usually dead. */
+const DOC_TTL_DAYS = 7;
+
+/** HMAC-SHA256 over edition|email|expiry, hex encoded. The email is bound into
+ *  the signature so a forwarded link is traceable to who requested it. */
+async function signedDocLink(origin: string, edition: string, email: string, key: string) {
+  const exp = Math.floor(Date.now() / 1000) + DOC_TTL_DAYS * 86400;
+  const payload = `${edition}|${email}|${exp}`;
+  const k = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(key),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", k, new TextEncoder().encode(payload));
+  const hex = [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  const q = new URLSearchParams({ d: edition, e: String(exp), m: email, s: hex });
+  return `${origin}/api/doc?${q.toString()}`;
+}
 
 /** Form checkbox value to readable label, for the notification and the summary property. */
 const ROLES: Record<string, string> = {
@@ -65,7 +93,9 @@ const INTERESTS: Record<string, string> = {
   momentum: "Momentum Sprints",
   alignment: "Alignment Sprints",
   fractional: "Fractional or interim executive",
-  method: "The published method and founder guide",
+  "method-allocator": "The assessment method — allocator edition",
+  "method-founder": "The assessment method — founder edition",
+  method: "The published method (legacy request)",
   conversations: "Conversations, guest inquiry",
 };
 
@@ -88,6 +118,8 @@ const INTEREST_FLAG: Record<string, string> = {
   momentum: "wantMomentum",
   alignment: "wantAlignment",
   fractional: "wantFractional",
+  "method-allocator": "wantMethodAllocator",
+  "method-founder": "wantMethodFounder",
   method: "wantMethod",
   conversations: "wantConversations",
 };
@@ -332,6 +364,44 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       if (!ackRes.ok) {
         console.error("Loops acknowledgement failed", ackRes.status, await ackRes.text());
       }
+    }
+
+    // ---- document delivery. One signed, expiring link per edition requested.
+    //      The link is generated here and mailed by Loops; the PDF itself is not
+    //      attached, so a forwarded email still runs through /api/doc and expires.
+    const DOCS: Record<string, { template?: string; edition: string }> = {
+      "method-allocator": { template: env.LOOPS_DOC_ALLOCATOR_ID, edition: "allocator" },
+      "method-founder": { template: env.LOOPS_DOC_FOUNDER_ID, edition: "founder" },
+    };
+
+    if (env.DOC_SIGNING_KEY) {
+      for (const key of Object.keys(DOCS)) {
+        if (!interests.includes(key)) continue;
+        const { template, edition } = DOCS[key];
+        if (!template) {
+          console.error(`no Loops template configured for ${key}`);
+          continue;
+        }
+        const link = await signedDocLink(origin, edition, email, env.DOC_SIGNING_KEY);
+        const docRes = await fetch(`${LOOPS}/transactional`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify({
+            transactionalId: template,
+            email,
+            dataVariables: {
+              firstName: firstName || "there",
+              documentLink: link,
+              expiresInDays: String(DOC_TTL_DAYS),
+            },
+          }),
+        });
+        if (!docRes.ok) {
+          console.error(`Loops ${key} delivery failed`, docRes.status, await docRes.text());
+        }
+      }
+    } else if (interests.some((i) => i.startsWith("method-"))) {
+      console.error("document requested but DOC_SIGNING_KEY is not set — nothing sent");
     }
 
     return Response.redirect(`${origin}/thanks`, 303);
