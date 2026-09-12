@@ -95,6 +95,7 @@ const INTERESTS: Record<string, string> = {
   fractional: "Fractional or interim executive",
   "method-allocator": "The assessment method — allocator edition",
   "method-founder": "The assessment method — founder edition",
+  "method-updates": "Notify me when the method is revised",
   method: "The published method (legacy request)",
   conversations: "Conversations, guest inquiry",
 };
@@ -120,6 +121,7 @@ const INTEREST_FLAG: Record<string, string> = {
   fractional: "wantFractional",
   "method-allocator": "wantMethodAllocator",
   "method-founder": "wantMethodFounder",
+  "method-updates": "wantMethodUpdates",
   method: "wantMethod",
   conversations: "wantConversations",
 };
@@ -271,9 +273,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     } catch {
       console.error("LOOPS_LISTS is not valid JSON — no lists will be set");
     }
+    // Requesting a document is not consent to be mailed. The two method-* request
+    // values are deliberately excluded from list subscription; only method-updates,
+    // which the person ticks themselves, subscribes them to anything.
+    const NOT_A_SUBSCRIPTION = new Set(["method-allocator", "method-founder"]);
     const mailingLists: Record<string, boolean> = {};
     if (lists.general) mailingLists[lists.general] = true;
     for (const key of interests) {
+      if (NOT_A_SUBSCRIPTION.has(key)) continue;
       const id = lists[key];
       if (id) mailingLists[id] = true;
     }
