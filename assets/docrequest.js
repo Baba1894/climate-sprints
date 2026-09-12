@@ -15,7 +15,8 @@
 (function () {
   var MAP = {
     allocator: 'method-allocator',
-    founder: 'method-founder'
+    founder: 'method-founder',
+    sample: 'sample-assessment'
   };
 
   function box(value) {
@@ -44,10 +45,10 @@
   function syncConsent() {
     var row = document.querySelector('[data-doc-consent]');
     if (!row) return;
-    var wanted = !!(
-      (box('method-allocator') && box('method-allocator').checked) ||
-      (box('method-founder') && box('method-founder').checked)
-    );
+    var wanted = ['method-allocator', 'method-founder', 'sample-assessment'].some(function (v) {
+      var b = box(v);
+      return b && b.checked;
+    });
     if (wanted === !row.hasAttribute('hidden')) return;
     if (wanted) {
       row.removeAttribute('hidden');
