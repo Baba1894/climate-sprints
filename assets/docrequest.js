@@ -38,16 +38,44 @@
     return el;
   }
 
+  /* The updates consent appears only once a document has been asked for, so it is
+     never a box in a long list that nobody read. It is NOT pre-ticked: consent has
+     to be an affirmative act, and a box you have to untick is not one. */
+  function syncConsent() {
+    var row = document.querySelector('[data-doc-consent]');
+    if (!row) return;
+    var wanted = !!(
+      (box('method-allocator') && box('method-allocator').checked) ||
+      (box('method-founder') && box('method-founder').checked)
+    );
+    if (wanted === !row.hasAttribute('hidden')) return;
+    if (wanted) {
+      row.removeAttribute('hidden');
+    } else {
+      var c = row.querySelector('input[type="checkbox"]');
+      if (c) c.checked = false;          // asked, changed their mind, consent goes too
+      row.setAttribute('hidden', '');
+    }
+  }
+
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.name === 'interest') syncConsent();
+  });
+
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('[data-doc-request]');
     if (!t) return;
     tick(t.getAttribute('data-doc-request'), true);
+    syncConsent();
     // the href="#request" anchor handles the scroll; nothing to prevent
   });
+
+  syncConsent();   // a page restored from history may already have boxes ticked
 
   var want = new URLSearchParams(location.search).get('doc');
   if (want && MAP[want]) {
     var el = tick(MAP[want], true);
+    syncConsent();
     if (el) {
       var anchor = document.getElementById('request') || el;
       setTimeout(function () {
