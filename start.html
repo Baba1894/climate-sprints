@@ -110,7 +110,14 @@
   .rt-result p{font-size:15.5px;line-height:1.55;margin:0 0 12px}
   .rt-seat{margin-top:18px;padding-top:16px;border-top:1px solid #D3D5CF}
   .rt-seat h3{color:#14143A}
-  .rt-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .rt-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:stretch}
+  .rt-links .btn{background:#14143A;color:#fff;border:1px solid #14143A;
+    display:inline-flex;align-items:center;text-decoration:none}
+  .rt-links .btn:hover{background:#BE2437;border-color:#BE2437;color:#fff}
+  .rt-links .btn-ghost{background:transparent;color:#14143A !important;
+    border:1px solid #AFB2AA}
+  .rt-links .btn-ghost:hover{color:#BE2437 !important;border-color:#BE2437;
+    background:rgba(190,36,55,.06)}
   .rt-small{font-size:13.5px;color:#63686C !important;margin-top:14px}
   [hidden]{display:none !important}
 </style>
@@ -255,7 +262,7 @@
     fractional: { kicker: 'When a seat needs filling',
       title: 'This is a seat, not a sprint.',
       body: '<p>Advice will not fix what you have described. Somebody has to be in the chair, accountable, doing the work &mdash; and the pattern points at a specific seat rather than at senior help in general.</p>',
-      links: [['fractional.html','Fractional and interim executives'],['contact.html','Book thirty minutes']] },
+      links: [['fractional.html','Fractional and interim executives'],['method.html','How we assess execution']] },
   };
 
   var answers = {}, seatAnswers = {}, phase = 1;
