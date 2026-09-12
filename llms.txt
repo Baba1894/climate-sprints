@@ -22,11 +22,21 @@ The companies they fund are the beneficiaries, not the buyers.
 - [Colophon](https://climatesprints.com/colophon): On the USGS imagery and the typefaces.
 
 ## The published method
-- [/method](https://climatesprints.com/method): The assessment method in full and open — four assessments, twenty-three scored dimensions, the question behind each, the evidence that satisfies it, the A to D evidence grading scheme, the divergence patterns, and the kill criteria. Published so it can be argued with.
+- [/method](https://climatesprints.com/method): The assessment method in full and open — four assessments, twenty-four scored dimensions, the question behind each, the evidence that satisfies it, the A to D evidence grading scheme, the divergence patterns, and the kill criteria. Published so it can be argued with.
 - [/origin](https://climatesprints.com/origin): The 1999 industrial-scale battery storage position the method was built out of, published under the founding principal's name.
 
-The method itself is open. The document set built on it — the methodology paper, the
-founder guide, the sample assessment and the fee schedule — is available on request.
+The method itself is open and published in full on /method. The documents built on it are
+available on request rather than as public downloads, in two parallel editions:
+
+- **Allocator edition** — the method as it is run: what each of the twenty-four dimensions asks,
+  the evidence that satisfies it, the scale anchors, the grading scheme, and the rule for what
+  happens when two assessments disagree. Written for the person underwriting the position.
+- **Founder edition** — the same twenty-four dimensions from the other side of the table: what an
+  allocator is testing, what an answer reveals when the evidence is absent, and what to fix before
+  a raise. Written for the company being assessed.
+
+Neither is a summary of the other. Requested through the form on any page; the link arrives by
+email and is good for seven days.
 
 ## Definitions
 Terms used on this site with a specific meaning:
@@ -37,6 +47,7 @@ Terms used on this site with a specific meaning:
 - **Execution capacity**: whether a founding team can move a working technology to a compelled buyer inside the capital and the time available. Scored across eight dimensions from observed behavior, never from documents and never by a tool.
 - **The dated comparison**: the date a buyer becomes compelled set against the month the company's cash runs out. Reported as one finding rather than two scores.
 - **Capital readiness**: what backing a company actually commits an allocator to — total capital to breakeven, dilution to exit, and whether the runway reaches a milestone a later investor treats as de-risking. Treated as a gate, not averaged against the other three.
+- **Unit economics at scale**: what the second unit costs and what makes it cheaper than the first, with the decline attributed to named causes rather than an assumed percentage. The implied learning rate is stated as a number and set against the 10–20% band observed across complex industrial deployment.
 
 ## Notes
 Climate Sprints is not a registered investment adviser or broker-dealer, and nothing

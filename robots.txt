@@ -3,6 +3,7 @@
 # for /docs/ only after Search Console confirms removal.
 User-agent: *
 Allow: /
+Disallow: /docs/private/
 
 Sitemap: https://climatesprints.com/sitemap.xml
 
