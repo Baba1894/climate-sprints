@@ -14,6 +14,7 @@
  *   LOOPS_ACK_ID            Text    template that acknowledges receipt to the enquirer
  *   LOOPS_DOC_ALLOCATOR_ID  Text    NEW  template delivering the allocator edition link
  *   LOOPS_DOC_FOUNDER_ID    Text    NEW  template delivering the founder edition link
+ *   LOOPS_DOC_SAMPLE_ID     Text    NEW  template delivering the sample deliverable link
  *   DOC_SIGNING_KEY         Secret  NEW  any long random string; signs the document links
  *   NOTIFY_EMAIL            Text    where your notification goes
  *   TURNSTILE_SECRET_KEY    Secret  NEW — from Turnstile → your widget → Secret Key
@@ -42,6 +43,7 @@ interface Env {
   LOOPS_ACK_ID?: string;
   LOOPS_DOC_ALLOCATOR_ID?: string;
   LOOPS_DOC_FOUNDER_ID?: string;
+  LOOPS_DOC_SAMPLE_ID?: string;
   DOC_SIGNING_KEY?: string;
   NOTIFY_EMAIL?: string;
   TURNSTILE_SECRET_KEY: string;
@@ -96,6 +98,7 @@ const INTERESTS: Record<string, string> = {
   "method-allocator": "The assessment method — allocator edition",
   "method-founder": "The assessment method — founder edition",
   "method-updates": "Notify me when the method is revised",
+  "sample-assessment": "The sample deliverable — a worked assessment",
   method: "The published method (legacy request)",
   conversations: "Conversations, guest inquiry",
 };
@@ -122,6 +125,7 @@ const INTEREST_FLAG: Record<string, string> = {
   "method-allocator": "wantMethodAllocator",
   "method-founder": "wantMethodFounder",
   "method-updates": "wantMethodUpdates",
+  "sample-assessment": "wantSample",
   method: "wantMethod",
   conversations: "wantConversations",
 };
@@ -276,7 +280,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // Requesting a document is not consent to be mailed. The two method-* request
     // values are deliberately excluded from list subscription; only method-updates,
     // which the person ticks themselves, subscribes them to anything.
-    const NOT_A_SUBSCRIPTION = new Set(["method-allocator", "method-founder"]);
+    const NOT_A_SUBSCRIPTION = new Set(["method-allocator", "method-founder", "sample-assessment"]);
     const mailingLists: Record<string, boolean> = {};
     if (lists.general) mailingLists[lists.general] = true;
     for (const key of interests) {
@@ -379,6 +383,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const DOCS: Record<string, { template?: string; edition: string }> = {
       "method-allocator": { template: env.LOOPS_DOC_ALLOCATOR_ID, edition: "allocator" },
       "method-founder": { template: env.LOOPS_DOC_FOUNDER_ID, edition: "founder" },
+      "sample-assessment": { template: env.LOOPS_DOC_SAMPLE_ID, edition: "sample" },
     };
 
     if (env.DOC_SIGNING_KEY) {
@@ -407,7 +412,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           console.error(`Loops ${key} delivery failed`, docRes.status, await docRes.text());
         }
       }
-    } else if (interests.some((i) => i.startsWith("method-"))) {
+    } else if (interests.some((i) => i in DOCS)) {
       console.error("document requested but DOC_SIGNING_KEY is not set — nothing sent");
     }
 

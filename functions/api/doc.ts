@@ -41,6 +41,10 @@ const EDITIONS: Record<string, { path: string; filename: string }> = {
     path: "/docs/private/cs-method-founder-v1-3.pdf",
     filename: "Climate_Sprints_Assessment-Guide-for-Founders_v1.3_(2026.09.11).pdf",
   },
+  sample: {
+    path: "/docs/private/cs-sample-assessment-v1-2.pdf",
+    filename: "Climate_Sprints_Sample-Assessment_v1.2_(2026.09.11).pdf",
+  },
 };
 
 function deny(reason: string, origin: string) {
