@@ -45,6 +45,12 @@
 /assets/consent.js
   Cache-Control: public, max-age=0, must-revalidate
 
+/assets/docrequest.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/checklist-app.js
+  Cache-Control: public, max-age=0, must-revalidate
+
 /favicon.ico
   Cache-Control: public, max-age=86400
 
