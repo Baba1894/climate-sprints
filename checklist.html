@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work through a checklist — Climate Sprints</title>
+<meta name="description" content="Three self-assessment checklists for climate founders and the funds that back them. Tick, count, and get a read on which instrument the pattern indicates. Nothing stored, nothing sent.">
+<link rel="canonical" href="https://climatesprints.com/checklist">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Climate Sprints">
+<meta property="og:title" content="Work through a checklist — Climate Sprints">
+<meta property="og:description" content="Three self-assessment checklists for climate founders and the funds that back them. Tick, count, and get a read on which instrument the pattern indicates. Nothing stored, nothing sent.">
+<meta property="og:url" content="https://climatesprints.com/checklist">
+<meta property="og:image" content="https://climatesprints.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Climate Sprints — we find out if anyone has to buy it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work through a checklist — Climate Sprints">
+<meta name="twitter:description" content="Three self-assessment checklists for climate founders and the funds that back them. Tick, count, and get a read on which instrument the pattern indicates. Nothing stored, nothing sent.">
+<meta name="twitter:image" content="https://climatesprints.com/assets/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-16.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#14143A">
+<link rel="stylesheet" href="assets/site.css?v=16">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+  .cl-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}
+  .cl-tab{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;
+    text-transform:uppercase;padding:8px 13px;border:1px solid rgba(255,255,255,.24);
+    color:#C9CBD6;text-decoration:none;transition:border-color .14s,color .14s}
+  .cl-tab:hover{border-color:#BE2437;color:#fff}
+  .cl-tab.on{border-color:#BE2437;background:rgba(190,36,55,.22);color:#fff}
+  .cl-rule{font-size:15px;line-height:1.55;color:#C9CBD6;max-width:64ch;margin:0 0 24px}
+  .cl-rule b{color:#fff}
+  .cl-group{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:26px 0 8px;
+    padding-top:14px;border-top:1px solid rgba(255,255,255,.2)}
+  .cl-group span{color:#9BA0B4;text-transform:none;letter-spacing:.02em}
+  .cl-row{display:flex;align-items:flex-start;gap:13px;padding:11px 2px;cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,.1)}
+  .cl-row:hover .cl-box{border-color:#BE2437}
+  .cl-row input{position:absolute;opacity:0;width:0;height:0}
+  .cl-box{flex:0 0 auto;width:16px;height:16px;margin-top:2px;
+    border:1px solid rgba(255,255,255,.45);transition:background-color .12s,border-color .12s}
+  .cl-row input:checked + .cl-box{background:#BE2437;border-color:#BE2437;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3.5 8.4l3 3 6-6.4' fill='none' stroke='white' stroke-width='2'/></svg>");
+    background-size:14px;background-repeat:no-repeat;background-position:center}
+  .cl-row input:focus-visible + .cl-box{outline:2px solid #BE2437;outline-offset:2px}
+  .cl-text{flex:1 1 auto;font-size:15.5px;line-height:1.46;color:#EDEDEA}
+  .cl-ref{flex:0 0 auto;font-family:"JetBrains Mono",monospace;font-size:10.5px;
+    letter-spacing:.06em;color:#BE2437;padding-top:4px;min-width:34px;text-align:right}
+  .cl-bar{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:30px}
+  .cl-count{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:#C9CBD6}
+  .cl-result{margin-top:36px;padding:26px 28px;background:#FBFAF6;
+    border:1px solid #C8CAC3;border-left:3px solid #BE2437}
+  .cl-result,.cl-result p,.cl-result li,.cl-result b{color:#12161A}
+  .cl-kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:#BE2437;display:block;margin-bottom:10px}
+  .cl-result h3{font-family:Newsreader,Georgia,serif;font-weight:300;
+    font-size:clamp(1.45rem,2.7vw,2rem);line-height:1.12;letter-spacing:-.022em;
+    color:#14143A;margin:0 0 12px}
+  .cl-result p{font-size:15.5px;line-height:1.55;margin:0 0 12px}
+  .cl-gaps{margin:18px 0;padding:14px 16px;background:rgba(190,36,55,.05);
+    border-left:2px solid #BE2437}
+  .cl-gaps-h{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:#BE2437;margin:0 0 8px !important}
+  .cl-gaps ul{margin:0;padding-left:17px;font-size:14.5px;line-height:1.5}
+  .cl-gaps li{margin-bottom:6px}
+  .cl-ref-in{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:#BE2437;
+    letter-spacing:.06em}
+  .cl-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:stretch}
+  .cl-links .btn{background:#14143A;color:#fff;border:1px solid #14143A;
+    display:inline-flex;align-items:center;text-decoration:none;cursor:pointer;font:inherit;
+    font-size:13.5px;font-weight:600;padding:10px 20px}
+  .cl-links .btn:hover{background:#BE2437;border-color:#BE2437}
+  .cl-links .btn-ghost{background:transparent;color:#14143A !important;border:1px solid #AFB2AA}
+  .cl-links .btn-ghost:hover{color:#BE2437 !important;border-color:#BE2437;
+    background:rgba(190,36,55,.06)}
+  .cl-links .btn-ghost:disabled{opacity:.5;cursor:default}
+  .cl-small{font-size:13.5px;line-height:1.5;color:#63686C !important;margin-top:14px}
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="mark" href="index.html">
+      <img class="mark-sun" src="assets/brand/mark-compact-ir.svg" alt="" width="26" height="26">
+      <span>Climate Sprints</span>
+    </a>
+    <div class="nav-zone">
+      <nav class="nav" id="site-nav" aria-label="Primary">
+      <a href="diligence.html">Diligence</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="method.html">Method</a>
+      <a href="mastermind.html">Mastermind</a>
+      <a href="approach.html">Approach</a>
+      <a href="practice.html">Practice</a>
+      </nav>
+      <a class="btn btn-ghost btn-sm" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book a call</a>
+      <button class="burger" type="button" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+</div>
+<div class="nav-scrim" hidden></div>
+
+<main>
+  <section class="tone-a">
+    <div class="wrap page-hero">
+      <p class="eyebrow" id="cl-eyebrow">Self-assessment</p>
+      <h1 id="cl-h1">Work through a checklist.</h1>
+      <p class="lede" id="cl-lede">Tick, count, and get a read on what the pattern indicates.</p>
+    </div>
+  </section>
+  <section class="tone-b">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Answer as it is</p>
+        <p class="sub">Nothing is stored. Nothing is sent.</p>
+      </div>
+      <div>
+        <div id="cl-app"></div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Do it twice</p>
+        <p class="sub">The second count is the useful one.</p>
+      </div>
+      <div>
+        <div class="measure">
+          <p>Complete it, then have someone with no position in the outcome complete it about you &mdash; a co-investor, an advisor, a spouse. The point of the second person is not their expertise. It is that they are not the one who has to be right.</p>
+          <p>Where the two counts differ by more than two, the gap between them is more interesting than either number, and it is usually the more useful thing to bring to a call.</p>
+          <p>Prefer paper, or want to hand it to someone? <a class="link" href="checklists/">The printable versions</a> are the same document with the same fields, and they are fillable on screen too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">What this is not</p>
+        <p class="sub">The distinction matters more than it sounds.</p>
+      </div>
+      <div>
+        <div class="measure">
+          <p>A checklist tells you <b>which instrument you need</b>. It is answered from memory, by one person, in ten minutes, and nothing in it is verified.</p>
+          <p>An assessment answers a different question &mdash; <b>should this position be taken, at what size, against what reserve</b> &mdash; across twenty-four scored dimensions, each carrying an evidence grade recording where the evidence came from rather than how good the news was. Three weeks, commissioned by the fund.</p>
+          <p>Use this to decide what to ask for. Do not use it to decide whether a company is fundable.</p>
+          <p><a class="link" href="method.html">The assessment method &rarr;</a> &nbsp;&middot;&nbsp; <a class="link" href="start.html">Not sure which checklist? &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <p class="foot-mark">
+          <a href="index.html" aria-label="Climate Sprints — home" style="display:inline-flex;align-items:center;gap:inherit;text-decoration:none;color:inherit;">
+            <img class="mark-sun" src="assets/brand/mark-compact-lift.svg" alt="" width="24" height="24">
+            <span>Climate Sprints</span>
+          </a>
+        </p>
+        <p class="tagline">Powered by Purpose. Driven by Action.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Secondary">
+        <div class="foot-row">
+          <a href="start.html">Start here</a>
+          <a href="checklists/">Checklists</a>
+          <a href="conversations.html">Conversations</a>
+        </div>
+        <div class="foot-row">
+          <a href="questions.html">Questions</a>
+          <a href="colophon.html">Colophon</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="foot-row">
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="disclaimer.html">Disclaimer</a>
+          <a href="#" data-consent-reopen>Cookies</a>
+        </div>
+      </nav>
+      <div class="sdg">
+        <img src="assets/sdg-wheel.png" alt="Aligned to the UN Sustainable Development Goals" width="54" height="54">
+        <span>Aligned to the UN<br>Sustainable Development Goals</span>
+      </div>
+    </div>
+    <div class="foot-line">
+      <span>&copy; 2026 Climate Sprints</span>
+      <span>Imagery courtesy of the U.S. Geological Survey</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/nav.js?v=16" defer></script>
+<script src="assets/consent.js?v=16" defer></script>
+<script src="assets/checklist-app.js?v=1" defer></script>
+<script src="assets/docrequest.js?v=1" defer></script>
+</body>
+</html>
