@@ -86,7 +86,7 @@
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
-        <p class="name">Or write</p>
+        <p class="name" id="request">Or write</p>
         <p class="sub">We will only send what you asked for.</p>
       </div>
       <div>
@@ -126,7 +126,8 @@
               <p class="check-group">The cohort</p>
               <label class="check"><input type="checkbox" name="interest" value="mastermind"><span>Climate Catalyst Mastermind, 1Q2027</span></label>
               <p class="check-group">Published</p>
-              <label class="check"><input type="checkbox" name="interest" value="method"><span>The published method and founder guide</span></label>
+              <label class="check"><input type="checkbox" name="interest" value="method-allocator"><span>The assessment method &mdash; <b>allocator edition</b>, written for the person underwriting the position</span></label>
+              <label class="check"><input type="checkbox" name="interest" value="method-founder"><span>The assessment method &mdash; <b>founder edition</b>, the same twenty-four dimensions from the other side of the table</span></label>
               <label class="check"><input type="checkbox" name="interest" value="conversations"><span>Conversations, guest inquiry</span></label>
             </div>
           </fieldset>
@@ -135,7 +136,7 @@
             <textarea id="ctx" name="context" rows="3"></textarea>
           </div>
           <div class="cs-verify" style="margin:clamp(26px,3.4vw,38px) 0 0;">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAErtpDtp1RqGHf9v" data-theme="light" data-appearance="interaction-only" data-action="contact-signup"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAErtpDtp1RqGHf9v" data-theme="light" data-action="contact-signup"></div>
           </div>
           <div class="form-actions">
             <button class="btn" type="submit">Sign up</button>
@@ -191,5 +192,6 @@
 
 <script src="assets/nav.js?v=16" defer></script>
 <script src="assets/consent.js?v=16" defer></script>
+<script src="assets/docrequest.js?v=1" defer></script>
 </body>
 </html>
