@@ -116,6 +116,18 @@
 </style>
 
 <div class="rt" id="router">
+  <div id="rt-intro" hidden>
+    <div class="rt-result" style="margin:0 0 32px">
+      <span class="rt-kicker">That points at a seat</span>
+      <h3 style="margin-bottom:10px">Not a sprint. Somebody has to be in the chair.</h3>
+      <p>Advice will not fix what you have described. The question now is <b>which seat</b>, and it
+      is answered wrong more often than it is answered late &mdash; a team concludes it needs a
+      commercial hire when the finding is that the founder never handed over the buyer
+      relationships, or a fund buys three months of facilitation when the chair is simply empty.</p>
+      <p><b>Three more questions.</b> They ask what is actually missing, what the next event is, and
+      what the team already has. Those three distinguish between five quite different seats.</p>
+    </div>
+  </div>
   <div id="rt-questions"></div>
 
   <div class="rt-actions">
@@ -297,7 +309,7 @@
       var win = score(Q, answers, W);
       if (win === 'fractional') {
         phase = 2; seatAnswers = {};
-        document.getElementById('rt-intro').hidden = false;
+        var introEl = document.getElementById('rt-intro'); if (introEl) introEl.hidden = false;
         render(SEAT_Q, 0, seatAnswers);
         go.textContent = 'Name the seat';
         count.textContent = '0 of 3 answered';
@@ -334,14 +346,14 @@
       }).join('') +
       '<a class="btn btn-ghost btn-sm" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book thirty minutes</a>';
     qWrap.hidden = true; go.hidden = true; count.hidden = true;
-    document.getElementById('rt-intro').hidden = true;
+    var intro = document.getElementById('rt-intro'); if (intro) intro.hidden = true;
     reset.hidden = false; result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   reset.addEventListener('click', function () {
     answers = {}; seatAnswers = {}; phase = 1;
-    document.getElementById('rt-intro').hidden = true;
+    var i0 = document.getElementById('rt-intro'); if (i0) i0.hidden = true;
     render(Q, 0, answers);
     go.textContent = 'Show me'; go.hidden = false; count.hidden = false;
     qWrap.hidden = false; reset.hidden = true; result.hidden = true;
@@ -390,9 +402,6 @@
   </section>
 </main>
 
-  <div class="wrap" aria-hidden="true">
-    <div style="border-top:.5px solid #BE2437"></div>
-  </div>
 
 
 <footer class="foot">
