@@ -85,6 +85,7 @@
     text-transform:uppercase;color:#BE2437;display:block;margin-bottom:8px}
   .rt-ask{font-family:Newsreader,Georgia,serif;font-weight:300;font-size:clamp(1.15rem,2vw,1.5rem);
     line-height:1.24;letter-spacing:-.018em;color:#14143A;margin:0 0 16px}
+  .rt-why{font-size:14px;line-height:1.5;color:#63686C;margin:-8px 0 14px;max-width:58ch}
   .rt-opts{display:grid;gap:9px}
   .rt-opt{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;cursor:pointer;
     border:1px solid var(--rule-2,#C8CAC3);background:transparent;text-align:left;
@@ -179,6 +180,7 @@
   // Asked only when the routing lands on fractional.
   var SEAT_Q = [
     { ask: 'Which of these is actually missing?',
+      why: 'The capability gap, stated as a person rather than as a function.',
       opts: [
         ['Someone who has taken a technology from working to sold, more than once.', {cto:3, commercial:1}],
         ['Someone who can build a pipeline rather than manage one.', {commercial:4}],
@@ -187,6 +189,7 @@
         ['Someone who can make the reporting survive an audit.', {esg:4}],
       ]},
     { ask: 'What is the next event this person has to survive?',
+      why: 'A seat is filled against an event. Different events need different people.',
       opts: [
         ['A raise, or a transaction.', {capital:3, cto:1}],
         ['A first commercial deployment.', {technical:3, cto:1}],
@@ -195,6 +198,7 @@
         ['A change of shape across the whole company.', {cto:4}],
       ]},
     { ask: 'What does the team have today?',
+      why: 'What is already in the building decides what the seat has to bring.',
       opts: [
         ['Deep technical capability, no commercial muscle.', {commercial:3, cto:1}],
         ['Commercial capability, no one who has built the thing.', {technical:3}],
@@ -248,7 +252,9 @@
     qWrap.innerHTML = list.map(function (q, i) {
       var n = i + offset;
       return '<div class="rt-q"><span class="rt-n">Question ' + (n + 1) + '</span>' +
-        '<p class="rt-ask">' + q.ask + '</p><div class="rt-opts">' +
+        '<p class="rt-ask">' + q.ask + '</p>' +
+        (q.why ? '<p class="rt-why">' + q.why + '</p>' : '') +
+        '<div class="rt-opts">' +
         q.opts.map(function (o, j) {
           return '<button type="button" class="rt-opt" data-q="' + n + '" data-o="' + j +
             '" aria-pressed="false"><span class="k">' + String.fromCharCode(97 + j) +
@@ -288,8 +294,8 @@
       var win = score(Q, answers, W);
       if (win === 'fractional') {
         phase = 2; seatAnswers = {};
+        document.getElementById('rt-intro').hidden = false;
         render(SEAT_Q, 0, seatAnswers);
-        document.getElementById('rt-n-note');
         go.textContent = 'Name the seat';
         count.textContent = '0 of 3 answered';
         go.disabled = true;
@@ -325,12 +331,14 @@
       }).join('') +
       '<a class="btn btn-ghost btn-sm" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book thirty minutes</a>';
     qWrap.hidden = true; go.hidden = true; count.hidden = true;
+    document.getElementById('rt-intro').hidden = true;
     reset.hidden = false; result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   reset.addEventListener('click', function () {
     answers = {}; seatAnswers = {}; phase = 1;
+    document.getElementById('rt-intro').hidden = true;
     render(Q, 0, answers);
     go.textContent = 'Show me'; go.hidden = false; count.hidden = false;
     qWrap.hidden = false; reset.hidden = true; result.hidden = true;
