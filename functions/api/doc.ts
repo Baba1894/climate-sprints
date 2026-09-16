@@ -34,16 +34,16 @@ interface Env {
  *  the filename. */
 const EDITIONS: Record<string, { path: string; filename: string }> = {
   allocator: {
-    path: "/docs/private/cs-method-allocator-v1-4.pdf",
-    filename: "Climate_Sprints_Assessment-Methodology_v1.4_(2026.09.11).pdf",
+    path: "/docs/private/cs-method-allocator-v1-4-1.pdf",
+    filename: "Climate_Sprints_Assessment-Methodology_v1.4.1_(2026.09.15).pdf",
   },
   founder: {
-    path: "/docs/private/cs-method-founder-v1-3.pdf",
-    filename: "Climate_Sprints_Assessment-Guide-for-Founders_v1.3_(2026.09.11).pdf",
+    path: "/docs/private/cs-method-founder-v1-4-1.pdf",
+    filename: "Climate_Sprints_Assessment-Guide-for-Founders_v1.4.1_(2026.09.15).pdf",
   },
   sample: {
-    path: "/docs/private/cs-sample-assessment-v1-2.pdf",
-    filename: "Climate_Sprints_Sample-Assessment_v1.2_(2026.09.11).pdf",
+    path: "/docs/private/cs-sample-assessment-v1-3.pdf",
+    filename: "Climate_Sprints_Sample-Assessment_v1.3_(2026.09.15).pdf",
   },
 };
 
