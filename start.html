@@ -229,6 +229,35 @@
       ]},
   ];
 
+  // Asked after the seat, to separate part-time support from a vacancy.
+  var SHAPE_Q = [
+    { ask: 'Is there somebody in the chair today?',
+      why: 'A vacancy and a capability gap look identical in a board pack and are not the same engagement.',
+      opts: [
+        ['Yes, and they are staying. What is missing sits beside them.', {fractional:4}],
+        ['Yes, but they are leaving, or they are being moved.', {interim:4}],
+        ['No. The chair has never been filled.', {fractional:3, interim:2}],
+        ['Yes, and the question is whether they should be.', {interim:3}],
+      ]},
+    { ask: 'What does done look like?',
+      why: 'A seat with an end date is a different commitment from a seat with a cadence.',
+      opts: [
+        ['A permanent hire in place, and a handover completed.', {interim:4}],
+        ['A capability we can run ourselves, over time.', {fractional:3}],
+        ['A specific outcome delivered, then we reassess.', {interim:2, fractional:2}],
+        ['We do not know yet, and that is part of the problem.', {fractional:3, interim:1}],
+      ]},
+  ];
+
+  // Fractional and interim are different products at different prices. The two
+  // questions below decide which, and they are scored separately from the seat.
+  var SHAPES = {
+    fractional: ['Fractional — part-time, alongside the team',
+      'Two to three days a week, for a capability the company cannot yet justify hiring full time. The existing team stays and the seat sits beside them. Three-month minimum, and it usually runs longer because the need is structural rather than a gap.'],
+    interim: ['Interim — the seat filled outright, to a defined end date',
+      'Four to five days a week, because the chair is empty or the person in it is leaving. Scoped against an outcome and an end date, with the handover to a permanent hire designed in from the start. It costs roughly twice a fractional seat because it is roughly twice the week, and it ends.'],
+  };
+
   var SEATS = {
     cto: ['Chief Transformation Officer',
       'The passage from a technology that works, through product-market fit, to something that scales. This is the seat when the company has to change shape rather than add a function &mdash; and it is the one most often filled too late, because the need looks like several smaller needs until it is urgent.'],
@@ -261,11 +290,12 @@
       links: [['checklists/Climate_Sprints_Climate-Catalyst-Mastermind-checklist_v1.0.pdf','The Mastermind checklist — PDF'],['mastermind.html','Climate Catalyst Mastermind']] },
     fractional: { kicker: 'When a seat needs filling',
       title: 'This is a seat, not a sprint.',
-      body: '<p>Advice will not fix what you have described. Somebody has to be in the chair, accountable, doing the work &mdash; and the pattern points at a specific seat rather than at senior help in general.</p>',
+      body: '<p>Advice will not fix what you have described. Somebody has to be in the chair, accountable, doing the work &mdash; and the pattern points at a specific seat rather than at senior help in general.</p><p>Two things decide what that costs: which seat, and whether it is a part-time capability alongside your team or the chair filled outright to an end date. Both are below.</p>',
       links: [['fractional.html','Fractional and interim executives'],['method.html','How we assess execution']] },
+    // fractional output copy is shared by both shapes; the shape block carries the difference
   };
 
-  var answers = {}, seatAnswers = {}, phase = 1;
+  var answers = {}, seatAnswers = {}, shapeAnswers = {}, pickedSeat = null, phase = 1;
   var qWrap = document.getElementById('rt-questions');
   var go = document.getElementById('rt-go'), count = document.getElementById('rt-count');
   var reset = document.getElementById('rt-reset'), result = document.getElementById('rt-result');
@@ -299,7 +329,8 @@
       x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
     });
     if (phase === 1) { answers[q] = o; tally(Q, answers); }
-    else { seatAnswers[q] = o; tally(SEAT_Q, seatAnswers); }
+    else if (phase === 2) { seatAnswers[q] = o; tally(SEAT_Q, seatAnswers); }
+    else { shapeAnswers[q] = o; tally(SHAPE_Q, shapeAnswers); }
   });
 
   function score(list, store, keys) {
@@ -319,30 +350,43 @@
         var introEl = document.getElementById('rt-intro'); if (introEl) introEl.hidden = false;
         render(SEAT_Q, 0, seatAnswers);
         go.textContent = 'Name the seat';
-        count.textContent = '0 of 3 answered';
+        count.textContent = '0 of ' + SEAT_Q.length + ' answered';
         go.disabled = true;
         qWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
       }
       show(win, null);
+    } else if (phase === 2) {
+      pickedSeat = score(SEAT_Q, seatAnswers, Object.keys(SEATS));
+      phase = 3; shapeAnswers = {};
+      render(SHAPE_Q, 0, shapeAnswers);
+      go.textContent = 'Name the shape';
+      count.textContent = '0 of ' + SHAPE_Q.length + ' answered';
+      go.disabled = true;
+      qWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      show('fractional', score(SEAT_Q, seatAnswers, Object.keys(SEATS)));
+      show('fractional', pickedSeat, score(SHAPE_Q, shapeAnswers, Object.keys(SHAPES)));
     }
   });
 
-  function show(win, seat) {
+  function show(win, seat, shape) {
     var o = OUT[win];
     document.getElementById('rt-kicker').textContent = o.kicker;
     document.getElementById('rt-title').textContent = o.title;
     document.getElementById('rt-body').innerHTML = o.body;
     var seatBox = document.getElementById('rt-seat');
     if (seat) {
-      seatBox.innerHTML = '<span class="rt-kicker">The seat</span><h3 style="margin-bottom:10px">' +
-        SEATS[seat][0] + '</h3><p>' + SEATS[seat][1] + '</p>' +
-        '<p><b>Whether that is fractional or interim is a conversation, not a checkbox.</b> ' +
-        'It turns on notice periods, whether there is a permanent hire to hand over to, and whether ' +
-        'the board wants someone with no career stake in the outcome. Those are worth thirty minutes ' +
-        'rather than a fourth question.</p>';
+      var html = '<span class="rt-kicker">The seat</span><h3 style="margin-bottom:10px">' +
+        SEATS[seat][0] + '</h3><p>' + SEATS[seat][1] + '</p>';
+      if (shape) {
+        html += '<span class="rt-kicker" style="display:block;margin-top:22px">The shape</span>' +
+          '<h3 style="margin-bottom:10px">' + SHAPES[shape][0] + '</h3><p>' + SHAPES[shape][1] + '</p>' +
+          '<p>Two answers do not settle it. Notice periods, whether there is a permanent hire to hand ' +
+          'over to, and whether the board wants someone with no career stake in the outcome will all ' +
+          'move it. But the shape changes what this costs, so it is worth naming before the call rather ' +
+          'than during it.</p>';
+      }
+      seatBox.innerHTML = html;
       seatBox.hidden = false;
     } else { seatBox.hidden = true; }
     document.getElementById('rt-links').innerHTML =
