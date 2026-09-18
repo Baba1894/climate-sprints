@@ -209,7 +209,7 @@ legend{padding:0;font-size:13.5px;color:var(--label);margin-bottom:14px;}
 .form-note{font-size:13.5px;color:var(--muted);}
 
 /* footer */
-.foot{background:var(--indigo);color:#B4B4CC;padding-block:clamp(52px,6vw,84px);}
+.foot{background:var(--indigo);color:#B4B4CC;padding-block:clamp(52px,6vw,84px);border-top:1px solid rgba(255,255,255,.16);}
 .foot a{color:#B4B4CC;text-decoration:none;transition:color .15s ease;}
 .foot a:hover{color:#fff;}
 .foot-top{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;align-items:baseline;}
@@ -319,6 +319,11 @@ legend{padding:0;font-size:13.5px;color:var(--label);margin-bottom:14px;}
   .foot-nav{align-items:flex-start;}.foot-row{justify-content:flex-start;}
   .sdg{align-items:flex-start;text-align:left;justify-self:start;}}
 .sdg{display:flex;flex-direction:column;align-items:flex-end;gap:9px;justify-self:end;text-align:right;}
+/* SDG wheel linked to first principles: wheel beside the text, text left-aligned,
+   wheel nudged down so it sits level with the first line. */
+.sdg a{display:flex;align-items:flex-start;gap:12px;text-decoration:none;color:inherit;}
+.sdg a img{margin-top:5px;}
+.sdg span{text-align:left;}
 .sdg span{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;
   text-transform:uppercase;line-height:1.6;color:#7C7C9C;}
 .sdg img{width:54px;height:54px;flex:0 0 54px;opacity:.92;transition:opacity .15s ease;}
