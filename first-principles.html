@@ -45,8 +45,9 @@
 .tone-b .tscroll table.data th{border-bottom-color:rgba(255,255,255,.3)}
 .tscroll table.data td:last-child,.tscroll table.data th:last-child{padding-right:0}
 table.t-two td:first-child,table.t-two th:first-child{width:24%}
-table.t-lineage td:first-child,table.t-lineage th:first-child{width:9%;padding-right:.9em}
-table.t-lineage td:nth-child(2),table.t-lineage th:nth-child(2){width:44%}
+table.t-lineage td:first-child,table.t-lineage th:first-child{width:6.5%;padding-right:.5em;white-space:nowrap}
+table.t-lineage td:nth-child(2),table.t-lineage th:nth-child(2){width:46%;padding-right:1.6em}
+.tscroll table.data.t-lineage{min-width:30em}
 .measure h3, .measure h4{margin:2em 0 .75em}
 .measure ul{margin:1.1em 0 1.4em;padding-left:1.15em}
 .measure ul li{margin-bottom:.95em;line-height:1.7}
@@ -74,8 +75,9 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 .fp-small{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;opacity:.65;margin-top:1.4em}
 @media (prefers-reduced-motion:reduce){.acc-panel{transition:none!important}}
 .fp-secnum{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;opacity:.5;margin:0 0 .35em}
-.acc-panel{padding:0 0 1.1em 3em}
-[data-acc-group="lineage"] .acc-panel,[data-acc-group="cw"] .acc-panel{padding-left:0}
+.acc-panel{padding:0 9.5em 1.1em 4em}
+@media (max-width:760px){.acc-panel{padding:0 0 1.1em 3.2em}}
+[data-acc-group="lineage"] .acc-panel,[data-acc-group="cw"] .acc-panel{padding:0 0 1.1em 0}
 #fp-menu-btn{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:.55em;
   min-height:44px;padding:.7em 1.05em;border:1px solid rgba(255,255,255,.22);border-radius:2px;
   background:#14143A;color:#F3F3F1;font:inherit;font-size:.82rem;letter-spacing:.04em;cursor:pointer;
@@ -715,7 +717,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 <tbody>
 <tr class="odd">
 <td>1789</td>
-<td><strong>Antoine Lavoisier, <em>Traité élémentaire de chimie</em></strong></td>
+<td><strong><a href="https://en.wikipedia.org/wiki/Antoine_Lavoisier" target="_blank" rel="noopener noreferrer">Antoine Lavoisier</a>, <em>Traité élémentaire de chimie</em></strong></td>
 <td>Conservation of mass: matter is rearranged, never destroyed</td>
 </tr>
 <tr class="even">
@@ -725,7 +727,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 </tr>
 <tr class="odd">
 <td>1920</td>
-<td>Arthur Pigou, <em>The Economics of Welfare</em></td>
+<td><a href="https://en.wikipedia.org/wiki/Externality" target="_blank" rel="noopener noreferrer">Arthur Pigou</a>, <em>The Economics of Welfare</em></td>
 <td>The externality, and the tax that internalizes it</td>
 </tr>
 <tr class="even">
@@ -740,7 +742,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 </tr>
 <tr class="even">
 <td>1960</td>
-<td>Ronald Coase, <em>The Problem of Social Cost</em></td>
+<td><a href="https://en.wikipedia.org/wiki/The_Problem_of_Social_Cost" target="_blank" rel="noopener noreferrer">Ronald Coase</a>, <em>The Problem of Social Cost</em></td>
 <td>The counter-case: bargaining over rights, where transaction costs allow</td>
 </tr>
 <tr class="odd">
@@ -760,7 +762,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 </tr>
 <tr class="even">
 <td>1968</td>
-<td>Garrett Hardin, <em>The Tragedy of the Commons</em></td>
+<td><a href="https://en.wikipedia.org/wiki/Tragedy_of_the_commons" target="_blank" rel="noopener noreferrer">Garrett Hardin</a>, <em>The Tragedy of the Commons</em></td>
 <td>The standard account of shared-resource failure</td>
 </tr>
 <tr class="odd">
@@ -790,7 +792,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 </tr>
 <tr class="even">
 <td>1972</td>
-<td>Donella Meadows et al., <em>The Limits to Growth</em></td>
+<td><a href="https://en.wikipedia.org/wiki/The_Limits_to_Growth" target="_blank" rel="noopener noreferrer">Donella Meadows et al.</a>, <em>The Limits to Growth</em></td>
 <td>Systems modelling of physical limits</td>
 </tr>
 <tr class="odd">
@@ -840,7 +842,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 </tr>
 <tr class="even">
 <td>1990</td>
-<td>Elinor Ostrom, <em>Governing the Commons</em></td>
+<td><a href="https://en.wikipedia.org/wiki/Elinor_Ostrom" target="_blank" rel="noopener noreferrer">Elinor Ostrom</a>, <em>Governing the Commons</em></td>
 <td>The rebuttal to Hardin: commons are governable, and often governed</td>
 </tr>
 <tr class="odd">
