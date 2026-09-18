@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First principles — Climate Sprints</title>
+<meta name="description" content="Matter does not leave. Accounting decided it was free. Why Climate Sprints exists, and the physics and economics behind the claim.">
+<link rel="canonical" href="https://climatesprints.com/first-principles">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Climate Sprints">
+<meta property="og:title" content="First principles — Climate Sprints">
+<meta property="og:description" content="Matter does not leave. Accounting decided it was free. Why Climate Sprints exists, and the physics and economics behind the claim.">
+<meta property="og:url" content="https://climatesprints.com/first-principles">
+<meta property="og:image" content="https://climatesprints.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Climate Sprints — we find out if anyone has to buy it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="First principles — Climate Sprints">
+<meta name="twitter:description" content="Matter does not leave. Accounting decided it was free. Why Climate Sprints exists, and the physics and economics behind the claim.">
+<meta name="twitter:image" content="https://climatesprints.com/assets/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-16.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#14143A">
+<link rel="stylesheet" href="assets/site.css?v=16">
+<style>
+/* First principles page — scoped additions. Nothing here belongs in site.css. */
+.fp-toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.35em 2em}
+.fp-toc a{display:block;padding:.5em 0;border-bottom:1px solid rgba(0,0,0,.08);text-decoration:none;font-size:.95rem}
+.fp-toc a:hover{text-decoration:underline}
+.fp-toc .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72em;letter-spacing:.1em;opacity:.55;margin-right:.9em}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.tscroll table.data{border-collapse:collapse;width:100%;min-width:34em;font-size:.92rem;margin:.4em 0 1.2em}
+.tscroll table.data th{text-align:left;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;opacity:.6;font-weight:500;padding:.5em .9em .5em 0;border-bottom:1px solid rgba(0,0,0,.25)}
+.tscroll table.data td{vertical-align:top;padding:.62em .9em .62em 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.fp-chart{margin:1.4em 0 .4em}
+.fp-chart .lab{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;opacity:.6;margin:0 0 .9em}
+.fp-row{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) auto;align-items:center;gap:.8em 1em;margin:.55em 0}
+.fp-row .bar{height:1.35em;border-radius:1px}
+.fp-row .val{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86rem;white-space:nowrap}
+.fp-chart figcaption{font-size:.82rem;opacity:.7;border-top:1px solid rgba(0,0,0,.12);padding-top:.7em;margin-top:1em}
+@media (max-width:640px){.fp-row{grid-template-columns:1fr auto;}.fp-row .bar{grid-column:1 / -1}}
+.acc{border-top:1px solid rgba(0,0,0,.14);margin:1em 0 0}
+.acc-item{border-bottom:1px solid rgba(0,0,0,.14)}
+.acc-btn{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:1.2em;background:none;border:0;padding:.85em 0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.acc-btn:hover .acc-t{text-decoration:underline}
+.acc-btn:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.acc-n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.09em;opacity:.55;margin-right:.9em}
+.acc-d{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;opacity:.55;margin-left:auto;padding-right:1em;white-space:nowrap}
+.acc-sign{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:1rem;line-height:1;opacity:.75}
+.acc-panel{padding:0 0 1.1em;font-size:.95rem}
+.acc-panel > :first-child{margin-top:0}
+.js .acc-panel[hidden]{display:none}
+sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7em}
+.fp-small{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;opacity:.65;margin-top:1.4em}
+@media (prefers-reduced-motion:reduce){.acc-panel{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="mark" href="index.html">
+      <img class="mark-sun" src="assets/brand/mark-compact-ir.svg" alt="" width="26" height="26">
+      <span>Climate Sprints</span>
+    </a>
+    <div class="nav-zone">
+      <nav class="nav" id="site-nav" aria-label="Primary">
+      <a href="diligence.html">Diligence</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="method.html">Method</a>
+      <a href="mastermind.html">Mastermind</a>
+      <a href="approach.html" aria-current="page">Approach</a>
+      <a href="practice.html">Practice</a>
+      </nav>
+      <a class="btn btn-ghost btn-sm" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book a call</a>
+      <button class="burger" type="button" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+</div>
+<div class="nav-scrim" hidden></div>
+
+<main>
+  <section class="tone-a">
+    <div class="wrap page-hero">
+      <p class="eyebrow">First principles</p>
+      <h1>Matter does not leave.</h1>
+      <p class="lede">Every ton a process takes in leaves again &mdash; as product, as emission, as heat, as something buried. Physics has said so since 1789. What was invented was the accounting treatment. Almost everything built since industrialization was designed on that price, which is why almost everything has to be redesigned.</p>
+      <div class="hero-actions" style="margin-top:2.2em"><a class="btn" href="diligence.html">How we assess a deal</a> <a class="btn btn-ghost" href="method.html">Read the method</a></div>
+    </div>
+  </section>
+  <section class="tone-b">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Contents</p>
+        <p class="sub">Seventeen sections. Read them in any order.</p>
+      </div>
+      <div>
+        <nav class="fp-toc" aria-label="On this page">
+          <a href="#s01"><span class="n">01</span>The false price</a>
+          <a href="#s02"><span class="n">02</span>The biosphere behaves like a system</a>
+          <a href="#s03"><span class="n">03</span>If the price was wrong, the design was wrong</a>
+          <a href="#s04"><span class="n">04</span>Why this is now a pricing question</a>
+          <a href="#s05"><span class="n">05</span>Valuing nature as nature</a>
+          <a href="#s06"><span class="n">06</span>Private capital has been buying permanence</a>
+          <a href="#s07"><span class="n">07</span>The trade-off that never held</a>
+          <a href="#s08"><span class="n">08</span>The Sustainable Development Goals</a>
+          <a href="#s09"><span class="n">09</span>The instrument we already have</a>
+          <a href="#s10"><span class="n">10</span>Mission</a>
+          <a href="#s11"><span class="n">11</span>Vision</a>
+          <a href="#s12"><span class="n">12</span>What it means, depending on who you are</a>
+          <a href="#s13"><span class="n">13</span>Who this is for</a>
+          <a href="#s14"><span class="n">14</span>How we work</a>
+          <a href="#s15"><span class="n">15</span>What we do not claim</a>
+          <a href="#s16"><span class="n">16</span>The lineage, 1789 to 2026</a>
+          <a href="#s17"><span class="n">17</span>References</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s01">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">The false price</p>
+        <p class="sub">The law was never in doubt. The price was.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>In 1789 Antoine Lavoisier established that matter is neither created nor destroyed in a chemical reaction: what goes in comes out, in the same quantity, rearranged. Einstein’s 1905 result extended the principle rather than replacing it — mass and energy are interchangeable, and the total is conserved.</p>
+<p>Applied to an economy, that has one unavoidable consequence. <strong>Every ton of material a process takes in leaves it again</strong>, as product, as emission, as effluent, as heat, as something buried. There is no “away”. A second law of thermodynamics argument completes it: the energy that did the work is degraded in doing it, so putting the material back where it came from always costs more than letting it out.</p>
+<p>Neither law was hidden. Both were known long before the industrial economy was designed, and the economy was designed as though neither applied.</p>
+<p><strong>This was said to economists in 1969, in their own journal.</strong> Robert Ayres and Allen Kneese built <em>Production, Consumption, and Externalities</em> on what they called the fundamental law of conservation of mass, and drew the conclusion that follows from it: externalities are not occasional failures at the edges of otherwise efficient markets. They are <strong>normal, pervasive and inherent</strong> in production, because the mass balance requires them. A price that omits them is not a slightly imperfect price. It is the wrong number.</p>
+<p>That is the false price the practice exists because of. For two centuries we designed, engineered and financed the physical world on it: materials, buildings, process heat, transport, agriculture, the cities themselves. Every one of those decisions was optimized against a cost base that left out what the physics guaranteed would happen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b">
+    <div class="wrap band sheet">
+      <div class="marker"><span class="tick"></span><p class="name">The claim</p><p class="sub">Said once, plainly.</p></div>
+      <div><p class="pull">No ecology, no economy. Nature is not a resource with no owner. It is the infrastructure every business runs on, and the only infrastructure never carried at cost.</p></div>
+    </div>
+  </section>
+  <section class="tone-a" id="s02">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">The biosphere behaves like a system</p>
+        <p class="sub">If the atmosphere is regulated, it can be destabilized.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>In 1974 James Lovelock and Lynn Margulis published the Gaia hypothesis in <em>Tellus</em>: the Earth’s atmosphere is not a passive backdrop but a system held far from chemical equilibrium <strong>by the biosphere itself</strong>. Oxygen at 21%, methane co-existing with it, surface temperature stable across billions of years of rising solar output — none of that is what a dead planet’s chemistry produces.</p>
+<p>The hypothesis attracted a serious objection, and it is worth stating rather than skipping: critics argued that it implied purpose, since natural selection acts on organisms rather than on planets. Lovelock’s reply was a model, Daisyworld, showing that regulation can emerge from ordinary competition with no foresight at all.</p>
+<p><strong>What survived is the part that matters here.</strong> The idea that the Earth is a coupled system of biological, chemical and physical processes with feedbacks — that it can be measured, modeled and pushed — became Earth system science. Planetary boundaries are its descendant, which is why <a href="#s04">section 04</a> can state how many of the nine have been crossed rather than argue about whether limits exist.</p>
+<p>For an allocator the consequence is narrow and practical. A regulated system has operating ranges, and processes that hold it there can weaken. Those feedbacks are the infrastructure under every asset in a portfolio, and they are the part no balance sheet records.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s03">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">If the price was wrong, the design was wrong</p>
+        <p class="sub">Everything built on it has to be redesigned.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>If the price was wrong, then the design was wrong, because design follows price. Almost everything engineered since industrialization was built for a one-way trip: extract, make, use, discard, and let the mass balance land on someone else’s ledger.</p>
+<p>Redesigning it is the largest re-engineering program in history. It is already specified — this is not a call for one:</p>
+<ul>
+<li><strong>Loop it.</strong> Walter Stahel and Geneviève Reday’s 1976 report to the European Commission set out an economy in loops: reuse, repair, remanufacture. It is the origin of what is now called the circular economy, and it was a labor and energy argument before it was an environmental one.</li>
+<li><strong>Design waste out at the drawing board.</strong> William McDonough and Michael Braungart’s <em>Cradle to Cradle</em> (2002) argues that waste is a design failure rather than an inevitability, and that “less bad” is not good — a product should be designed so its materials have a next life, biological or technical.</li>
+<li><strong>Take the brief from living systems.</strong> Janine Benyus’s <em>Biomimicry</em> (1997) reads nature as 3.8 billion years of tested engineering. John Tillman Lyle’s <em>Regenerative Design for Sustainable Development</em> (1994) makes it a design discipline: systems that restore their own sources.</li>
+<li><strong>Account for it as metabolism.</strong> Industrial ecology treats an economy as a flow of materials and energy that can be measured, which is the practical descendant of the Ayres and Kneese mass balance.</li>
+</ul>
+<h3 id="fullers-version-of-the-same-law">Fuller’s version of the same law</h3>
+<p>Buckminster Fuller put conservation of mass to designers as an instruction rather than a constraint. In LIFE magazine in 1971 he is quoted as saying that <strong>pollution is merely a resource that isn’t being used properly</strong>. The better-known phrasing — <em>pollution is nothing but the resources we are not harvesting; we allow them to disperse because we’ve been ignorant of their value</em> — circulates everywhere and appears in no primary source we could verify, so we use the citable version and say why.</p>
+<p>Either way the content is Lavoisier’s, turned toward design: if the mass does not leave, waste is not a category of matter. It is a category of <strong>accounting and design failure</strong>, and the engineering question is what the material is for next.</p>
+<h3 id="tensegrity-used-as-an-analogy-and-labeled-as-one">Tensegrity, used as an analogy and labeled as one</h3>
+<p>Fuller named tensegrity — tensional integrity — for structures whose compression members do not touch: isolated struts suspended in a continuous net of tension, which the sculptor Kenneth Snelson had built first. The structural point is that stability can come from <strong>distributed tension</strong> rather than from mass and compression. <em>(Fuller’s geodesic domes are a different achievement, load distributed through a triangulated shell. The two are often conflated, and we should not conflate them.)</em></p>
+<p>As an analogy, and only as an analogy, it says something exact about what is being rebuilt. The industrial economy was built in compression: heavier structures, larger throughput, more mass moved to hold the system up, and the failures deferred to whatever lay underneath. A regenerative economy holds its shape a different way — through loops, feedbacks, contracts and information that carry tension across the whole rather than piling mass at one point. It is lighter, it is more connected, and it fails differently: cut one tension member and the whole net slackens, which is what a transgressed planetary boundary looks like.</p>
+<p>We use that picture to explain the shape of the work. We do not use it as evidence. The evidence is in <a href="#s01">section 01</a>, <a href="#s04">section 04</a> and <a href="#s05">section 05</a>.</p>
+<h3 id="what-it-will-take-to-finance">What it will take to finance</h3>
+<p>The result is a redesign of the physical economy that will not be financed by sentiment. It will be financed one position at a time, by people deciding whether a specific company, with a specific technology, can reach a specific buyer before the money runs out. <strong>That decision is where the money is lost, and it is where we work.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s04">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Why this is now a pricing question</p>
+        <p class="sub">The costs are moving onto balance sheets, on a schedule you can date.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>The argument stopped being philosophical when the costs began moving onto balance sheets. Four things happened.</p>
+<div class="tscroll"><table class="data">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>What changed</th>
+<th>Why it matters to an allocator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>The dependency was quantified</strong></td>
+<td>The World Economic Forum put $44 trillion of economic value generation — over half of global GDP — as moderately or highly dependent on nature; PwC restated it at $58 trillion in 2023</td>
+<td>The exposure is not a niche. It is most of the economy</td>
+</tr>
+<tr class="even">
+<td><strong>The depletion was measured</strong></td>
+<td>The Dasgupta Review, commissioned by the UK Treasury, found that from 1992 to 2014 produced capital per person doubled while <strong>natural capital per person fell by nearly 40%</strong>, and argued that GDP is unfit to judge economic health because it ignores the depreciation of the biosphere</td>
+<td>The growth was partly a transfer from an unrecorded asset</td>
+</tr>
+<tr class="odd">
+<td><strong>The accounting was standardized</strong></td>
+<td>Ecosystem accounting became a UN statistical standard in 2021, so natural capital can be recorded in national accounts rather than argued about</td>
+<td>What can be measured can be priced</td>
+</tr>
+<tr class="even">
+<td><strong>The disclosure arrived</strong></td>
+<td>TNFD published its recommendations in 2023; by November 2025 <strong>733 organizations with over $22 trillion in assets</strong> had adopted them, and the ISSB is building nature standards from TNFD with an exposure draft targeted for October 2026</td>
+<td>Disclosure precedes pricing, and pricing precedes repricing</td>
+</tr>
+</tbody>
+</table></div>
+<p>Meanwhile the physical trend has not turned. The planetary boundaries framework quantified nine Earth-system limits; the 2023 assessment found six transgressed, and the 2025 Planetary Health Check made it <strong>seven of nine</strong>, adding ocean acidification, with all seven worsening.</p>
+<p><strong>The conclusion we underwrite from:</strong> a company that carries its environmental and human costs early is the cheaper company to own later, because the repricing is arriving on a schedule that can now be dated. That is the screen, stated as arithmetic.</p>
+<h3 id="on-ethics-said-plainly">On ethics, said plainly</h3>
+<p>An earlier version of this argument headed this section <em>why this is a pricing question, not a moral one</em>. That was wrong, and the correction belongs in the open rather than in a quiet edit.</p>
+<p><strong>The thesis is ethical and biological at its root.</strong> A system that takes what it does not pay for, from people who did not agree to give it, is doing something wrong. A species degrading the conditions of its own life is doing something foolish as well as wrong. Neither statement becomes less true for being unpriced.</p>
+<p><strong>We lead with economics because economics can be checked.</strong> Physics, chemistry, biology, earth science and economics can all be argued with on evidence. A moral claim, argued directly in an investment committee, converts the conversation into a contest of beliefs, and the party with the unpriced cost wins that contest by default — because belief is exactly what they can decline to share. Stated as arithmetic, the same conclusion has to be answered on its merits.</p>
+<p>So the order is deliberate, and it is not a dodge. <strong>The ethics are the reason; the economics are the instrument.</strong> We are not neutral about who ends up paying, and we will say so. We do not argue theology, we take no religious position, and we do not ask a client to adopt one. We do insist on one thing: <em>somebody else pays for it</em> is not a neutral accounting choice, and a practice that grades evidence should be the last place that pretends otherwise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s05">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Valuing nature as nature</p>
+        <p class="sub">The question is not what a forest is worth when converted.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>The false price has a second half. The first is that waste was treated as free. The second is that <strong>nature left intact was treated as worth nothing</strong> — a stock with no return until it is cut, drilled or cleared.</p>
+<h3 id="the-economics-already-exists">The economics already exists</h3>
+<p><strong>John Krutilla broke that assumption in 1967</strong>, in <em>Conservation Reconsidered</em>, published in the <em>American Economic Review</em> one year before the Wild and Scenic Rivers Act. His argument was that development comes at the opportunity cost of preservation, and that cost-benefit analysis as then practiced was structurally biased toward development because it counted only the first. He introduced what became <strong>existence value</strong> — that people hold value for a thing that continues to exist, whether or not they ever use it — and he made the decisive point about <strong>irreversibility</strong>: a dam can be removed, a canyon cannot be rebuilt, and the technology that makes the development valuable will probably improve while the asset destroyed will not be replaced. He then applied it with Charles Cicchetti and Anthony Fisher to the case for preserving Hells Canyon on the Snake River.</p>
+<p>Three ideas descend from it, and all three are underwriting ideas rather than environmental ones:</p>
+<ul>
+<li><strong>Option value</strong> — what it is worth to keep a choice open when the future is uncertain (Weisbrod, 1964).</li>
+<li><strong>Quasi-option value</strong> — the value of delaying an irreversible decision until better information arrives (Arrow and Fisher, 1974).</li>
+<li><strong>Irreversibility</strong> — an asymmetry that ordinary discounting handles badly, because the loss is permanent while the gain is not.</li>
+</ul>
+<p>Any allocator recognizes these. They are the language of real options, and they were applied to landscapes twenty years before they were applied to venture portfolios.</p>
+<h3 id="the-standing-forest-comparison">The standing-forest comparison</h3>
+<p>The same argument was made empirically in 1989, when Charles Peters, Alwyn Gentry and Robert Mendelsohn valued one hectare of Amazon forest at Rio Nanay in Peru three ways and published it in <em>Nature</em>. Sustainable harvest of fruit, latex and timber returned a net present value several times that of clearing the same hectare for cattle.</p>
+<figure class="fp-chart">
+  <p class="lab">One hectare, Rio Nanay, Peru &middot; net present value, 1989 US dollars</p>
+  <div class="fp-row"><span>Standing forest &mdash; sustainable fruit, latex and timber harvest</span><span class="bar" style="background:#BE2437;width:100%"></span><span class="val">$6,820</span></div>
+  <div class="fp-row"><span>Cleared for cattle</span><span class="bar" style="background:#14143A;width:44%"></span><span class="val">~$3,000</span></div>
+  <figcaption>Peters, Gentry and Mendelsohn, <em>Nature</em> 339 (1989), pp. 655&ndash;656. The paper reports $6,330&ndash;$6,820 for sustainable harvest of fruit, latex and timber; the cattle figure is as summarized in later reviews.<sup class="refmark"><a href="#ref11" data-ref="11">[11]</a></sup></figcaption>
+</figure>
+<p>The 1989 study has been argued with for thirty-five years — over market saturation, transport costs, and whether one accessible hectare represents a basin — and the argument is healthy. What has not been overturned is the structure of the finding. Later work has extended rather than reversed it:</p>
+<div class="tscroll"><table class="data">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Work</th>
+<th>What it adds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Strand et al., <em>Spatially explicit valuation of the Brazilian Amazon forest’s ecosystem services</em>, Nature Sustainability (2018)</td>
+<td>Values vary enormously by location, so a basin-wide average is the wrong instrument; the map is the instrument</td>
+</tr>
+<tr class="even">
+<td>Meta-analysis of thirty years of Brazilian valuation studies, PLOS ONE (2022)</td>
+<td>Habitat, carbon, water regulation, recreation and ecotourism to local populations average roughly <strong>$410 per hectare per year</strong>, with a wide dispersion that the authors state plainly</td>
+</tr>
+<tr class="odd">
+<td>Science Panel for the Amazon and the Amazônia 2030 program (2021 onward)</td>
+<td>The standing-forest bioeconomy as an industrial strategy: açaí, Brazil nuts, cacao, oils and agroforestry, built with Indigenous and local knowledge rather than around it</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="why-this-belongs-in-a-diligence-practice">Why this belongs in a diligence practice</h3>
+<p>Four things follow, and each is something we assess rather than admire.</p>
+<ul>
+<li><strong>The comparison is a discount-rate argument.</strong> Extraction pays now; a standing forest pays a smaller amount annually and indefinitely. Which wins depends entirely on the discount rate and the time horizon — the same variables that decide whether a climate position is early or wrong.</li>
+<li><strong>Irreversibility belongs on the risk register.</strong> A converted forest, a drained aquifer, a collapsed fishery: the option is not recoverable at any price. That is not a moral claim, it is an asymmetry a risk register can carry.</li>
+<li><strong>The people who live there are part of the economics, not a footnote.</strong> Food security, tenure and Indigenous knowledge are inputs to whether a standing-forest model produces anything at all, and a business case built without them is a business case that fails in the field.</li>
+<li><strong>This is the same question as the rest of the practice.</strong> Who is compelled to pay for the forest standing, on what budget line, on what date? Where nobody is, it is a timing bet, and it should be sized as one — however good the argument is.</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s06">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Private capital has been buying permanence</p>
+        <p class="sub">Conservation economics and the long horizon.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p><a href="#s05">section 05</a> made the case that nature standing has value. A separate tradition went further and <strong>bought it</strong> — private money acquiring land at market prices and transferring it into permanent public protection.</p>
+<h3 id="two-examples-stated-accurately">Two examples, stated accurately</h3>
+<p><strong>Grand Teton.</strong> From 1927, John D. Rockefeller Jr. acquired roughly 35,000 acres in Jackson Hole through the Snake River Land Company, a vehicle whose ownership was deliberately not disclosed so that prices would not move against it. He donated the land in 1949, and in 1950 Congress merged it with the existing park and the Jackson Hole National Monument to create Grand Teton as it stands. His son Laurance completed the family’s gift decades later: the JY Ranch became the Laurance S. Rockefeller Preserve, transferred in 2007, with a condition that the roads, buildings and utilities be removed and the land restored before the public was let in. <em>(The Jackson Hole purchases were the father’s; the Preserve and its restoration condition were the son’s. The distinction is worth keeping straight.)</em></p>
+<p><strong>Patagonia.</strong> Douglas Tompkins, co-founder of The North Face and Esprit, began buying land in Chile in 1991, starting with what became Pumalín. With Kristine McDivitt Tompkins, former chief executive of Patagonia, Inc., they spent more than $345 million assembling and restoring land with the stated intention of giving it away. In January 2018, <a href="https://www.tompkinsconservation.org/" target="_blank" rel="noopener noreferrer">Tompkins Conservation</a> transferred about <strong>1 million acres</strong> to Chile; the government added roughly <strong>9 million acres</strong> of federal land, creating five new national parks and expanding three others — more than 10 million acres, about three times Yosemite and Yellowstone combined — and forming the Route of Parks, a network of 17 parks across some 1,500 miles. Across Chile and Argentina the total protected with partners is on the order of 14 million acres.</p>
+<p><strong>The institutional form.</strong> What the Rockefellers and the Tompkinses did by hand is now an industry: land trusts, conservation easements, acquisition-and-transfer, and revolving funds, run at scale by organizations such as The Nature Conservancy and the Trust for Public Land. In the United States it sits alongside a public estate assembled over a century and a half — national parks from 1872, the Forest Service from 1905, and the public lands consolidated under the Bureau of Land Management.</p>
+<h3 id="what-an-allocator-can-actually-take-from-this">What an allocator can actually take from this</h3>
+<ul>
+<li><strong>The exit was a transfer, not a sale.</strong> These positions were underwritten to a terminal value of zero and a public beneficiary. Knowing your exit is permanence changes every assumption about holding period, liquidity and governance — and it is a structure, not a sentiment.</li>
+<li><strong>Restoration preceded transfer.</strong> Roads removed, buildings taken out, grasslands and forests brought back before handover. The asset was improved, on the buyer’s own money, before the buyer gave it away.</li>
+<li><strong>Permanence had to be engineered.</strong> Easements, decrees, enabling legislation, endowments for maintenance. Without those instruments the protection lasts as long as the next owner’s intentions.</li>
+<li><strong>Local opposition was the norm, not the exception.</strong> Both cases drew years of it. A project that moves a landscape moves the people on it, and a business case that ignores that is incomplete rather than merely impolite.</li>
+</ul>
+<h3 id="why-it-belongs-in-this-document">Why it belongs in this page</h3>
+<p>Because it is the clearest demonstration that <strong>the time horizon is a choice, not a constraint.</strong> A fund life is an institutional convention. A forest is not. Where a position’s value accrues over a century, the question is which vehicle can hold it — and allocators who can hold a longer clock, which is who this practice serves, are the ones for whom those positions are even legible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s07">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">The trade-off that never held</p>
+        <p class="sub">Environmental quality was supposed to cost growth.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>The oldest argument against this whole agenda is that it is a tax on prosperity: cleaner means dearer, and regulation costs jobs. It has been tested.</p>
+<p><strong>It was contested from inside the labor movement.</strong> Environmentalists for Full Employment, founded in 1975 and directed by Richard Grossman, existed to challenge the claim that environmental protection destroyed jobs, publishing <em>Jobs &amp; Energy</em> in 1977. The argument was completed in <em>Fear at Work: Job Blackmail, Labor and the Environment</em> (Kazis and Grossman, 1982), which documented how the threat of job loss was used to block protections rather than predict outcomes.</p>
+<p><strong>It was contested from inside business strategy.</strong> Michael Porter and Claas van der Linde argued in 1995 that well-designed environmental standards can trigger innovation that partially or fully offsets compliance costs — the Porter hypothesis. It remains argued over. What is not argued over is that the opposite claim, that standards straightforwardly destroy competitiveness, has never been established either.</p>
+<p><strong>And the cost curves moved.</strong> Lazard’s 2025 analysis puts utility-scale solar’s levelized cost down about <strong>84% since 2009</strong>, and finds unsubsidized wind and solar the cheapest new-build generation in the United States for the tenth consecutive year, while gas-fired generation reached a ten-year high. IRENA reports utility-scale solar and onshore wind at roughly <strong>$40 per MWh globally in 2025</strong>, less than half the cost of new combined-cycle gas, and firm solar-plus-storage at $54–82 per MWh, down from over $100 in 2020.</p>
+<h3 id="what-this-means-for-the-work">What this means for the work</h3>
+<p><strong>We do not underwrite a green premium, and we do not underwrite a green discount.</strong> Every assessment asks whether a cost case survives without a subsidy that may not be there in three years, because a company whose economics depend on the trade-off argument being resolved in its favor is carrying a policy bet it has not named. What the fifteen-year cost record does establish is narrower and more useful: <strong>the direction of travel is not a matter of belief, and a technology that is expensive today is not thereby expensive in 2032.</strong> That is a timing judgment, and timing is what we assess.</p>
+<blockquote class="note">
+<p><strong>Where this practice comes from.</strong> The founding principal organized for the first Earth Day in New York in April 1970, as a tenth-grade student at Stuyvesant High School, and studied where the science and the economics were taught together: a BS in environmental science and public policy and a BA in economic geography at the State University of New York, a Master of Urban Planning at the City University of New York, and water resource public policy at the Woodrow Wilson School at Princeton. Stuyvesant High School, New York City. The complete record is at <a href="https://marcstrauch.tech">marcstrauch.tech</a>. The argument here is not a recent conversion. It is fifty-six years of the same question: what does it actually cost, and who ends up paying?</p>
+</blockquote>
+<div class="acc" data-acc-group="cw">
+  <div class="acc-item">
+    <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="cw1"><span class="acc-t">Where the data cuts against the story</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+    <div class="acc-panel" id="cw1" hidden>
+<p>A practice that grades evidence does not quote only the favorable series.</p>
+<ul>
+<li><strong>Wind got more expensive recently.</strong> Lazard’s 2025 report shows onshore wind’s range rising year over year on supply chain and equipment costs, even as solar edged down. The trend is not monotonic.</li>
+<li><strong>Levelized cost is not system cost.</strong> LCOE omits firming, transmission and curtailment. That is why the firm solar-plus-storage figure matters more than the headline, and why it is still above the headline number.</li>
+<li><strong>Cheap generation is not a cheap transition.</strong> Grid buildout, permitting and interconnection are where first-of-a-kind projects actually stall, which is <a href="#s05">section 05</a>’s discount-rate problem wearing a hard hat.</li>
+</ul>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s08">
+    <div class="wrap band sheet" id="sdg">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">The Sustainable Development Goals</p>
+        <p class="sub">Where we align, and where we do not.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>The practice states alignment to the UN Sustainable Development Goals on its site, and alignment is a claim that should be specific enough to be checked.</p>
+<h3 id="where-the-work-lands">Where the work lands</h3>
+<div class="tscroll"><table class="data">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>How the practice touches it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>6 · Clean water and sanitation</strong> · <strong>14 · Life below water</strong></td>
+<td>Water infrastructure, treatment, remediation and allocation is one of our named sectors, and the least substitutable risk in the stack</td>
+</tr>
+<tr class="even">
+<td><strong>7 · Affordable and clean energy</strong> · <strong>13 · Climate action</strong></td>
+<td>Generation, storage and grid, including the load growth the compute build-out created; every assessment scores whether a cost case survives without a subsidy that may not be there in three years</td>
+</tr>
+<tr class="odd">
+<td><strong>9 · Industry, innovation and infrastructure</strong> · <strong>12 · Responsible consumption and production</strong></td>
+<td>Industrial decarbonization, waste-to-value and materials: the redesign in <a href="#s03">section 03</a>, assessed one company at a time</td>
+</tr>
+<tr class="even">
+<td><strong>11 · Sustainable cities and communities</strong></td>
+<td>Real assets and the built environment: retrofit, urban systems, first-of-a-kind development</td>
+</tr>
+<tr class="odd">
+<td><strong>2 · Zero hunger</strong> · <strong>15 · Life on land</strong></td>
+<td>Food and agriculture, soil and water integrity, small-hold economics, and the standing-forest economics in <a href="#s05">section 05</a></td>
+</tr>
+<tr class="even">
+<td><strong>8 · Decent work and economic growth</strong> · <strong>17 · Partnerships for the goals</strong></td>
+<td>How the work is delivered: a bench paid properly, a method released on request, and findings that belong to whoever commissioned them</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-number-that-makes-this-a-capital-question">The number that makes this a capital question</h3>
+<p>Ten years after the Goals were adopted, the UN’s 2025 report found <strong>about a third of targets on track or progressing moderately</strong>, and put the annual financing gap for developing countries at <strong>$4 trillion</strong> — up from an estimated $2.5 trillion in 2015, and projected to reach $6.4 trillion by 2030 without reform. Development assistance is falling, not rising.</p>
+<p>A gap that size will not be closed by aid. It will be closed, if at all, by private capital that can tell a fundable project from an unfundable one in exactly the places where the evidence is thinnest. <strong>That is this practice’s work, stated at the scale of a development agenda rather than a deal.</strong></p>
+<h3 id="what-we-do-not-claim">What we do not claim</h3>
+<ul>
+<li>We do not certify, score or audit SDG contribution, and we are not an impact-measurement provider.</li>
+<li>We do not report against SDG indicators on a client’s behalf.</li>
+<li>We do not use the Goals as a marketing frame for a company whose economics do not work. A company that cannot reach a compelled buyer advances no Goal, however well it maps to one.</li>
+</ul>
+<p>Alignment means the sectors we choose and the screen we apply. It is not a scoring claim, and that distinction is the difference between a position and a logo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s09">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">The instrument we already have</p>
+        <p class="sub">From total cost of ownership to natural capital.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>Three strands of one technique converge on this practice.</p>
+<p><strong>Option pricing.</strong> Black and Scholes gave finance a way to value a right rather than a thing. What matters here is the logic: value depends on volatility, time and irreversibility, not only on expected cash flows.</p>
+<p><strong>Preservation as an option.</strong> Krutilla’s existence value, Weisbrod’s option value and Arrow and Fisher’s quasi-option value (<a href="#s05">section 05</a>) apply that logic to a landscape. Keeping a forest standing is holding an option. Cutting it exercises one, permanently, at a strike price nobody computed.</p>
+<p><strong>Business-value modeling.</strong> The founding principal co-founded the Microsoft Business Value team, which applied off-the-shelf financial instruments — total cost of ownership, net present value, internal rate of return and Black-Scholes option analysis — to enterprise technology decisions, and built the methodology behind multi-billion dollar Enterprise Agreement revenue. That work answered a question with the same shape as this one: what is a capability worth when its benefits are diffuse, deferred and not yet on anyone’s ledger?</p>
+<p><strong>Where this goes next.</strong> The practice’s forward agenda is an instrument of the same kind for closed-loop and circular businesses: a model in which the costs a company currently externalizes — because carrying them would hit reported shareholder value — are priced on the timetable in <a href="#s04">section 04</a>, and in which an avoided cost is stated with the rigor of a revenue line. Nobody should claim that model exists yet. The materials for it do: mass balance, option value, ecosystem accounting, disclosure timetables, and the habit of writing down what would change our view.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s10">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Mission</p>
+        <p class="sub">What we do, stated so it cannot be confused with what we want.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>On any company we assess whether the technology works, whether a buyer is compelled to act, whether the team can execute the commercial turn, and whether the capital lasts until the buyer is compelled. Both halves of the question, reconciled against each other, with the evidence graded and the falsifiers written down.</p>
+<p>And within that, we ask what the false price hides: what a company’s material and human costs do to its economics once they are carried rather than externalized, and whether the date those costs arrive falls before or after the money runs out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s11">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Vision</p>
+        <p class="sub">What we are trying to change, which is not about this practice.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>Not for this practice — for the field it works in.</p>
+<ul>
+<li><strong>The missing middle gets funded.</strong> The distance between a technology that works and a first commercial deployment is where good companies die correct and early. It is fundable when timing is assessed rather than hoped for.</li>
+<li><strong>Timing is priced.</strong> A position where nobody is yet compelled is a timing bet. Timing bets are legitimate; they should be sized as timing bets, by name, in the investment memo.</li>
+<li><strong>The method spreads.</strong> It is published rather than protected, because a method that is argued with is worth more than one that is merely owned. If a competitor copies it and a better company gets funded, the thesis wins.</li>
+<li><strong>The phrase becomes redundant.</strong> When the costs are carried, “the business case for nature” is just the business case.</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s12">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">What it means, depending on who you are</p>
+        <p class="sub">Five readers, five consequences.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>This page argues one case, from physics through to price. What follows is what that case asks of you, and it differs depending on where you sit. Nobody has to accept the whole argument to act on the row that applies to them.</p>
+<div class="tscroll"><table class="data">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>What the argument in this page means for you</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>An allocator</strong></td>
+<td>The failure mode in this sector is a timing failure, not a technology failure, and timing can be assessed. Carried costs arrive on a schedule that can now be dated, so a company carrying them early is the cheaper company to own later</td>
+</tr>
+<tr class="even">
+<td><strong>A founder</strong></td>
+<td>The question that decides your outcome is not whether it works. It is who has to buy it, on what budget line, on what date — and answering that precisely is worth more to your next raise than another pilot</td>
+</tr>
+<tr class="odd">
+<td><strong>A community</strong></td>
+<td>Costs that were externalized were externalized onto someone, usually onto people who did not choose them. Pricing them is how that stops being an involuntary donation from the people nearest the plant</td>
+</tr>
+<tr class="even">
+<td><strong>A nation state</strong></td>
+<td>Natural capital is on the national balance sheet now, or it is being written off invisibly. Ecosystem accounting and nature-related disclosure are how a country stops mistaking depletion for growth</td>
+</tr>
+<tr class="odd">
+<td><strong>The world</strong></td>
+<td>Seven of nine planetary boundaries are transgressed and all seven are worsening. The redesign is not optional. Only its timing and its cost are still open</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s13">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">Who this is for</p>
+        <p class="sub">The allocators who move first, and the founders the work is delivered to.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p><strong>We serve the allocators who move first.</strong> Family offices, funds, corporate venture arms, LPs and developers who are early on the adoption curve and prepared to hold a longer clock than a fund life. They carry the risk of being right and early, which is the risk this practice was built to assess.</p>
+<p><strong>The work is delivered to the founders.</strong> In most engagements the allocator pays and the company receives the work. Founders are who it is <em>for</em>, not who pays for it.</p>
+<p><strong>The field benefits either way.</strong> A company that should not be funded and is not funded is a good outcome: the capital goes to one that should be, and the category does not learn the wrong lesson from an avoidable failure. A category that keeps mistaking timing failures for technology failures gets less capital every cycle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s14">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">How we work</p>
+        <p class="sub">Six positions, each of which costs us something.</p>
+      </div>
+      <div>
+        <div class="measure">
+<ul>
+<li><strong>Evidence over enthusiasm.</strong> Every score carries the grade of the evidence behind it, and every position states in advance what would change it. A claim without a source is not a finding.</li>
+<li><strong>Independence, structurally.</strong> No equity, no carried interest, no success fee, no referral fee, no compensation from any company we assess. The fee is the same whether we recommend proceeding or against, and the same whether the advice is taken or ignored.</li>
+<li><strong>Direct.</strong> We tell clients when we think they are wrong, and we tell each other. Where two assessments cannot both be true, the disagreement is the finding rather than a problem to smooth over.</li>
+<li><strong>The long clock.</strong> We work on initiatives we want our names attached to in twenty years. That is a duration argument and a moral one at the same time: costs carried early are cheaper than costs repriced later, and the people carrying them in the meantime are real (<a href="#s04">section 04</a>).</li>
+<li><strong>The screen.</strong> We decline two situations — teams for whom financial return is the only variable in the model, and businesses that treat environmental and human cost as somebody else’s problem. Both are underwriting positions, for the reasons in <a href="#s04">section 04</a> and <a href="#s05">section 05</a>.</li>
+<li><strong>A practice, not a payroll.</strong> No utilization targets. The specialist on a mandate is the one the mandate requires, and nobody is staffed to be kept busy.</li>
+</ul>
+<p>Everyone who works under the Climate Sprints name — the principal, every bench specialist, every Mastermind faculty member — is aligned to the same standards of behavior. Say the uncomfortable number. Decline work that does not fit. Arrive at a portfolio company saying who is paying and what they will receive. Never audit a team for its investor. Correct errors in writing, in the governing document, with a date on them. The practice sells judgment a buyer cannot verify at the moment of purchase, and what holds that together is the habit of saying the true thing while it is still inconvenient.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s15">
+    <div class="wrap band sheet">
+      <div class="marker">
+        <span class="tick"></span>
+        <p class="name">What we do not claim</p>
+        <p class="sub">Three things this argument is not.</p>
+      </div>
+      <div>
+        <div class="measure">
+<p>Stated because the argument above attracts three misreadings, and each would cost us the audience that matters.</p>
+<ul>
+<li><strong>This is not a quantum argument.</strong> Quantum mechanics governs the atomic scale; it does not prescribe how to design a materials loop, a building or a supply chain. The case rests on conservation of mass, the second law, and industrial ecology, all of which a sceptical engineer can check.</li>
+<li><strong>This is not an ESG score.</strong> We do not rate companies against a sustainability taxonomy. We assess whether a specific company reaches a compelled buyer before its capital runs out, and unpriced costs enter that assessment only where they change the timing or the cost case.</li>
+<li><strong>This is not valuation, audit or assurance.</strong> We do not value natural capital, certify an inventory or issue an opinion a lender can rely on. We assess what the arrival of those costs does to one company’s economics, and we say what would change our view.</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="s16">
+    <div class="wrap band sheet">
+      <div class="marker"><span class="tick"></span><p class="name">The lineage, 1789 to 2026</p><p class="sub">Where this comes from.</p></div>
+      <div>
+        <div class="measure"><p>Forty-seven sources, from Lavoisier to a book published this month. <strong>Bold</strong> marks the load-bearing ones.</p></div>
+        <div class="acc" data-acc-group="lineage">
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="lineage-table"><span class="acc-t">The full lineage</span><span class="acc-d">1789&ndash;2026</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="lineage-table" hidden>
+<div class="tscroll"><table class="data">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Source</th>
+<th>What it contributes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1789</td>
+<td><strong>Antoine Lavoisier, <em>Traité élémentaire de chimie</em></strong></td>
+<td>Conservation of mass: matter is rearranged, never destroyed</td>
+</tr>
+<tr class="even">
+<td>1905</td>
+<td>Albert Einstein, <em>Does the inertia of a body depend upon its energy content?</em></td>
+<td>Mass–energy equivalence; the conservation principle survives in modern physics</td>
+</tr>
+<tr class="odd">
+<td>1920</td>
+<td>Arthur Pigou, <em>The Economics of Welfare</em></td>
+<td>The externality, and the tax that internalizes it</td>
+</tr>
+<tr class="even">
+<td>1927–1950</td>
+<td><strong>John D. Rockefeller Jr., the Snake River Land Company and Grand Teton National Park</strong></td>
+<td>Private capital buying land at market prices for permanent public protection</td>
+</tr>
+<tr class="odd">
+<td>1948</td>
+<td>Kenneth Snelson’s first tensegrity sculpture; R. Buckminster Fuller later names the principle</td>
+<td>Stability from distributed tension rather than mass — used here as analogy, not as evidence</td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>Ronald Coase, <em>The Problem of Social Cost</em></td>
+<td>The counter-case: bargaining over rights, where transaction costs allow</td>
+</tr>
+<tr class="odd">
+<td>1964</td>
+<td>Burton Weisbrod, <em>Collective-Consumption Services of Individual-Consumption Goods</em>, Quarterly Journal of Economics</td>
+<td>Option value: what it is worth to keep a choice open</td>
+</tr>
+<tr class="even">
+<td>1966</td>
+<td>Kenneth Boulding, <em>The Economics of the Coming Spaceship Earth</em></td>
+<td>The closed system: no external sink, no unlimited reservoir</td>
+</tr>
+<tr class="odd">
+<td>1967</td>
+<td><strong>John Krutilla, <em>Conservation Reconsidered</em>, American Economic Review 57(4)</strong></td>
+<td>Preservation has value; development carries its opportunity cost; existence value and irreversibility enter economics</td>
+</tr>
+<tr class="even">
+<td>1968</td>
+<td>Garrett Hardin, <em>The Tragedy of the Commons</em></td>
+<td>The standard account of shared-resource failure</td>
+</tr>
+<tr class="odd">
+<td>1968</td>
+<td>US Wild and Scenic Rivers Act</td>
+<td>The policy turn Krutilla’s argument arrived alongside</td>
+</tr>
+<tr class="even">
+<td>1969</td>
+<td><strong>Robert Ayres and Allen Kneese, <em>Production, Consumption, and Externalities</em>, American Economic Review 59(3)</strong></td>
+<td>Mass balance applied to an economy: externalities are pervasive and inherent, not exceptional</td>
+</tr>
+<tr class="odd">
+<td>1970</td>
+<td>First Earth Day, 22 April</td>
+<td>The constituency that made the decade’s environmental statutes possible</td>
+</tr>
+<tr class="even">
+<td>1971</td>
+<td><strong>Nicholas Georgescu-Roegen, <em>The Entropy Law and the Economic Process</em></strong></td>
+<td>The economy as an entropic throughput; the second law in economics</td>
+</tr>
+<tr class="odd">
+<td>1972</td>
+<td>John Krutilla and Charles Cicchetti, <em>Evaluating Benefits of Environmental Resources with Special Application to the Hells Canyon</em>, Natural Resources Journal 12</td>
+<td>The theory applied to one river, against one dam</td>
+</tr>
+<tr class="even">
+<td>1972</td>
+<td>Donella Meadows et al., <em>The Limits to Growth</em></td>
+<td>Systems modelling of physical limits</td>
+</tr>
+<tr class="odd">
+<td>1973</td>
+<td>Fischer Black and Myron Scholes, <em>The Pricing of Options and Corporate Liabilities</em>, Journal of Political Economy</td>
+<td>Valuing a right rather than a thing; the instrument behind <a href="#s07">section 07</a></td>
+</tr>
+<tr class="even">
+<td>1974</td>
+<td><strong>James Lovelock and Lynn Margulis, <em>Atmospheric homeostasis by and for the biosphere: the Gaia hypothesis</em>, Tellus 26</strong></td>
+<td>The biosphere as a regulating system; the ancestor of Earth system science</td>
+</tr>
+<tr class="odd">
+<td>1974</td>
+<td>Kenneth Arrow and Anthony Fisher, <em>Environmental Preservation, Uncertainty, and Irreversibility</em>, Quarterly Journal of Economics</td>
+<td>Quasi-option value: the worth of delaying an irreversible decision</td>
+</tr>
+<tr class="even">
+<td>1975–1985</td>
+<td><strong>Environmentalists for Full Employment</strong>; <em>Jobs &amp; Energy</em> (1977)</td>
+<td>The jobs-versus-environment claim contested from inside the labor movement</td>
+</tr>
+<tr class="odd">
+<td>1976</td>
+<td><strong>Walter Stahel and Geneviève Reday, <em>The Potential for Substituting Manpower for Energy</em>, report to the European Commission</strong></td>
+<td>The loop economy: the origin of the circular economy</td>
+</tr>
+<tr class="even">
+<td>1976–2026</td>
+<td><strong>Philip Fearnside, INPA</strong> — five decades on Amazon deforestation, dams, highways and environmental services</td>
+<td>The discipline of asking who benefits from a project and who bears its longer-term costs, project by project</td>
+</tr>
+<tr class="odd">
+<td>1977</td>
+<td>Herman Daly, <em>Steady-State Economics</em></td>
+<td>Scale as an economic variable</td>
+</tr>
+<tr class="even">
+<td>1982</td>
+<td>Richard Kazis and Richard Grossman, <em>Fear at Work: Job Blackmail, Labor and the Environment</em></td>
+<td>How the threat of job loss was used against protection</td>
+</tr>
+<tr class="odd">
+<td>1989</td>
+<td><strong>Charles Peters, Alwyn Gentry and Robert Mendelsohn, <em>Valuation of an Amazonian rainforest</em>, Nature 339</strong></td>
+<td>One hectare valued three ways; standing forest outperforms clearing</td>
+</tr>
+<tr class="even">
+<td>1990</td>
+<td>Elinor Ostrom, <em>Governing the Commons</em></td>
+<td>The rebuttal to Hardin: commons are governable, and often governed</td>
+</tr>
+<tr class="odd">
+<td>1991–2018</td>
+<td><strong>Tompkins Conservation</strong> — Pumalín, Patagonia Park, and the 2018 transfer to Chile</td>
+<td>Conservation at national-park scale, financed privately and given away</td>
+</tr>
+<tr class="even">
+<td>1994</td>
+<td>John Tillman Lyle, <em>Regenerative Design for Sustainable Development</em></td>
+<td>Regeneration as a design discipline</td>
+</tr>
+<tr class="odd">
+<td>1995</td>
+<td>Michael Porter and Claas van der Linde, <em>Toward a New Conception of the Environment-Competitiveness Relationship</em>, Journal of Economic Perspectives</td>
+<td>Well-designed standards can trigger offsetting innovation</td>
+</tr>
+<tr class="even">
+<td>1997</td>
+<td><strong>Janine Benyus, <em>Biomimicry</em></strong></td>
+<td>Design briefed by living systems</td>
+</tr>
+<tr class="odd">
+<td>1997</td>
+<td>Robert Costanza et al., <em>The value of the world’s ecosystem services and natural capital</em>, Nature</td>
+<td>The first global valuation: about $33 trillion a year in 1994 dollars; the 2014 update put it at $125–145 trillion a year</td>
+</tr>
+<tr class="even">
+<td>1999</td>
+<td>Paul Hawken, Amory Lovins and L. Hunter Lovins, <em>Natural Capitalism</em></td>
+<td>Natural capital in business strategy</td>
+</tr>
+<tr class="odd">
+<td>2002</td>
+<td><strong>William McDonough and Michael Braungart, <em>Cradle to Cradle</em></strong></td>
+<td>Waste as a design failure; design for the next life</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td><strong>Johan Rockström et al., <em>A safe operating space for humanity</em>, Nature</strong></td>
+<td>Planetary boundaries</td>
+</tr>
+<tr class="odd">
+<td>2010</td>
+<td>TEEB, <em>The Economics of Ecosystems and Biodiversity</em></td>
+<td>Ecosystem valuation for policy and business</td>
+</tr>
+<tr class="even">
+<td>2012</td>
+<td>Ellen MacArthur Foundation, <em>Towards the Circular Economy</em></td>
+<td>The circular economy as a business framework</td>
+</tr>
+<tr class="odd">
+<td>2017</td>
+<td>Kate Raworth, <em>Doughnut Economics</em></td>
+<td>The social floor with the ecological ceiling</td>
+</tr>
+<tr class="even">
+<td>2018</td>
+<td>Jon Strand et al., <em>Spatially explicit valuation of the Brazilian Amazon forest’s ecosystem services</em>, Nature Sustainability 1(11)</td>
+<td>Ecosystem value is a map, not an average</td>
+</tr>
+<tr class="odd">
+<td>2021</td>
+<td>UN System of Environmental-Economic Accounting — Ecosystem Accounting</td>
+<td>Ecosystem accounting adopted as a statistical standard</td>
+</tr>
+<tr class="even">
+<td>2021</td>
+<td>Science Panel for the Amazon, <em>The New Bioeconomy in the Amazon</em>; Amazônia 2030</td>
+<td>The standing-forest economy as an industrial strategy with Indigenous and local knowledge</td>
+</tr>
+<tr class="odd">
+<td>2021</td>
+<td><strong>Partha Dasgupta, <em>The Economics of Biodiversity: The Dasgupta Review</em>, HM Treasury</strong></td>
+<td>Nature as an asset; natural capital per person down nearly 40% from 1992 to 2014; GDP unfit for purpose</td>
+</tr>
+<tr class="even">
+<td>2022</td>
+<td>Meta-analysis of Brazilian Amazon valuation studies, PLOS ONE</td>
+<td>About $410 per hectare per year for regulating and cultural services, with wide dispersion</td>
+</tr>
+<tr class="odd">
+<td>2023</td>
+<td><strong>Taskforce on Nature-related Financial Disclosures, final recommendations</strong></td>
+<td>Nature-related disclosure, modelled on TCFD</td>
+</tr>
+<tr class="even">
+<td>2023</td>
+<td>Katherine Richardson et al., <em>Earth beyond six of nine planetary boundaries</em>, Science Advances</td>
+<td>First quantification of all nine boundaries</td>
+</tr>
+<tr class="odd">
+<td>2025</td>
+<td>United Nations, <em>The Sustainable Development Goals Report 2025</em></td>
+<td>About a third of targets on track; a $4 trillion annual financing gap</td>
+</tr>
+<tr class="even">
+<td>2025</td>
+<td>Planetary Boundaries Science, <em>Planetary Health Check 2025</em></td>
+<td>Seven of nine transgressed; ocean acidification added</td>
+</tr>
+<tr class="odd">
+<td>2026</td>
+<td>Laurie Lane-Zucker, <em>The Impact Entrepreneur Breakthrough: A Field Manual for the Regenerative Economy</em>, Berrett-Koehler (<a href="https://impactentrepreneur.com/">impactentrepreneur.com</a>)</td>
+<td>The contemporary account of the regenerative economy, including the Prevention Dividend: the value of a cost that never arrives</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tone-a" id="s17">
+    <div class="wrap band sheet">
+      <div class="marker"><span class="tick"></span><p class="name">References</p><p class="sub">Every number on this page, and where it came from.</p></div>
+      <div>
+        <div class="acc" data-acc-group="refs">
+          <div class="acc-item" id="ref1">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp1"><span><span class="acc-n">[1]</span><span class="acc-t">Robert U</span></span><span class="acc-d">1969</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp1" hidden><p>Robert U. Ayres and Allen V. Kneese, <em>Production, Consumption, and Externalities</em>, American Economic Review 59(3), June 1969, pp. 282–297.</p></div>
+          </div>
+          <div class="acc-item" id="ref2">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp2"><span><span class="acc-n">[2]</span><span class="acc-t">James Lovelock and Lynn Margulis, Atmospheric homeostasis by and for…</span></span><span class="acc-d">1974</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp2" hidden><p>James Lovelock and Lynn Margulis, <em>Atmospheric homeostasis by and for the biosphere: the Gaia hypothesis</em>, Tellus 26 (1974); Daisyworld model, Watson and Lovelock (1983).</p></div>
+          </div>
+          <div class="acc-item" id="ref3">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp3"><span><span class="acc-n">[3]</span><span class="acc-t">Walter Stahel and Geneviève Reday, The Potential for Substituting Man…</span></span><span class="acc-d">1976</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp3" hidden><p>Walter Stahel and Geneviève Reday, <em>The Potential for Substituting Manpower for Energy</em>, report to the European Commission (1976); William McDonough and Michael Braungart, <em>Cradle to Cradle</em> (2002); Janine Benyus, <em>Biomimicry</em> (1997); John Tillman Lyle, <em>Regenerative Design for Sustainable Development</em> (1994).</p></div>
+          </div>
+          <div class="acc-item" id="ref4">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp4"><span><span class="acc-n">[4]</span><span class="acc-t">World Economic Forum, Nature Risk Rising, New Nature Economy Report s…</span></span><span class="acc-d">2023</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp4" hidden><p>World Economic Forum, <em>Nature Risk Rising</em>, New Nature Economy Report series; restated at $58 trillion by PwC (2023), cited via Global Canopy.</p></div>
+          </div>
+          <div class="acc-item" id="ref5">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp5"><span><span class="acc-n">[5]</span><span class="acc-t">Partha Dasgupta, The Economics of Biodiversity: The Dasgupta Review,…</span></span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp5" hidden><p>Partha Dasgupta, <em>The Economics of Biodiversity: The Dasgupta Review</em>, HM Treasury (2021), via the Royal Society and University of Cambridge summaries.</p></div>
+          </div>
+          <div class="acc-item" id="ref6">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp6"><span><span class="acc-n">[6]</span><span class="acc-t">UN System of Environmental-Economic Accounting — Ecosystem Accounting…</span></span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp6" hidden><p>UN System of Environmental-Economic Accounting — Ecosystem Accounting, adopted 2021.</p></div>
+          </div>
+          <div class="acc-item" id="ref7">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp7"><span><span class="acc-n">[7]</span><span class="acc-t">Taskforce on Nature-related Financial Disclosures, final recommendations</span></span><span class="acc-d">2023</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp7" hidden><p>Taskforce on Nature-related Financial Disclosures, final recommendations (2023); adoption and ISSB timetable per TNFD framework guides, 2026.</p></div>
+          </div>
+          <div class="acc-item" id="ref8">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp8"><span><span class="acc-n">[8]</span><span class="acc-t">Katherine Richardson et al</span></span><span class="acc-d">2023</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp8" hidden><p>Katherine Richardson et al., <em>Earth beyond six of nine planetary boundaries</em>, Science Advances (2023); <em>Planetary Health Check 2025</em>, Planetary Boundaries Science.</p></div>
+          </div>
+          <div class="acc-item" id="ref9">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp9"><span><span class="acc-n">[9]</span><span class="acc-t">John V</span></span><span class="acc-d">1967</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp9" hidden><p>John V. Krutilla, <em>Conservation Reconsidered</em>, American Economic Review 57(4), September 1967, pp. 777–786; Krutilla and Cicchetti, <em>Evaluating Benefits of Environmental Resources with Special Application to the Hells Canyon</em>, Natural Resources Journal 12 (1972).</p></div>
+          </div>
+          <div class="acc-item" id="ref10">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp10"><span><span class="acc-n">[10]</span><span class="acc-t">Burton Weisbrod, Quarterly Journal of Economics</span></span><span class="acc-d">1964</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp10" hidden><p>Burton Weisbrod, Quarterly Journal of Economics (1964); Kenneth Arrow and Anthony Fisher, <em>Environmental Preservation, Uncertainty, and Irreversibility</em>, Quarterly Journal of Economics (1974).</p></div>
+          </div>
+          <div class="acc-item" id="ref11">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp11"><span><span class="acc-n">[11]</span><span class="acc-t">Charles M</span></span><span class="acc-d">1989</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp11" hidden><p>Charles M. Peters, Alwyn H. Gentry and Robert O. Mendelsohn, <em>Valuation of an Amazonian rainforest</em>, Nature 339 (1989), pp. 655–656. The paper reports $6,330–$6,820 per hectare for sustainable harvest; the cattle figure is as summarized in later reviews.</p></div>
+          </div>
+          <div class="acc-item" id="ref12">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp12"><span><span class="acc-n">[12]</span><span class="acc-t">Jon Strand et al</span></span><span class="acc-d">2018</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp12" hidden><p>Jon Strand et al., <em>Spatially explicit valuation of the Brazilian Amazon forest’s ecosystem services</em>, Nature Sustainability 1(11), 2018.</p></div>
+          </div>
+          <div class="acc-item" id="ref13">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp13"><span><span class="acc-n">[13]</span><span class="acc-t">Meta-analysis of the Brazilian Amazon valuation literature, PLOS ONE</span></span><span class="acc-d">2022</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp13" hidden><p>Meta-analysis of the Brazilian Amazon valuation literature, PLOS ONE (2022).</p></div>
+          </div>
+          <div class="acc-item" id="ref14">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp14"><span><span class="acc-n">[14]</span><span class="acc-t">Science Panel for the Amazon, The New Bioeconomy in the Amazon</span></span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp14" hidden><p>Science Panel for the Amazon, <em>The New Bioeconomy in the Amazon</em> (2021); Amazônia 2030. Philip Fearnside, INPA, five decades of work on Amazon deforestation, dams, highways and environmental services.</p></div>
+          </div>
+          <div class="acc-item" id="ref15">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp15"><span><span class="acc-n">[15]</span><span class="acc-t">R</span></span><span class="acc-d">2000</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp15" hidden><p>R. Buckminster Fuller, quoted in Barry Farrell, <em>The View from the Year 2000</em>, LIFE magazine, 26 February 1971. The widely circulated “resources we are not harvesting” phrasing has no primary source we could verify.</p></div>
+          </div>
+          <div class="acc-item" id="ref16">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp16"><span><span class="acc-n">[16]</span><span class="acc-t">Kenneth Snelson's first tensegrity sculpture</span></span><span class="acc-d">1948</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp16" hidden><p>Kenneth Snelson’s first tensegrity sculpture (1948); Fuller named the principle. Tensegrity is distinct from the geodesic dome, and the two should not be conflated.</p></div>
+          </div>
+          <div class="acc-item" id="ref17">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp17"><span><span class="acc-n">[17]</span><span class="acc-t">United Nations, The Sustainable Development Goals Report 2025</span></span><span class="acc-d">2025</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp17" hidden><p>United Nations, <em>The Sustainable Development Goals Report 2025</em>; UNCTAD; OECD, <em>Global Outlook on Financing for Sustainable Development 2025</em>.</p></div>
+          </div>
+          <div class="acc-item" id="ref18">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp18"><span><span class="acc-n">[18]</span><span class="acc-t">Fischer Black and Myron Scholes, The Pricing of Options and Corporate…</span></span><span class="acc-d">1973</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp18" hidden><p>Fischer Black and Myron Scholes, <em>The Pricing of Options and Corporate Liabilities</em>, Journal of Political Economy (1973); with notes 9 and 10.</p></div>
+          </div>
+          <div class="acc-item" id="ref19">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp19"><span><span class="acc-n">[19]</span><span class="acc-t">Laurie Lane-Zucker, The Impact Entrepreneur Breakthrough: A Field Man…</span></span><span class="acc-d">2026</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp19" hidden><p>Laurie Lane-Zucker, <em>The Impact Entrepreneur Breakthrough: A Field Manual for the Regenerative Economy</em>, Berrett-Koehler, 1 September 2026.</p></div>
+          </div>
+          <div class="acc-item" id="ref20">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp20"><span><span class="acc-n">[20]</span><span class="acc-t">UN Sustainable Development Goals, goals 2, 6, 7, 8, 9, 11, 12, 13, 14…</span></span><span class="acc-d"></span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp20" hidden><p>UN Sustainable Development Goals, goals 2, 6, 7, 8, 9, 11, 12, 13, 14, 15 and 17.</p></div>
+          </div>
+          <div class="acc-item" id="ref21">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp21"><span><span class="acc-n">[21]</span><span class="acc-t">National Park Service</span></span><span class="acc-d">2007</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp21" hidden><p>National Park Service; Rockefeller Archive Center; Smithsonian Magazine, <em>Jewel of the Tetons</em>; National Parks Traveler (2007) on the transfer of the Laurance S. Rockefeller Preserve.</p></div>
+          </div>
+          <div class="acc-item" id="ref22">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp22"><span><span class="acc-n">[22]</span><span class="acc-t">Tompkins Conservation, January 2018 announcements</span></span><span class="acc-d">2018</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp22" hidden><p>Tompkins Conservation, January 2018 announcements; contemporaneous reporting on the one-million-acre donation, the nine million federal acres, and the Route of Parks.</p></div>
+          </div>
+          <div class="acc-item" id="ref23">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp23"><span><span class="acc-n">[23]</span><span class="acc-t">Environmentalists for Full Employment records, University of Pittsbur…</span></span><span class="acc-d">1977</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp23" hidden><p>Environmentalists for Full Employment records, University of Pittsburgh Archives Service Center; <em>Jobs &amp; Energy</em> (1977); Richard Kazis and Richard Grossman, <em>Fear at Work: Job Blackmail, Labor and the Environment</em> (1982).</p></div>
+          </div>
+          <div class="acc-item" id="ref24">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp24"><span><span class="acc-n">[24]</span><span class="acc-t">Michael Porter and Claas van der Linde, Toward a New Conception of th…</span></span><span class="acc-d">1995</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp24" hidden><p>Michael Porter and Claas van der Linde, <em>Toward a New Conception of the Environment-Competitiveness Relationship</em>, Journal of Economic Perspectives (1995).</p></div>
+          </div>
+          <div class="acc-item" id="ref25">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp25"><span><span class="acc-n">[25]</span><span class="acc-t">Lazard, Levelized Cost of Energy+, version 18</span></span><span class="acc-d">2025</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp25" hidden><p>Lazard, <em>Levelized Cost of Energy+</em>, version 18.0 (June 2025); IRENA firm-LCOE analysis (2026).</p></div>
+          </div>
+          <div class="acc-item" id="ref26">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp26"><span><span class="acc-n">[26]</span><span class="acc-t">The Nature Conservancy</span></span><span class="acc-d">1872</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp26" hidden><p>The Nature Conservancy; Trust for Public Land; US public land history — national parks from 1872, the Forest Service from 1905, the Bureau of Land Management.</p></div>
+          </div>
+        </div>
+        <p class="fp-small">Figures are reviewed at the end of 1Q2027.</p>
+      </div>
+    </div>
+  </section>
+  <section class="tone-b" id="close">
+    <div class="wrap band sheet">
+      <div class="marker"><span class="tick"></span><p class="name">Start with the question, not the technology</p><p class="sub">Who is compelled to buy it, and when are they compelled?</p></div>
+      <div>
+        <div class="measure">
+          <p>The founding principal organized for the first Earth Day in New York in April 1970, as a tenth-grade student at Stuyvesant High School &mdash; one of the city&rsquo;s specialized examination schools &mdash; and then studied where the science and the economics were taught together: a BS in environmental science and public policy and a BA in economic geography at the State University of New York, a Master of Urban Planning at the City University of New York, and water resource public policy at the Woodrow Wilson School at Princeton.</p>
+          <p>This argument is not a recent conversion.</p>
+        </div>
+        <p class="fp-small">Complete record &rarr; <a href="https://marcstrauch.tech" target="_blank" rel="noopener noreferrer">marcstrauch.tech</a></p>
+        <div class="hero-actions" style="margin-top:1.8em"><a class="btn" href="https://calendly.com/marcstrauch" target="_blank" rel="noopener noreferrer">Book a call</a> <a class="btn btn-ghost" href="start.html">Which instrument do you need?</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <p class="foot-mark">
+          <a href="index.html" aria-label="Climate Sprints — home" style="display:inline-flex;align-items:center;gap:inherit;text-decoration:none;color:inherit;">
+            <img class="mark-sun" src="assets/brand/mark-compact-lift.svg" alt="" width="24" height="24">
+            <span>Climate Sprints</span>
+          </a>
+        </p>
+        <p class="tagline">Powered by Purpose. Driven by Action.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Secondary">
+        <div class="foot-row">
+          <a href="start.html">Start here</a>
+          <a href="first-principles.html">First principles</a>
+          <a href="checklists/">Checklists</a>
+          <a href="conversations.html">Conversations</a>
+        </div>
+        <div class="foot-row">
+          <a href="questions.html">Questions</a>
+          <a href="colophon.html">Colophon</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="foot-row">
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="disclaimer.html">Disclaimer</a>
+          <a href="#" data-consent-reopen>Cookies</a>
+        </div>
+      </nav>
+      <div class="sdg">
+        <a href="first-principles.html#sdg" style="display:flex;align-items:center;gap:inherit;text-decoration:none;color:inherit">
+          <img src="assets/sdg-wheel.png" alt="Aligned to the UN Sustainable Development Goals" width="54" height="54">
+          <span>Aligned to the UN<br>Sustainable Development Goals</span>
+        </a>
+      </div>
+    </div>
+    <div class="foot-line">
+      <span>&copy; 2026 Climate Sprints</span>
+      <span>Imagery courtesy of the U.S. Geological Survey</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.acc-btn'));
+  function close(b){ b.setAttribute('aria-expanded','false');
+    document.getElementById(b.getAttribute('aria-controls')).hidden = true;
+    b.querySelector('.acc-sign').textContent = '+'; }
+  function open(b){ var g = b.closest('[data-acc-group]');
+    Array.prototype.forEach.call(g.querySelectorAll('.acc-btn[aria-expanded="true"]'), function(o){ if(o!==b) close(o); });
+    b.setAttribute('aria-expanded','true');
+    document.getElementById(b.getAttribute('aria-controls')).hidden = false;
+    b.querySelector('.acc-sign').textContent = '\u2212'; }
+  btns.forEach(function(b){
+    close(b);
+    b.addEventListener('click', function(){
+      b.getAttribute('aria-expanded') === 'true' ? close(b) : open(b);
+    });
+  });
+  document.querySelectorAll('sup.refmark a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var item = document.getElementById('ref' + a.dataset.ref);
+      if(!item) return;
+      e.preventDefault();
+      var b = item.querySelector('.acc-btn');
+      open(b); item.scrollIntoView({block:'center'}); b.focus();
+    });
+  });
+})();
+</script>
+<script src="assets/nav.js?v=16" defer></script>
+<script src="assets/consent.js?v=16" defer></script>
+</body>
+</html>
