@@ -73,6 +73,21 @@ table.t-lineage td:nth-child(2),table.t-lineage th:nth-child(2){width:44%}
 sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7em}
 .fp-small{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;opacity:.65;margin-top:1.4em}
 @media (prefers-reduced-motion:reduce){.acc-panel{transition:none!important}}
+.fp-secnum{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;opacity:.5;margin:0 0 .35em}
+.acc-panel{padding:0 0 1.1em 3em}
+[data-acc-group="lineage"] .acc-panel,[data-acc-group="cw"] .acc-panel{padding-left:0}
+#fp-menu-btn{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:.55em;
+  min-height:44px;padding:.7em 1.05em;border:1px solid rgba(255,255,255,.22);border-radius:2px;
+  background:#14143A;color:#F3F3F1;font:inherit;font-size:.82rem;letter-spacing:.04em;cursor:pointer;
+  box-shadow:0 6px 24px rgba(0,0,0,.28)}
+#fp-menu-btn:hover{border-color:#BE2437}
+#fp-menu{position:fixed;right:18px;bottom:74px;z-index:60;max-height:70vh;overflow:auto;width:min(23rem,calc(100vw - 36px));
+  background:#14143A;color:#F3F3F1;border:1px solid rgba(255,255,255,.18);box-shadow:0 10px 40px rgba(0,0,0,.4);padding:.6em 0}
+#fp-menu[hidden]{display:none}
+#fp-menu a{display:grid;grid-template-columns:2.6em 1fr;gap:.2em;align-items:baseline;padding:.6em 1.1em;color:#F3F3F1;text-decoration:none;font-size:.9rem}
+#fp-menu a:hover,#fp-menu a:focus-visible{background:rgba(255,255,255,.08)}
+#fp-menu .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72em;letter-spacing:.1em;opacity:.6}
+@media print{#fp-menu-btn,#fp-menu{display:none}}
 </style>
 </head>
 <body>
@@ -147,6 +162,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">01</p>
         <p class="name">The false&nbsp;price</p>
         <p class="sub">The law was never in doubt. The price&nbsp;was.</p>
       </div>
@@ -171,6 +187,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">02</p>
         <p class="name">The biosphere behaves like a&nbsp;system</p>
         <p class="sub">If the atmosphere is regulated, it can be&nbsp;destabilized.</p>
       </div>
@@ -188,6 +205,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">03</p>
         <p class="name">If the price was wrong, the design was&nbsp;wrong</p>
         <p class="sub">Everything built on it has to be&nbsp;redesigned.</p>
       </div>
@@ -224,6 +242,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">04</p>
         <p class="name">What new materials&nbsp;change</p>
         <p class="sub">Architecture, not chemistry — and the conservation laws do not&nbsp;move.</p>
       </div>
@@ -262,6 +281,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">05</p>
         <p class="name">Why this is now a pricing&nbsp;question</p>
         <p class="sub">The costs are moving onto balance sheets, on a schedule you can&nbsp;date.</p>
       </div>
@@ -319,6 +339,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">06</p>
         <p class="name">Valuing nature as&nbsp;nature</p>
         <p class="sub">The question is not what a forest is worth when&nbsp;converted.</p>
       </div>
@@ -340,7 +361,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
   <p class="lab">One hectare, Rio Nanay, Peru &middot; net present value, 1989 US dollars</p>
   <div class="fp-row"><span>Standing forest &mdash; sustainable fruit, latex and timber harvest</span><span class="bar" style="background:#BE2437;width:100%"></span><span class="val">$6,820</span></div>
   <div class="fp-row"><span>Cleared for cattle</span><span class="bar" style="background:#8C93A8;width:44%"></span><span class="val">~$3,000</span></div>
-  <figcaption>Peters, Gentry and Mendelsohn, <em>Nature</em> 339 (1989), pp. 655&ndash;656. The paper reports $6,330&ndash;$6,820 for sustainable harvest of fruit, latex and timber; the cattle figure is as summarized in later reviews.<sup class="refmark"><a href="#ref11" data-ref="11">[11]</a></sup></figcaption>
+  <figcaption>Peters, Gentry and Mendelsohn, <em>Nature</em> 339 (1989), pp. 655&ndash;656. The paper reports $6,330&ndash;$6,820 for sustainable harvest of fruit, latex and timber; the cattle figure is as summarized in later reviews.<sup class="refmark"><a href="#ref12" data-ref="12">[12]</a></sup></figcaption>
 </figure>
 <p>The 1989 study has been argued with for thirty-five years — over market saturation, transport costs, and whether one accessible hectare represents a basin — and the argument is healthy. What has not been overturned is the structure of the finding. Later work has extended rather than reversed it:</p>
 <div class="tscroll"><table class="data t-two">
@@ -391,6 +412,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">07</p>
         <p class="name">Private capital has been buying&nbsp;permanence</p>
         <p class="sub">Conservation economics and the long&nbsp;horizon.</p>
       </div>
@@ -418,6 +440,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">08</p>
         <p class="name">The trade-off that never&nbsp;held</p>
         <p class="sub">Environmental quality was supposed to cost&nbsp;growth.</p>
       </div>
@@ -451,6 +474,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet" id="sdg">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">09</p>
         <p class="name">The Sustainable Development&nbsp;Goals</p>
         <p class="sub">Where we align, and where we do&nbsp;not.</p>
       </div>
@@ -520,6 +544,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">10</p>
         <p class="name">The instrument we already&nbsp;have</p>
         <p class="sub">From total cost of ownership to natural&nbsp;capital.</p>
       </div>
@@ -538,6 +563,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">11</p>
         <p class="name">Mission</p>
         <p class="sub">What we do, stated so it cannot be confused with what we&nbsp;want.</p>
       </div>
@@ -553,6 +579,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">12</p>
         <p class="name">Vision</p>
         <p class="sub">What we are trying to change, which is not about this&nbsp;practice.</p>
       </div>
@@ -579,6 +606,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">13</p>
         <p class="name">What it means, depending on who you&nbsp;are</p>
         <p class="sub">Five readers, five&nbsp;consequences.</p>
       </div>
@@ -600,6 +628,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">14</p>
         <p class="name">Who this is&nbsp;for</p>
         <p class="sub">The allocators who move first, and the founders the work is delivered&nbsp;to.</p>
       </div>
@@ -616,6 +645,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">15</p>
         <p class="name">How we&nbsp;work</p>
         <p class="sub">Six positions, each of which costs us&nbsp;something.</p>
       </div>
@@ -644,6 +674,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker">
         <span class="tick"></span>
+        <p class="fp-secnum">16</p>
         <p class="name">What we do not&nbsp;claim</p>
         <p class="sub">Three things this argument is&nbsp;not.</p>
       </div>
@@ -951,109 +982,113 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
       <div class="marker"><span class="tick"></span><p class="name">References</p><p class="sub">Every number on this page, and where it came&nbsp;from.</p></div>
       <div>
         <div class="acc" data-acc-group="refs">
-          <div class="acc-item" id="ref1">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp1"><span class="acc-n">[1]</span><span class="acc-t">Robert Ayres and Allen Kneese, Production, Consumption, and Externalities</span><span class="acc-d">1969</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp1" hidden><p>Robert U. Ayres and Allen V. Kneese, <em>Production, Consumption, and Externalities</em>, American Economic Review 59(3), June 1969, pp. 282–297. <a href="https://www.jstor.org/stable/1808958" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref1">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp1"><span class="acc-n">[1]</span><span class="acc-t">The Nature Conservancy; Trust for Public Land; US public land history</span><span class="acc-d">1872–</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp1" hidden><p>The Nature Conservancy; Trust for Public Land; US public land history — national parks from 1872, the Forest Service from 1905, the Bureau of Land Management.</p></div>
           </div>
-          <div class="acc-item" id="ref2">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp2"><span class="acc-n">[2]</span><span class="acc-t">James Lovelock and Lynn Margulis, the Gaia hypothesis</span><span class="acc-d">1974</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp2" hidden><p>James Lovelock and Lynn Margulis, <em>Atmospheric homeostasis by and for the biosphere: the Gaia hypothesis</em>, Tellus 26 (1974); Daisyworld model, Watson and Lovelock (1983). <a href="https://www.tandfonline.com/doi/abs/10.3402/tellusa.v26i1-2.9731" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref2">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp2"><span class="acc-n">[2]</span><span class="acc-t">National Park Service and Rockefeller Archive Center on Grand Teton</span><span class="acc-d">1927–2007</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp2" hidden><p>National Park Service; Rockefeller Archive Center; Smithsonian Magazine, <em>Jewel of the Tetons</em>; National Parks Traveler (2007) on the transfer of the Laurance S. Rockefeller Preserve. <a href="https://resource.rockarch.org/story/john-d-rockefeller-jr-creates-a-national-park/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref3">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp3"><span class="acc-n">[3]</span><span class="acc-t">Stahel and Reday; McDonough and Braungart; Benyus; Lyle</span><span class="acc-d">1976–2002</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp3" hidden><p>Walter Stahel and Geneviève Reday, <em>The Potential for Substituting Manpower for Energy</em>, report to the European Commission (1976); William McDonough and Michael Braungart, <em>Cradle to Cradle</em> (2002); Janine Benyus, <em>Biomimicry</em> (1997); John Tillman Lyle, <em>Regenerative Design for Sustainable Development</em> (1994).</p></div>
+<div class="acc-item" id="ref3">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp3"><span class="acc-n">[3]</span><span class="acc-t">Kenneth Snelson's first tensegrity sculpture; Fuller names the principle</span><span class="acc-d">1948</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp3" hidden><p>Kenneth Snelson’s first tensegrity sculpture (1948); Fuller named the principle. Tensegrity is distinct from the geodesic dome, and the two should not be conflated.</p></div>
           </div>
-          <div class="acc-item" id="ref4">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp4"><span class="acc-n">[4]</span><span class="acc-t">World Economic Forum, Nature Risk Rising</span><span class="acc-d">2020</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp4" hidden><p>World Economic Forum, <em>Nature Risk Rising</em>, New Nature Economy Report series; restated at $58 trillion by PwC (2023), cited via Global Canopy. <a href="https://www.weforum.org/publications/new-nature-economy-report-series/nature-risk-rising/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref4">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp4"><span class="acc-n">[4]</span><span class="acc-t">Burton Weisbrod; Kenneth Arrow and Anthony Fisher</span><span class="acc-d">1964–1974</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp4" hidden><p>Burton Weisbrod, Quarterly Journal of Economics (1964); Kenneth Arrow and Anthony Fisher, <em>Environmental Preservation, Uncertainty, and Irreversibility</em>, Quarterly Journal of Economics (1974).</p></div>
           </div>
-          <div class="acc-item" id="ref5">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp5"><span class="acc-n">[5]</span><span class="acc-t">Partha Dasgupta, The Economics of Biodiversity</span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp5" hidden><p>Partha Dasgupta, <em>The Economics of Biodiversity: The Dasgupta Review</em>, HM Treasury (2021), via the Royal Society and University of Cambridge summaries. <a href="https://royalsociety.org/news-resources/projects/biodiversity/economics-biodiversity/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref5">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp5"><span class="acc-n">[5]</span><span class="acc-t">John Krutilla, Conservation Reconsidered</span><span class="acc-d">1967</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp5" hidden><p>John V. Krutilla, <em>Conservation Reconsidered</em>, American Economic Review 57(4), September 1967, pp. 777–786; Krutilla and Cicchetti, <em>Evaluating Benefits of Environmental Resources with Special Application to the Hells Canyon</em>, Natural Resources Journal 12 (1972). <a href="https://www.resources.org/archives/conservation-reconsidered-turns-50-the-environmental-turn-in-natural-resource-economics/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref6">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp6"><span class="acc-n">[6]</span><span class="acc-t">UN System of Environmental-Economic Accounting, Ecosystem Accounting</span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp6" hidden><p>UN System of Environmental-Economic Accounting — Ecosystem Accounting, adopted 2021.</p></div>
+<div class="acc-item" id="ref6">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp6"><span class="acc-n">[6]</span><span class="acc-t">Robert Ayres and Allen Kneese, Production, Consumption, and Externalities</span><span class="acc-d">1969</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp6" hidden><p>Robert U. Ayres and Allen V. Kneese, <em>Production, Consumption, and Externalities</em>, American Economic Review 59(3), June 1969, pp. 282–297. <a href="https://www.jstor.org/stable/1808958" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref7">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp7"><span class="acc-n">[7]</span><span class="acc-t">Taskforce on Nature-related Financial Disclosures, recommendations</span><span class="acc-d">2023</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp7" hidden><p>Taskforce on Nature-related Financial Disclosures, final recommendations (2023); adoption and ISSB timetable per TNFD framework guides, 2026.</p></div>
+<div class="acc-item" id="ref7">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp7"><span class="acc-n">[7]</span><span class="acc-t">R. Buckminster Fuller, quoted in LIFE magazine</span><span class="acc-d">1971</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp7" hidden><p>R. Buckminster Fuller, quoted in Barry Farrell, <em>The View from the Year 2000</em>, LIFE magazine, 26 February 1971. The widely circulated “resources we are not harvesting” phrasing has no primary source we could verify.</p></div>
           </div>
-          <div class="acc-item" id="ref8">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp8"><span class="acc-n">[8]</span><span class="acc-t">Richardson et al.; Planetary Health Check 2025</span><span class="acc-d">2023–2025</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp8" hidden><p>Katherine Richardson et al., <em>Earth beyond six of nine planetary boundaries</em>, Science Advances (2023); <em>Planetary Health Check 2025</em>, Planetary Boundaries Science. <a href="https://www.planetaryhealthcheck.org/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref8">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp8"><span class="acc-n">[8]</span><span class="acc-t">Fischer Black and Myron Scholes, The Pricing of Options and Corporate Liabilities</span><span class="acc-d">1973</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp8" hidden><p>Fischer Black and Myron Scholes, <em>The Pricing of Options and Corporate Liabilities</em>, Journal of Political Economy (1973); with notes 9 and 10.</p></div>
           </div>
-          <div class="acc-item" id="ref9">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp9"><span class="acc-n">[9]</span><span class="acc-t">John Krutilla, Conservation Reconsidered</span><span class="acc-d">1967</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp9" hidden><p>John V. Krutilla, <em>Conservation Reconsidered</em>, American Economic Review 57(4), September 1967, pp. 777–786; Krutilla and Cicchetti, <em>Evaluating Benefits of Environmental Resources with Special Application to the Hells Canyon</em>, Natural Resources Journal 12 (1972). <a href="https://www.resources.org/archives/conservation-reconsidered-turns-50-the-environmental-turn-in-natural-resource-economics/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref9">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp9"><span class="acc-n">[9]</span><span class="acc-t">James Lovelock and Lynn Margulis, the Gaia hypothesis</span><span class="acc-d">1974</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp9" hidden><p>James Lovelock and Lynn Margulis, <em>Atmospheric homeostasis by and for the biosphere: the Gaia hypothesis</em>, Tellus 26 (1974); Daisyworld model, Watson and Lovelock (1983). <a href="https://www.tandfonline.com/doi/abs/10.3402/tellusa.v26i1-2.9731" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref10">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp10"><span class="acc-n">[10]</span><span class="acc-t">Burton Weisbrod; Kenneth Arrow and Anthony Fisher</span><span class="acc-d">1964–1974</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp10" hidden><p>Burton Weisbrod, Quarterly Journal of Economics (1964); Kenneth Arrow and Anthony Fisher, <em>Environmental Preservation, Uncertainty, and Irreversibility</em>, Quarterly Journal of Economics (1974).</p></div>
+<div class="acc-item" id="ref10">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp10"><span class="acc-n">[10]</span><span class="acc-t">Environmentalists for Full Employment; Kazis and Grossman, Fear at Work</span><span class="acc-d">1975–1982</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp10" hidden><p>Environmentalists for Full Employment records, University of Pittsburgh Archives Service Center; <em>Jobs &amp; Energy</em> (1977); Richard Kazis and Richard Grossman, <em>Fear at Work: Job Blackmail, Labor and the Environment</em> (1982). <a href="https://onlinelibrary.wiley.com/doi/10.1111/socf.13056" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref11">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp11"><span class="acc-n">[11]</span><span class="acc-t">Charles Peters, Alwyn Gentry and Robert Mendelsohn, Valuation of an Amazonian rainforest</span><span class="acc-d">1989</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp11" hidden><p>Charles M. Peters, Alwyn H. Gentry and Robert O. Mendelsohn, <em>Valuation of an Amazonian rainforest</em>, Nature 339 (1989), pp. 655–656. The paper reports $6,330–$6,820 per hectare for sustainable harvest; the cattle figure is as summarized in later reviews. <a href="https://www.nature.com/articles/339655a0" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref11">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp11"><span class="acc-n">[11]</span><span class="acc-t">Stahel and Reday; McDonough and Braungart; Benyus; Lyle</span><span class="acc-d">1976–2002</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp11" hidden><p>Walter Stahel and Geneviève Reday, <em>The Potential for Substituting Manpower for Energy</em>, report to the European Commission (1976); William McDonough and Michael Braungart, <em>Cradle to Cradle</em> (2002); Janine Benyus, <em>Biomimicry</em> (1997); John Tillman Lyle, <em>Regenerative Design for Sustainable Development</em> (1994).</p></div>
           </div>
-          <div class="acc-item" id="ref12">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp12"><span class="acc-n">[12]</span><span class="acc-t">Jon Strand et al., Spatially explicit valuation of the Brazilian Amazon</span><span class="acc-d">2018</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp12" hidden><p>Jon Strand et al., <em>Spatially explicit valuation of the Brazilian Amazon forest’s ecosystem services</em>, Nature Sustainability 1(11), 2018.</p></div>
+<div class="acc-item" id="ref12">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp12"><span class="acc-n">[12]</span><span class="acc-t">Charles Peters, Alwyn Gentry and Robert Mendelsohn, Valuation of an Amazonian rainforest</span><span class="acc-d">1989</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp12" hidden><p>Charles M. Peters, Alwyn H. Gentry and Robert O. Mendelsohn, <em>Valuation of an Amazonian rainforest</em>, Nature 339 (1989), pp. 655–656. The paper reports $6,330–$6,820 per hectare for sustainable harvest; the cattle figure is as summarized in later reviews. <a href="https://www.nature.com/articles/339655a0" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref13">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp13"><span class="acc-n">[13]</span><span class="acc-t">Meta-analysis of the Brazilian Amazon valuation literature, PLOS ONE</span><span class="acc-d">2022</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp13" hidden><p>Meta-analysis of the Brazilian Amazon valuation literature, PLOS ONE (2022). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9119521/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref13">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp13"><span class="acc-n">[13]</span><span class="acc-t">Michael Porter and Claas van der Linde, on environment and competitiveness</span><span class="acc-d">1995</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp13" hidden><p>Michael Porter and Claas van der Linde, <em>Toward a New Conception of the Environment-Competitiveness Relationship</em>, Journal of Economic Perspectives (1995).</p></div>
           </div>
-          <div class="acc-item" id="ref14">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp14"><span class="acc-n">[14]</span><span class="acc-t">Science Panel for the Amazon; Amazônia 2030; Philip Fearnside, INPA</span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp14" hidden><p>Science Panel for the Amazon, <em>The New Bioeconomy in the Amazon</em> (2021); Amazônia 2030. Philip Fearnside, INPA, five decades of work on Amazon deforestation, dams, highways and environmental services. <a href="https://www.theamazonwewant.org/wp-content/uploads/2021/08/SPA-Chapter-30-PC-The-New-Bioeconomy-in-the-Amazon-Opportunities-and-Challenges-for-a-Healthy-Standing-Forest-and-Flowing-Rivers.pdf" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref14">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp14"><span class="acc-n">[14]</span><span class="acc-t">United Nations Sustainable Development Goals</span><span class="acc-d">2015</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp14" hidden><p>UN Sustainable Development Goals, goals 2, 6, 7, 8, 9, 11, 12, 13, 14, 15 and 17.</p></div>
           </div>
-          <div class="acc-item" id="ref15">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp15"><span class="acc-n">[15]</span><span class="acc-t">R. Buckminster Fuller, quoted in LIFE magazine</span><span class="acc-d">1971</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp15" hidden><p>R. Buckminster Fuller, quoted in Barry Farrell, <em>The View from the Year 2000</em>, LIFE magazine, 26 February 1971. The widely circulated “resources we are not harvesting” phrasing has no primary source we could verify.</p></div>
+<div class="acc-item" id="ref15">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp15"><span class="acc-n">[15]</span><span class="acc-t">Jon Strand et al., Spatially explicit valuation of the Brazilian Amazon</span><span class="acc-d">2018</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp15" hidden><p>Jon Strand et al., <em>Spatially explicit valuation of the Brazilian Amazon forest’s ecosystem services</em>, Nature Sustainability 1(11), 2018.</p></div>
           </div>
-          <div class="acc-item" id="ref16">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp16"><span class="acc-n">[16]</span><span class="acc-t">Kenneth Snelson's first tensegrity sculpture; Fuller names the principle</span><span class="acc-d">1948</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp16" hidden><p>Kenneth Snelson’s first tensegrity sculpture (1948); Fuller named the principle. Tensegrity is distinct from the geodesic dome, and the two should not be conflated.</p></div>
+<div class="acc-item" id="ref16">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp16"><span class="acc-n">[16]</span><span class="acc-t">Tompkins Conservation, the donation to Chile</span><span class="acc-d">2018</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp16" hidden><p>Tompkins Conservation, January 2018 announcements; contemporaneous reporting on the one-million-acre donation, the nine million federal acres, and the Route of Parks. <a href="https://www.tompkinsconservation.org/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref17">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp17"><span class="acc-n">[17]</span><span class="acc-t">United Nations, The Sustainable Development Goals Report 2025</span><span class="acc-d">2025</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp17" hidden><p>United Nations, <em>The Sustainable Development Goals Report 2025</em>; UNCTAD; OECD, <em>Global Outlook on Financing for Sustainable Development 2025</em>. <a href="https://unstats.un.org/sdgs/report/2025/The-Sustainable-Development-Goals-Report-2025.pdf" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref17">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp17"><span class="acc-n">[17]</span><span class="acc-t">Lea Sirota et al., Non-Newtonian topological mechanical metamaterials using feedback control</span><span class="acc-d">19 November 2020</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp17" hidden><p>Lea Sirota, Roni Ilan, Yair Shokef and Yoav Lahini, <em>Non-Newtonian topological mechanical metamaterials using feedback control</em>, arXiv:2002.10607; reported by Phys.org, 19 November 2020. The paper concerns Newton’s third law of motion, not the third law of thermodynamics. <a href="https://arxiv.org/abs/2002.10607" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref18">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp18"><span class="acc-n">[18]</span><span class="acc-t">Fischer Black and Myron Scholes, The Pricing of Options and Corporate Liabilities</span><span class="acc-d">1973</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp18" hidden><p>Fischer Black and Myron Scholes, <em>The Pricing of Options and Corporate Liabilities</em>, Journal of Political Economy (1973); with notes 9 and 10.</p></div>
+<div class="acc-item" id="ref18">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp18"><span class="acc-n">[18]</span><span class="acc-t">World Economic Forum, Nature Risk Rising</span><span class="acc-d">2020</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp18" hidden><p>World Economic Forum, <em>Nature Risk Rising</em>, New Nature Economy Report series; restated at $58 trillion by PwC (2023), cited via Global Canopy. <a href="https://www.weforum.org/publications/new-nature-economy-report-series/nature-risk-rising/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref19">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp19"><span class="acc-n">[19]</span><span class="acc-t">Laurie Lane-Zucker, The Impact Entrepreneur Breakthrough</span><span class="acc-d">2026</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp19" hidden><p>Laurie Lane-Zucker, <em>The Impact Entrepreneur Breakthrough: A Field Manual for the Regenerative Economy</em>, Berrett-Koehler, 1 September 2026. <a href="https://impactentrepreneur.com/breakthrough/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref19">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp19"><span class="acc-n">[19]</span><span class="acc-t">Partha Dasgupta, The Economics of Biodiversity</span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp19" hidden><p>Partha Dasgupta, <em>The Economics of Biodiversity: The Dasgupta Review</em>, HM Treasury (2021), via the Royal Society and University of Cambridge summaries. <a href="https://royalsociety.org/news-resources/projects/biodiversity/economics-biodiversity/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref20">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp20"><span class="acc-n">[20]</span><span class="acc-t">United Nations Sustainable Development Goals</span><span class="acc-d">2015</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp20" hidden><p>UN Sustainable Development Goals, goals 2, 6, 7, 8, 9, 11, 12, 13, 14, 15 and 17.</p></div>
+<div class="acc-item" id="ref20">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp20"><span class="acc-n">[20]</span><span class="acc-t">Science Panel for the Amazon; Amazônia 2030; Philip Fearnside, INPA</span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp20" hidden><p>Science Panel for the Amazon, <em>The New Bioeconomy in the Amazon</em> (2021); Amazônia 2030. Philip Fearnside, INPA, five decades of work on Amazon deforestation, dams, highways and environmental services. <a href="https://www.theamazonwewant.org/wp-content/uploads/2021/08/SPA-Chapter-30-PC-The-New-Bioeconomy-in-the-Amazon-Opportunities-and-Challenges-for-a-Healthy-Standing-Forest-and-Flowing-Rivers.pdf" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref21">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp21"><span class="acc-n">[21]</span><span class="acc-t">National Park Service and Rockefeller Archive Center on Grand Teton</span><span class="acc-d">1927–2007</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp21" hidden><p>National Park Service; Rockefeller Archive Center; Smithsonian Magazine, <em>Jewel of the Tetons</em>; National Parks Traveler (2007) on the transfer of the Laurance S. Rockefeller Preserve. <a href="https://resource.rockarch.org/story/john-d-rockefeller-jr-creates-a-national-park/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref21">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp21"><span class="acc-n">[21]</span><span class="acc-t">UN System of Environmental-Economic Accounting, Ecosystem Accounting</span><span class="acc-d">2021</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp21" hidden><p>UN System of Environmental-Economic Accounting — Ecosystem Accounting, adopted 2021.</p></div>
           </div>
-          <div class="acc-item" id="ref22">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp22"><span class="acc-n">[22]</span><span class="acc-t">Tompkins Conservation, the donation to Chile</span><span class="acc-d">2018</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp22" hidden><p>Tompkins Conservation, January 2018 announcements; contemporaneous reporting on the one-million-acre donation, the nine million federal acres, and the Route of Parks. <a href="https://www.tompkinsconservation.org/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref22">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp22"><span class="acc-n">[22]</span><span class="acc-t">Meta-analysis of the Brazilian Amazon valuation literature, PLOS ONE</span><span class="acc-d">2022</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp22" hidden><p>Meta-analysis of the Brazilian Amazon valuation literature, PLOS ONE (2022). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9119521/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref23">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp23"><span class="acc-n">[23]</span><span class="acc-t">Environmentalists for Full Employment; Kazis and Grossman, Fear at Work</span><span class="acc-d">1975–1982</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp23" hidden><p>Environmentalists for Full Employment records, University of Pittsburgh Archives Service Center; <em>Jobs &amp; Energy</em> (1977); Richard Kazis and Richard Grossman, <em>Fear at Work: Job Blackmail, Labor and the Environment</em> (1982). <a href="https://onlinelibrary.wiley.com/doi/10.1111/socf.13056" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+<div class="acc-item" id="ref23">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp23"><span class="acc-n">[23]</span><span class="acc-t">Richardson et al.; Planetary Health Check 2025</span><span class="acc-d">2023–2025</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp23" hidden><p>Katherine Richardson et al., <em>Earth beyond six of nine planetary boundaries</em>, Science Advances (2023); <em>Planetary Health Check 2025</em>, Planetary Boundaries Science. <a href="https://www.planetaryhealthcheck.org/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref24">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp24"><span class="acc-n">[24]</span><span class="acc-t">Michael Porter and Claas van der Linde, on environment and competitiveness</span><span class="acc-d">1995</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp24" hidden><p>Michael Porter and Claas van der Linde, <em>Toward a New Conception of the Environment-Competitiveness Relationship</em>, Journal of Economic Perspectives (1995).</p></div>
+<div class="acc-item" id="ref24">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp24"><span class="acc-n">[24]</span><span class="acc-t">Taskforce on Nature-related Financial Disclosures, recommendations</span><span class="acc-d">2023</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp24" hidden><p>Taskforce on Nature-related Financial Disclosures, final recommendations (2023); adoption and ISSB timetable per TNFD framework guides, 2026.</p></div>
           </div>
-          <div class="acc-item" id="ref25">
+<div class="acc-item" id="ref25">
             <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp25"><span class="acc-n">[25]</span><span class="acc-t">Lazard, Levelized Cost of Energy+ version 18.0; IRENA</span><span class="acc-d">2025–2026</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
             <div class="acc-panel" id="refp25" hidden><p>Lazard, <em>Levelized Cost of Energy+</em>, version 18.0 (June 2025); IRENA firm-LCOE analysis (2026). <a href="https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
-          <div class="acc-item" id="ref26">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp26"><span class="acc-n">[26]</span><span class="acc-t">The Nature Conservancy; Trust for Public Land; US public land history</span><span class="acc-d">1872–</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
-            <div class="acc-panel" id="refp26" hidden><p>The Nature Conservancy; Trust for Public Land; US public land history — national parks from 1872, the Forest Service from 1905, the Bureau of Land Management.</p></div>
+<div class="acc-item" id="ref26">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp26"><span class="acc-n">[26]</span><span class="acc-t">United Nations, The Sustainable Development Goals Report 2025</span><span class="acc-d">2025</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp26" hidden><p>United Nations, <em>The Sustainable Development Goals Report 2025</em>; UNCTAD; OECD, <em>Global Outlook on Financing for Sustainable Development 2025</em>. <a href="https://unstats.un.org/sdgs/report/2025/The-Sustainable-Development-Goals-Report-2025.pdf" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
+          </div>
+<div class="acc-item" id="ref27">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp27"><span class="acc-n">[27]</span><span class="acc-t">Laurie Lane-Zucker, The Impact Entrepreneur Breakthrough</span><span class="acc-d">2026</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <div class="acc-panel" id="refp27" hidden><p>Laurie Lane-Zucker, <em>The Impact Entrepreneur Breakthrough: A Field Manual for the Regenerative Economy</em>, Berrett-Koehler, 1 September 2026. <a href="https://impactentrepreneur.com/breakthrough/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
         </div>
         <p class="fp-small">Figures are reviewed at the end of 1Q2027.</p>
@@ -1119,6 +1154,27 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     </div>
   </div>
 </footer>
+<button id="fp-menu-btn" type="button" aria-expanded="false" aria-controls="fp-menu"><span aria-hidden="true">☰</span> Sections</button>
+<nav id="fp-menu" aria-label="Sections" hidden>
+  <a href="#s01"><span class="n">01</span>The false price</a>
+  <a href="#s02"><span class="n">02</span>The biosphere behaves like a system</a>
+  <a href="#s03"><span class="n">03</span>If the price was wrong, the design was wrong</a>
+  <a href="#s04"><span class="n">04</span>What new materials change</a>
+  <a href="#s05"><span class="n">05</span>Why this is now a pricing question</a>
+  <a href="#s06"><span class="n">06</span>Valuing nature as nature</a>
+  <a href="#s07"><span class="n">07</span>Private capital has been buying permanence</a>
+  <a href="#s08"><span class="n">08</span>The trade-off that never held</a>
+  <a href="#s09"><span class="n">09</span>The Sustainable Development Goals</a>
+  <a href="#s10"><span class="n">10</span>The instrument we already have</a>
+  <a href="#s11"><span class="n">11</span>Mission</a>
+  <a href="#s12"><span class="n">12</span>Vision</a>
+  <a href="#s13"><span class="n">13</span>What it means, depending on who you are</a>
+  <a href="#s14"><span class="n">14</span>Who this is for</a>
+  <a href="#s15"><span class="n">15</span>How we work</a>
+  <a href="#s16"><span class="n">16</span>What we do not claim</a>
+  <a href="#s17"><span class="n">17</span>The lineage, 1789 to 2026</a>
+  <a href="#s18"><span class="n">18</span>References</a>
+</nav>
 <script>
 document.documentElement.classList.add('js');
 (function(){
@@ -1137,6 +1193,12 @@ document.documentElement.classList.add('js');
       b.getAttribute('aria-expanded') === 'true' ? close(b) : open(b);
     });
   });
+  var mb=document.getElementById('fp-menu-btn'), mn=document.getElementById('fp-menu');
+  function setMenu(open){ mn.hidden=!open; mb.setAttribute('aria-expanded', open?'true':'false'); }
+  mb.addEventListener('click', function(){ setMenu(mn.hidden); });
+  mn.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !mn.hidden){ setMenu(false); mb.focus(); } });
+  document.addEventListener('click', function(e){ if(!mn.hidden && !mn.contains(e.target) && e.target!==mb && !mb.contains(e.target)) setMenu(false); });
   document.querySelectorAll('sup.refmark a').forEach(function(a){
     a.addEventListener('click', function(e){
       var item = document.getElementById('ref' + a.dataset.ref);
