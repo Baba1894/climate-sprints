@@ -92,6 +92,25 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
 #fp-menu a:hover,#fp-menu a:focus-visible{background:rgba(255,255,255,.08)}
 #fp-menu .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72em;letter-spacing:.1em;opacity:.6}
 @media print{#fp-menu-btn,#fp-menu{display:none}}
+/* the page must never be wider than the phone */
+.sheet > *{min-width:0}
+.measure{min-width:0;max-width:100%}
+.tscroll{max-width:100%}
+.fp-chart,.acc,.fp-toc{min-width:0;max-width:100%}
+@media (max-width:760px){
+  .tscroll table.data,.tscroll table.data.t-lineage,.tscroll table.data.t-two{min-width:0;table-layout:auto;display:block}
+  .tscroll table.data thead{display:none}
+  .tscroll table.data tbody,.tscroll table.data tr{display:block;width:100%}
+  .tscroll table.data tr{padding:.85em 0;border-bottom:1px solid rgba(0,0,0,.1)}
+  .tone-b .tscroll table.data tr{border-bottom-color:rgba(255,255,255,.14)}
+  .tscroll table.data td{display:block;width:auto!important;padding:0 0 .4em!important;border:0}
+  .tscroll table.data td:last-child{padding-bottom:0!important}
+  .tscroll table.data.t-lineage td:first-child{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.08em;opacity:.65}
+  .acc-btn{grid-template-columns:2.6rem 1fr auto;gap:.25rem .8rem}
+  .acc-btn .acc-d{grid-column:2;grid-row:2;padding-right:0;margin-left:0}
+  .acc-panel{padding:0 0 1.1em 2.6rem}
+  #fp-menu-btn{right:12px;bottom:12px}
+}
 </style>
 </head>
 <body>
@@ -701,7 +720,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
     <div class="wrap band sheet">
       <div class="marker"><span class="tick"></span><p class="name">The lineage, 1789 to&nbsp;2026</p><p class="sub">Where this comes&nbsp;from.</p></div>
       <div>
-        <div class="measure"><p>Fifty sources, from Lavoisier to a book published this month. <strong>Bold</strong> marks the load-bearing ones, and every row links to its source. Where an original is not available online &mdash; an out-of-print book, an unpublished 1976 report to the European Commission &mdash; the link points to the most authoritative source about it rather than to nothing.</p><p>Not a bibliography, and not exhaustive &mdash; the reading the argument rests on. If your own lineage includes work that ought to be here, we would rather hear it than&nbsp;not.</p></div>
+        <div class="measure"><p>Fifty sources, from Lavoisier to a book published in September 2026. <strong>Bold</strong> marks the load-bearing ones, and every row links to its source. Where an original is not available online &mdash; an out-of-print book, an unpublished 1976 report to the European Commission &mdash; the link points to the most authoritative source about it rather than to nothing.</p><p>Not a bibliography, and not exhaustive &mdash; the reading the argument rests on. If your own lineage includes work that ought to be here, we would rather hear it than&nbsp;not.</p></div>
         <div class="acc" data-acc-group="lineage">
           <div class="acc-item">
             <h3 style="margin:0"><button class="acc-btn acc-plain" type="button" aria-expanded="false" aria-controls="lineage-table"><span class="acc-t">The full lineage</span><span class="acc-d">1789&ndash;2026</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
@@ -1054,7 +1073,7 @@ sup.refmark a{text-decoration:none;font-family:"JetBrains Mono",ui-monospace,mon
             <div class="acc-panel" id="refp16" hidden><p>Tompkins Conservation, January 2018 announcements; contemporaneous reporting on the one-million-acre donation, the nine million federal acres, and the Route of Parks. <a href="https://www.tompkinsconservation.org/" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
 <div class="acc-item" id="ref17">
-            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp17"><span class="acc-n">[17]</span><span class="acc-t">Lea Sirota et al., Non-Newtonian topological mechanical metamaterials using feedback control</span><span class="acc-d">19 November 2020</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="refp17"><span class="acc-n">[17]</span><span class="acc-t">Lea Sirota et al., Non-Newtonian topological mechanical metamaterials using feedback control</span><span class="acc-d">2020</span><span class="acc-sign" aria-hidden="true">+</span></button></h3>
             <div class="acc-panel" id="refp17" hidden><p>Lea Sirota, Roni Ilan, Yair Shokef and Yoav Lahini, <em>Non-Newtonian topological mechanical metamaterials using feedback control</em>, arXiv:2002.10607; reported by Phys.org, 19 November 2020. The paper concerns Newton’s third law of motion, not the third law of thermodynamics. <a href="https://arxiv.org/abs/2002.10607" target="_blank" rel="noopener noreferrer">Source &rarr;</a></p></div>
           </div>
 <div class="acc-item" id="ref18">
